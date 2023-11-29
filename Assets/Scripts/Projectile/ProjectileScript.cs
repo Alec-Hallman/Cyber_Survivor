@@ -36,17 +36,18 @@ public class ProjectileScript : MonoBehaviour
             //Debug.Log("My Position: " +transform.position + "targetPosition: " + currentPosition);
             GetComponent<Rigidbody2D>().velocity = direction * speed;
         }else{
-            Debug.Log("Stio");
+            //Debug.Log("Stio");
+            traveling = false;
+
             GetComponent<Rigidbody2D>().velocity = zero;
         }
         float counter2 = Time.realtimeSinceStartup - timer2;
         if(counter2 >= lifeSpan){
             Destroy(this.gameObject);
         }
-        
     }
     void OnTriggerEnter2D(Collider2D hit){
-        if(hit.gameObject.tag == "Player"){
+        if( !traveling && hit.gameObject.tag == "Player"){
             hit.gameObject.GetComponent<PlayerBase>().takeDamage(damage);
             Destroy(this.gameObject);
         }

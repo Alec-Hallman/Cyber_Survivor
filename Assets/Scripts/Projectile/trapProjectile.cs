@@ -34,7 +34,7 @@ public class trapProjectile : ProjectileScript
         float totalTime = Time.realtimeSinceStartup - timeTracker;
         if(traveling && totalTime < halfTravel){
             transform.localScale = new Vector2((currentXSize *= 1.015F),(currentYSize *= 1.015F));
-        }else if (base.traveling){
+        }else if (traveling){
             if(currentXSize > startXSize){
                 currentXSize *= 0.99F;
             }
