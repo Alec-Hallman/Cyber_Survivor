@@ -8,6 +8,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    [HideInInspector]
     public Transform targetLocation;
     private Transform staticTargetLocation;
     public float damage;
@@ -17,11 +18,20 @@ public class ProjectileScript : MonoBehaviour
     private float timer;
     public float travelTime;
     public float speed;
+    [HideInInspector]
     public bool traveling;
     private float timer2;
+
+    [HideInInspector]
+    public bool explosive;
     private Vector2 zero = new Vector2(0,0);
+
+    [HideInInspector]
+    public bool explodeNow = false;
+
     public void BaseProjectileStart()
     {
+        explosive = false;
         timer2 = Time.realtimeSinceStartup;
         currentPosition = targetLocation.position;
         travelTime = Random.Range(0.5F, 1.5F);
@@ -50,7 +60,12 @@ public class ProjectileScript : MonoBehaviour
         float counter2 = Time.realtimeSinceStartup - timer2;
         if(counter2 >= lifeSpan){
             //if the current time is at the lifeSpan limit then destroy the game object
-            Destroy(this.gameObject);
+            if(!explosive){
+                Destroy(this.gameObject);
+            }
+            else{
+                explodeNow = true;
+            }
         }
     }
     //This trigger deals with damage dealing.
@@ -60,7 +75,12 @@ public class ProjectileScript : MonoBehaviour
             //Then get the player base component and call the take damage method, passing the damage of this enemy.
             hit.gameObject.GetComponent<PlayerBase>().takeDamage(damage);
             //Destroy the projectile
-            Destroy(this.gameObject);
+            if(!explosive){
+                Destroy(this.gameObject);
+            }
+            else{
+                explodeNow = true;
+            }
         }
     }
     void GetCurrentTime(){
