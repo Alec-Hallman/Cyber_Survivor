@@ -12,8 +12,17 @@ public class trapProjectile : ProjectileScript
     private float startXSize;
     private float startYSize;
     private float timeTracker;
+    private ParticleSystem particles;
+    //Anmimation time refers to the time needed to run particle system
+    public float animationTime;
+    private float animationTimeTracker;
+    private float currentTime;
     void Start()
     {
+        base.BaseProjectileStart();
+        explosive = true;
+        particles = gameObject.GetComponent<ParticleSystem>();
+        particles.Stop();
         myRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         myRenderer.sortingOrder = 5;
         currentYSize = transform.localScale.y;
@@ -22,7 +31,6 @@ public class trapProjectile : ProjectileScript
         startYSize = currentYSize;
         timeTracker = Time.realtimeSinceStartup;
         traveling = true;
-        BaseProjectileStart();
         travelTime = Random.Range(0.5F, 1.5F);
         halfTravel = travelTime / 2;
         //Set travel time to be random instead of a set time.
@@ -31,6 +39,18 @@ public class trapProjectile : ProjectileScript
     // Update is called once per frame
     void Update()
     {
+        //Call the base update method
+        base.BaseProjectileUpdate();
+        if(base.explodeNow){
+            
+            if(!particles.isPlaying){
+                animationTimeTracker = Time.realtimeSinceStartup;
+                particles.Play();
+            }
+            Explode();
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
         //float for tracking time
         float totalTime = Time.realtimeSinceStartup - timeTracker;
         //if the object is moving and the object has been around for half of the time it's traveling for
@@ -48,11 +68,20 @@ public class trapProjectile : ProjectileScript
             //Apply the vector 2 changes
             transform.localScale = new Vector2(currentXSize,currentYSize);
         }
-        //Call the base update method
-        BaseProjectileUpdate();
+
         //If the object has stopped traveling than make it render under the player
         if(!base.traveling){
             myRenderer.sortingOrder = 0;
         }
     }
+    void Explode(){
+        //Debug.Log("Called");
+
+        float newCounter = Time.realtimeSinceStartup - animationTimeTracker;
+        if(newCounter >= animationTime){
+             Destroy(this.gameObject);
+        }
+        
+    }
 }
+
