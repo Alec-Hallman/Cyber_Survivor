@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+//Enemy ranged script that spawns projectiles and only moves until in shooting range, instead of toutching the enemy.
 public class EnemyRangedBase : EnemyBase
 {
     // Start is called before the first frame update

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//This code manages the hitmarker number bahaviour.
 public class DamageNumber : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class DamageNumber : MonoBehaviour
         timer = Time.realtimeSinceStartup;
         startPosition = getObject.transform.position;
         transform.position = startPosition;
+        //Sets end position to be a random value withing a circle around the starting position of number
         endPosition = startPosition + Random.insideUnitCircle;
     }
 
@@ -24,6 +25,7 @@ public class DamageNumber : MonoBehaviour
     {   
         float t = counter / duration;
         transform.position = Vector2.Lerp(startPosition,endPosition,t);
+        //Slowly moves to start position
         counter = Time.realtimeSinceStartup - timer;
         if(counter >= duration){
             Destroy(this.gameObject);

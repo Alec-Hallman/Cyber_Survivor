@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//manages base player behaviour
 public class PlayerBase : MonoBehaviour
 {
     public float speed = 5.0f;
@@ -34,15 +35,15 @@ public class PlayerBase : MonoBehaviour
         {
             movement.x = 1;
         }
-
         transform.Translate(movement * speed * Time.deltaTime);
         //End of movememnt block
-        if(Input.GetKeyDown(KeyCode.Delete)){
-            Died();
-        }
+        // if(Input.GetKeyDown(KeyCode.Delete)){
+        //     Died();
+        // }
     }
     public void takeDamage(float damage){
         if(!dead){
+            //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
             UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject);
             health -= damage;
             if(health <= 0){
@@ -51,7 +52,9 @@ public class PlayerBase : MonoBehaviour
         }
     }
     void Died(){
+        //call dead
         dead = true;
+        //visual queue showing dead until further UI changes.
         this.GetComponent<SpriteRenderer>().color = Color.red;
     }
 }
