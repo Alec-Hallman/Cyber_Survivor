@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+//Player Weapon base behaviour
 public class WeaponBase : MonoBehaviour
 {
     private bool dealDamage = false;
@@ -26,6 +26,7 @@ public class WeaponBase : MonoBehaviour
     void Update()
     {
         if(dealDamage){
+            //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
                 DealDamage();
                 Timer();
@@ -40,6 +41,7 @@ public class WeaponBase : MonoBehaviour
                 hit1 = true;
                 return;
             }
+            //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
         }
     }
     void OnTriggerEnter2D(Collider2D collider){
@@ -49,7 +51,7 @@ public class WeaponBase : MonoBehaviour
                 Timer();
             }
             if(!collider.isTrigger){
-                inRange.Add(collider.gameObject);
+                inRange.Add(collider.gameObject); // add game object to list of objects to deal damage to
             }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
@@ -73,7 +75,7 @@ public class WeaponBase : MonoBehaviour
         time = Time.realtimeSinceStartup;
     }
     void DealDamage(){
-        foreach(GameObject listObject in inRange){
+        foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
                 if((listObject.GetComponent<EnemyBase>().health - damage) <= 0){
@@ -93,8 +95,9 @@ public class WeaponBase : MonoBehaviour
     }
 }
 
-
+//Idea:
 //Weapon calls a take damage comand in the enemy object
-//But if there are multiple enemies than the enemy will need to be added to a list
-//It might be better to have the player controller contain this list, then again all items will have their own ranges so the list wont be acurate, unless there are multiple lists for each weapon.
-//But that sounds horrible.
+//So each enemy becomes responsible for it's own damage taken, making it track if it walks into weapon range
+//But this creates an issue, suddenly the enemy becomes responsible for traking attack time, which is super doable but the enemies would'nt take damage syncronusly. Unless the timer is delt with
+//In some kind of controller script. That can be publicly accessed, but this sounds more complicated. More efficient? Probobly, as it avoids the list. Overall this was simpliler and keeps the 
+//code in one chunk, so I've opted for this.

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Meele base code deals damage when touching player game object.
 public class EnemyMeeleBase : EnemyBase
 {
     // Start is called before the first frame update

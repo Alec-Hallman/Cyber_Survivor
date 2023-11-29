@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+//This script manages the hitmarker text creation
 
 public class UIManager : MonoBehaviour
 {
@@ -41,13 +42,16 @@ public class UIManager : MonoBehaviour
         else{
             scale = (number/4);
         }
-        
+        //apply scale changes
         size = new Vector2(scale,scale);
         textClone.transform.localScale = size;
+
         if(givenObject.tag == "Player"){
+            //if the object hit is the player than the text colour should be red, makes it easier to read
             textClone.GetComponent<TextMeshProUGUI>().color = Color.red;
         }
         else if(givenObject.tag == "Enemy"){
+            //if the object is an enemy make the colour black.
             textClone.GetComponent<TextMeshProUGUI>().color = Color.black;
         }
 
