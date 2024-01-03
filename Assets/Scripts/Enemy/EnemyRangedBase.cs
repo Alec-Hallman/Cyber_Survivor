@@ -27,7 +27,7 @@ public class EnemyRangedBase : EnemyBase
                 GetCurrentTime();
             }
             
-        } else{
+        } else if (base.walking == false){
             base.walking = true;
         }
     }

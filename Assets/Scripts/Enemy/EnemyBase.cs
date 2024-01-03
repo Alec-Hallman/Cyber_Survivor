@@ -14,6 +14,7 @@ public class EnemyBase : MonoBehaviour
     private GameObject UI;
     public float time;
     public bool walking;
+    public GameObject[] xpObjects;
     private Vector2 ZERO = new Vector2(0,0);
 
     // Start is called before the first frame update
@@ -63,6 +64,8 @@ public class EnemyBase : MonoBehaviour
         }
     } 
     void Died(){
+        GameObject xp = Instantiate(xpObjects[Random.Range(0,xpObjects.Length)]);
+        xp.transform.position = transform.position;
         Destroy(gameObject);
     }
 }

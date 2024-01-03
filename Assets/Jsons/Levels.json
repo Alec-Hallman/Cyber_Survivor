@@ -1,0 +1,83 @@
+[
+{
+    "level":1,
+    "requiredXp":5
+},
+{
+    "level":2,
+    "requiredXp":15
+},
+{
+    "level":3,
+    "requiredXp":25
+},
+{
+    "level":4,
+    "requiredXp":45
+},
+{
+    "level":5,
+    "requiredXp":50
+},
+{
+    "level":6,
+    "requiredXp":70
+},
+{
+    "level":7,
+    "requiredXp":95
+},
+{
+    "level":8,
+    "requiredXp":110
+},
+{
+    "level":9,
+    "requiredXp":130
+},
+{
+    "level":10,
+    "requiredXp":150
+},
+{
+    "level":11,
+    "requiredXp":170
+},
+{
+    "level":12,
+    "requiredXp":190
+},
+{
+    "level":13,
+    "requiredXp":200
+},
+{
+    "level":14,
+    "requiredXp":230
+},
+{
+    "level":15,
+    "requiredXp":240
+},
+{
+    "level":16,
+    "requiredXp":250
+},
+{
+    "level":17,
+    "requiredXp":260
+},
+{
+    "level":18,
+    "requiredXp":270
+},
+{
+    "level":19,
+    "requiredXp":280
+},
+{
+    "level":20,
+    "requiredXp":300
+}
+
+]

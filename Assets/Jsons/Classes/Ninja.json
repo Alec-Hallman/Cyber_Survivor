@@ -1,0 +1,7 @@
+{
+"name": "Ninja",
+"weapon": "Katana",
+"ability": "Dash",
+"speed": 5,
+"health": 100
+}

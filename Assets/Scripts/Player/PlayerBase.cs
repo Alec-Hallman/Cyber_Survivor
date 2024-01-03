@@ -1,17 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
 //manages base player behaviour
 public class PlayerBase : MonoBehaviour
 {
+
+    public string className;
+    public GameObject weaponObject;
+    private GameObject weapon;
+    public string ability;
     public float speed = 5.0f;
     public float health;
     private bool dead = false;
     private GameObject UI;
+     
     void Start(){
         UI = GameObject.Find("Canvas");
+        string json = File.ReadAllText("Assets/Jsons/Classes/Ninja.json");
+        Calsses classInfo = JsonUtility.FromJson<Calsses>(json);
+        className = classInfo.name;
+        speed = classInfo.speed;
+        ability = classInfo.ability;
+        //Debug.Log("Assets/Weapons/"+ classInfo.weapon +".prefab");
+        weaponObject = Resources.Load<GameObject>("Weapons/Katana");
+        weapon = Instantiate(weaponObject);
+        weapon.transform.parent = this.transform;
+
+
+        //Debug.Log(classInfo.name);
     }
     void Update()
     {
