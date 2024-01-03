@@ -16,12 +16,16 @@ public class EnemyBase : MonoBehaviour
     public bool walking;
     public GameObject[] xpObjects;
     private Vector2 ZERO = new Vector2(0,0);
+    public bool tracking;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
         player = GameObject.Find("Player");
         UI = GameObject.Find("Canvas");
+        if(!tracking){
+            direction = (player.transform.position - transform.position).normalized;
+        }
 
         
     }
@@ -31,7 +35,9 @@ public class EnemyBase : MonoBehaviour
     {
         transform.right = player.transform.position - transform.position;
         if(walking){
-            direction = (player.transform.position - transform.position).normalized;
+            if(tracking){
+                direction = (player.transform.position - transform.position).normalized;
+            }
             GetComponent<Rigidbody2D>().velocity = direction * walkSpeed;
         } else{
             GetComponent<Rigidbody2D>().velocity = ZERO;

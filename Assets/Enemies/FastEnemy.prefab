@@ -217,3 +217,4 @@ MonoBehaviour:
   walking: 0
   xpObjects:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
+  tracking: 1
