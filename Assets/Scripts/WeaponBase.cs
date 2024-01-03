@@ -39,6 +39,7 @@ public class WeaponBase : MonoBehaviour
                 Timer();
                 hit2 = false;
                 hit1 = true;
+                RemoveFromList();
                 return;
             }
             //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
@@ -50,11 +51,13 @@ public class WeaponBase : MonoBehaviour
             if(time == 0F){
                 Timer();
             }
-            if(!collider.isTrigger){
+            if(!collider.isTrigger && !inRange.Contains(collider.gameObject)){
                 inRange.Add(collider.gameObject); // add game object to list of objects to deal damage to
             }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
+            hit1 = true;
+            hit2 = false;
             enemyObject = collider;
 
             //Debug.Log("Hit enemy called deal Damage");
@@ -87,11 +90,12 @@ public class WeaponBase : MonoBehaviour
                 
             }
         }
+    }
+    void RemoveFromList(){
         foreach(GameObject removeObjects in toRemove){
-            //Remove items that need to be removed
-            inRange.Remove(removeObjects);
-        }
-       
+                //Remove items that need to be removed
+                inRange.Remove(removeObjects);
+            }
     }
 }
 
