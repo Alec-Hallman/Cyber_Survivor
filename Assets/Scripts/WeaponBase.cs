@@ -16,19 +16,29 @@ public class WeaponBase : MonoBehaviour
     private List<GameObject> inRange = new List<GameObject>();
     private List<GameObject> toRemove = new List<GameObject>();
     private bool hit2 = false;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         GetComponent<CircleCollider2D>().radius = radius;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(inRange.Count == 0){
+                dealDamage = false;
+                animator.SetBool("R-L", false);
+                animator.SetBool("L-R", false);
+                
+        }
         if(dealDamage){
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
                 DealDamage();
+                animator.SetBool("R-L", true);
+                animator.SetBool("L-R", false);
                 Timer();
                 hit1 = false;
                 hit2 = true;
@@ -36,6 +46,8 @@ public class WeaponBase : MonoBehaviour
             }
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
                 DealDamage();
+                animator.SetBool("L-R", true);
+                animator.SetBool("R-L", false);
                 Timer();
                 hit2 = false;
                 hit1 = true;
@@ -56,6 +68,7 @@ public class WeaponBase : MonoBehaviour
             }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
+            animator.SetBool("DealDamage", true);
             hit1 = true;
             hit2 = false;
             enemyObject = collider;
@@ -69,9 +82,7 @@ public class WeaponBase : MonoBehaviour
             if(!collider.isTrigger){
                 toRemove.Add(collider.gameObject);
             }
-            if(inRange.Count == 0){
-                dealDamage = false;
-            }
+
         }
     }
     void Timer(){
