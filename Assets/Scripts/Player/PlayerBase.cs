@@ -27,7 +27,11 @@ public class PlayerBase : MonoBehaviour
         //Debug.Log("Assets/Weapons/"+ classInfo.weapon +".prefab");
         weaponObject = Resources.Load<GameObject>("Weapons/Katana");
         weapon = Instantiate(weaponObject);
+        Vector3 scale = new Vector3(weapon.transform.localScale.x,(weapon.transform.localScale.y),0f);
         weapon.transform.parent = this.transform;
+        weapon.transform.localScale = (scale + scale);
+        weapon.transform.position = new Vector3 ((weapon.transform.position.x + 100f), weapon.transform.position.y, 0f);
+        
 
 
         //Debug.Log(classInfo.name);
