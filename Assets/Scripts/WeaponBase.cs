@@ -51,7 +51,6 @@ public class WeaponBase : MonoBehaviour
                 Timer();
                 hit2 = false;
                 hit1 = true;
-                RemoveFromList();
                 return;
             }
             //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
@@ -101,6 +100,7 @@ public class WeaponBase : MonoBehaviour
                 
             }
         }
+        RemoveFromList();
     }
     void RemoveFromList(){
         foreach(GameObject removeObjects in toRemove){
