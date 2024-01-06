@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Armor
+  m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Armor
+  abilityName: Hack
   type: ability
-  description: Increases damage reduction to 7%
-  icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
-  tier: 2
-  json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
+  description: 
+  icon: {fileID: 21300000, guid: 2e046a82437587a4b984488282dad4eb, type: 3}
+  tier: 5
+  json: {fileID: 4900000, guid: 206a0f53e65709a4695b694eadfe79af, type: 3}
   jsonArray:
-  - name: Armor
+  - name: hack
     type: 
     tier: 1
     pair: 0
-    description: Reduces incoming damage by 3%
-  - name: Armor
+    description: periodically hacks enemies in a small radius
+  - name: hack
     type: 
     tier: 2
     pair: 0
-    description: Increases damage reduction to 5%
-  - name: Armor
+    description: Slight Increases hack radius
+  - name: hack
     type: 
     tier: 3
     pair: 0
-    description: Increases damage reduction to 7%
-  - name: Armor
+    description: Slight increase in hack frequency
+  - name: hack
     type: 
     tier: 4
     pair: 0
-    description: Increases damage reduction to 10%
-  - name: 'Max: Armor'
+    description: large increase in hack frequency and radius
+  - name: 'Max: hack'
     type: 
     tier: 5
     pair: 1
-    description: Increases damage reduction to 15%
+    description: HACK THE WORLD
   - name: 
     type: 
     tier: 6

@@ -1,0 +1,44 @@
+{
+    "abilities":[
+        {
+            "name": "hack",
+            "tier": 1,
+            "pair": false,
+            "description": "periodically hacks enemies in a small radius"
+
+        },
+        {
+            "name": "hack",
+            "tier": 2,
+            "pair": false,
+            "description": "Slight Increases hack radius"
+
+        },
+        {
+            "name": "hack",
+            "tier": 3,
+            "pair": false,
+            "description": "Slight increase in hack frequency"
+
+        },
+        {
+            "name": "hack",
+            "tier": 4,
+            "pair": false,
+            "description": "large increase in hack frequency and radius"
+
+        },
+        {
+            "name": "Max: hack",
+            "tier": 5,
+            "pair": true,
+            "description": "HACK THE WORLD"
+        },
+        {
+            "name": "",
+            "tier": 6,
+            "pair": true,
+            "description": ""
+        }
+    ]
+}

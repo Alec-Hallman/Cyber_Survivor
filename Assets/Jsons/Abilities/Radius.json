@@ -1,37 +1,38 @@
-[
 {
-    "name": "pickup",
-    "tier": 1,
-    "pair": false,
-    "description": "Increases the pickup radius of all xp and health items Evo's with idk yet",
-    "radius": 2
-},
-{
-    "name": "pickup",
-    "tier": 2,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 3
-},
-{
-    "name": "pickup",
-    "tier": 3,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 4
-},
-{
-    "name": "pickup",
-    "tier": 4,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 5
-},
-{
-    "name": "pickup",
-    "tier": 5,
-    "pair": true,
-    "description": "Greatly Increases pickup radius of all xp and health items",
-    "radius": 7
+    "abilities":[
+        {
+            "name": "pickup",
+            "tier": 1,
+            "pair": false,
+            "description": "Increases the pickup radius of all xp and health items Evo's with idk yet"
+
+        },
+        {
+            "name": "pickup",
+            "tier": 2,
+            "pair": false,
+            "description": "Slight increase in pickup radius of all xp and health items"
+
+        },
+        {
+            "name": "pickup",
+            "tier": 3,
+            "pair": false,
+            "description": "Slight increase in pickup radius of all xp and health items"
+
+        },
+        {
+            "name": "pickup",
+            "tier": 4,
+            "pair": false,
+            "description": "Slight increase in pickup radius of all xp and health items"
+
+        },
+        {
+            "name": "pickup",
+            "tier": 5,
+            "pair": true,
+            "description": "Greatly Increases pickup radius of all xp and health items"
+        }
+    ]
 }
-]

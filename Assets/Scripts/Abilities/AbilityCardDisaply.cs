@@ -13,13 +13,25 @@ public class AbilityCardDisaply : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text description;
     public TMP_Text type;
-    public Image icon;  
-    void Start()
+    public Image icon; 
+    public int tier;
+    public void UpdateCard()
     {
-       nameText.text = card.abilityName;
-       description.text = card.description;
-       type.text = card.type;
-       icon.sprite = card.icon;
+        nameText.text = card.abilityName;
+        description.text = card.description;
+        type.text = card.type;
+        icon.sprite = card.icon;
+        tier = card.tier;
+
        
+    }
+    private void Update(){
+        if(card.abilityName != nameText.text){
+            nameText.text = card.abilityName;
+            description.text = card.description;
+            type.text = card.type;
+            icon.sprite = card.icon;
+
+        }
     }
 }

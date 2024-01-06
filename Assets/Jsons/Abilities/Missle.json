@@ -1,0 +1,44 @@
+{
+    "abilities":[
+        {
+            "name": "Missle",
+            "tier": 1,
+            "pair": false,
+            "description": "periodically shoot an explosive missle"
+
+        },
+        {
+            "name": "Missle",
+            "tier": 2,
+            "pair": false,
+            "description": "Increases missle frequency"
+
+        },
+        {
+            "name": "Missle",
+            "tier": 3,
+            "pair": false,
+            "description": "Now shoot 2 missles!"
+
+        },
+        {
+            "name": "Missle",
+            "tier": 4,
+            "pair": false,
+            "description": "Greatly increases missle explosion"
+
+        },
+        {
+            "name": "Max: Missle",
+            "tier": 5,
+            "pair": true,
+            "description": "why stop at 2, HOW ABOUT 12"
+        },
+        {
+            "name": "",
+            "tier": 6,
+            "pair": true,
+            "description": ""
+        }
+    ]
+}

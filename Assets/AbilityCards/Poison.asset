@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Armor
+  m_Name: 'Max: Posion'
   m_EditorClassIdentifier: 
-  abilityName: Armor
+  abilityName: Poison
   type: ability
-  description: Increases damage reduction to 7%
-  icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
-  tier: 2
-  json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
+  description: Become radioactive
+  icon: {fileID: 21300000, guid: 15bb575ab29a9284f8bdb8ee73b48a41, type: 3}
+  tier: 4
+  json: {fileID: 4900000, guid: e6e78bc6da011a2489c341e99137125f, type: 3}
   jsonArray:
-  - name: Armor
+  - name: Poison
     type: 
     tier: 1
     pair: 0
-    description: Reduces incoming damage by 3%
-  - name: Armor
+    description: Adds a poison damage overtime effect to enemies hit by your weapons
+  - name: Posion
     type: 
     tier: 2
     pair: 0
-    description: Increases damage reduction to 5%
-  - name: Armor
+    description: Slightly increases poison damage
+  - name: Poison
     type: 
     tier: 3
     pair: 0
-    description: Increases damage reduction to 7%
-  - name: Armor
+    description: Greatly increses the durration of the poison effect
+  - name: Posion
     type: 
     tier: 4
     pair: 0
-    description: Increases damage reduction to 10%
-  - name: 'Max: Armor'
+    description: Poison can now stack 2 times
+  - name: 'Max: Posion'
     type: 
     tier: 5
     pair: 1
-    description: Increases damage reduction to 15%
+    description: Become radioactive
   - name: 
     type: 
     tier: 6
