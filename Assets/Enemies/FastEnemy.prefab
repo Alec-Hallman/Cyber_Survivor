@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   attackSpeed: 0.1
-  walkSpeed: 2.5
+  walkSpeed: 4
   damage: 1.2
   hittingPlayer: 0
   player: {fileID: 0}

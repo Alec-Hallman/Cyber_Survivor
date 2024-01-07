@@ -29,13 +29,13 @@
 
         },
         {
-            "name": "Max: Missle",
+            "name": "Missle",
             "tier": 5,
             "pair": true,
-            "description": "why stop at 2, HOW ABOUT 12"
+            "description": "Max: why stop at 2, HOW ABOUT 12"
         },
         {
-            "name": "",
+            "name": "Missle",
             "tier": 6,
             "pair": true,
             "description": ""

@@ -8,7 +8,7 @@
 
         },
         {
-            "name": "Posion",
+            "name": "Poison",
             "tier": 2,
             "pair": false,
             "description": "Slightly increases poison damage"
@@ -22,20 +22,20 @@
 
         },
         {
-            "name": "Posion",
+            "name": "Poison",
             "tier": 4,
             "pair": false,
             "description": "Poison can now stack 2 times"
 
         },
         {
-            "name": "Max: Posion",
+            "name": "Poison",
             "tier": 5,
             "pair": true,
-            "description": "Become radioactive"
+            "description": "Max: Become radioactive"
         },
         {
-            "name": "",
+            "name": "Poison",
             "tier": 6,
             "pair": true,
             "description": ""

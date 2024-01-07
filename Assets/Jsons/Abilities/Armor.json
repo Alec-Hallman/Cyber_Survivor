@@ -29,13 +29,13 @@
 
         },
         {
-            "name": "Max: Armor",
+            "name": "Armor",
             "tier": 5,
             "pair": true,
-            "description": "Increases damage reduction to 15%"
+            "description": "Max: Increases damage reduction to 15%"
         },
         {
-            "name": "",
+            "name": "Armor",
             "tier": 6,
             "pair": true,
             "description": ""

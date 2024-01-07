@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Armor
+  m_Name: Health
   m_EditorClassIdentifier: 
-  abilityName: Armor
-  type: ability
-  description: Reduces incoming damage by 3%
-  icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
+  abilityName: Health
+  type: Buff
+  description: 
+  icon: {fileID: 21300000, guid: 46a74452c61f5ac4dbca7cc5175f262a, type: 3}
   tier: 0
-  json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
+  json: {fileID: 4900000, guid: d0ca80411596d8343ab8bc94346f3367, type: 3}
   jsonArray:
   - name: Armor
     type: 
@@ -39,12 +39,12 @@ MonoBehaviour:
     tier: 4
     pair: 0
     description: Increases damage reduction to 10%
-  - name: Armor
+  - name: 'Max: Armor'
     type: 
     tier: 5
     pair: 1
-    description: 'Max: Increases damage reduction to 15%'
-  - name: Armor
+    description: Increases damage reduction to 15%
+  - name: 
     type: 
     tier: 6
     pair: 1

@@ -17,16 +17,16 @@ public class AbilityCards : ScriptableObject
         description = jsonArray[tier].description;
         AbilitiesWrapper abilitiesWrapper = JsonUtility.FromJson<AbilitiesWrapper>(json.text);
         jsonArray = abilitiesWrapper.abilities;
-        Debug.Log(jsonArray.Length);
+        //Debug.Log(jsonArray.Length);
     }
     public void UpTier(){
         tier += 1;
-        //Debug.Log(tier);
-        if(tier > 5){
-            tier = 6;
+        if(tier >= 5){
+            tier = 5;
         }
-        name = jsonArray[tier].name;
+        //name = jsonArray[tier].name;
         description = jsonArray[tier].description;
+        Debug.Log("Description: " + description + " Tier: "+tier);
         //Debug.Log(jsonArray[tier].description);
 
     }

@@ -10,38 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: pickup
+  m_Name: Radius
   m_EditorClassIdentifier: 
   abilityName: Radius
   type: ability
-  description: Slight increase in pickup radius of all xp and health items
+  description: Increases the pickup radius of all xp and health items Evo's with
+    idk yet
   icon: {fileID: 21300000, guid: 901b9f1ff442f334f8a6e817742835ee, type: 3}
-  tier: 3
+  tier: 0
   json: {fileID: 4900000, guid: 819ca584aca0af842affe9ee5b3963d4, type: 3}
   jsonArray:
-  - name: pickup
+  - name: Radius
     type: 
     tier: 1
     pair: 0
     description: Increases the pickup radius of all xp and health items Evo's with
       idk yet
-  - name: pickup
+  - name: Radius
     type: 
     tier: 2
     pair: 0
     description: Slight increase in pickup radius of all xp and health items
-  - name: pickup
+  - name: Radius
     type: 
     tier: 3
     pair: 0
-    description: Slight increase in pickup radius of all xp and health items
-  - name: pickup
+    description: Small increase in pickup radius of all xp and health items
+  - name: Radius
     type: 
     tier: 4
     pair: 0
-    description: Slight increase in pickup radius of all xp and health items
-  - name: pickup
+    description: Small increase in pickup radius of all xp and health items
+  - name: Radius
     type: 
     tier: 5
     pair: 1
-    description: Greatly Increases pickup radius of all xp and health items
+    description: 'Max: Greatly Increases pickup radius of all xp and health items'
+  - name: Radius
+    type: 
+    tier: 6
+    pair: 1
+    description: 

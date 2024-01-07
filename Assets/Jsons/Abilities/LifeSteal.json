@@ -29,13 +29,13 @@
 
         },
         {
-            "name": "Max: LifeSteal",
+            "name": "LifeSteal",
             "tier": 5,
             "pair": true,
-            "description": "Is this even balanced?"
+            "description": "Max: Is this even balanced?"
         },
         {
-            "name": "",
+            "name": "LifeSteal",
             "tier": 6,
             "pair": true,
             "description": ""

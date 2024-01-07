@@ -39,12 +39,12 @@ MonoBehaviour:
     tier: 4
     pair: 0
     description: Greatly increases missle explosion
-  - name: 'Max: Missle'
+  - name: Missle
     type: 
     tier: 5
     pair: 1
-    description: why stop at 2, HOW ABOUT 12
-  - name: 
+    description: 'Max: why stop at 2, HOW ABOUT 12'
+  - name: Missle
     type: 
     tier: 6
     pair: 1

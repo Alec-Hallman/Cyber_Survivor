@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Armor
+  m_Name: Blank
   m_EditorClassIdentifier: 
-  abilityName: Armor
-  type: ability
-  description: Reduces incoming damage by 3%
-  icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
-  tier: 0
+  abilityName: None left
+  type: 
+  description: Sorry, sold out!
+  icon: {fileID: 21300000, guid: f3ac88a4721f1224fa572918193237d2, type: 3}
+  tier: 5
   json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
   jsonArray:
   - name: Armor
@@ -39,12 +39,12 @@ MonoBehaviour:
     tier: 4
     pair: 0
     description: Increases damage reduction to 10%
-  - name: Armor
+  - name: 'Max: Armor'
     type: 
     tier: 5
     pair: 1
-    description: 'Max: Increases damage reduction to 15%'
-  - name: Armor
+    description: Increases damage reduction to 15%
+  - name: 
     type: 
     tier: 6
     pair: 1

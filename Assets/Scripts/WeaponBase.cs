@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 //Player Weapon base behaviour
 public class WeaponBase : MonoBehaviour
@@ -13,8 +14,8 @@ public class WeaponBase : MonoBehaviour
     private float time = 0F;
     private Collider2D enemyObject;
     private bool hit1 = true;
-    private List<GameObject> inRange = new List<GameObject>();
-    private List<GameObject> toRemove = new List<GameObject>();
+    private HashSet<GameObject> inRange = new HashSet<GameObject>();
+    private HashSet<GameObject> toRemove = new HashSet<GameObject>();
     private bool hit2 = false;
     private Animator animator;
     // Start is called before the first frame update
@@ -34,9 +35,10 @@ public class WeaponBase : MonoBehaviour
                 
         }
         if(dealDamage){
+            //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
-                DealDamage();
+                DealDamage(false);
                 animator.SetBool("R-L", true);
                 animator.SetBool("L-R", false);
                 Timer();
@@ -45,7 +47,7 @@ public class WeaponBase : MonoBehaviour
                 return;
             }
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
-                DealDamage();
+                DealDamage(true);
                 animator.SetBool("L-R", true);
                 animator.SetBool("R-L", false);
                 Timer();
@@ -65,9 +67,12 @@ public class WeaponBase : MonoBehaviour
             if(!collider.isTrigger && !inRange.Contains(collider.gameObject)){
                 inRange.Add(collider.gameObject); // add game object to list of objects to deal damage to
             }
+            if(toRemove.Contains(collider.gameObject)){
+                toRemove.Remove(collider.gameObject);
+            }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
-            animator.SetBool("DealDamage", true);
+            //animator.SetBool("DealDamage", true);
             hit1 = true;
             hit2 = false;
             enemyObject = collider;
@@ -87,7 +92,7 @@ public class WeaponBase : MonoBehaviour
     void Timer(){
         time = Time.realtimeSinceStartup;
     }
-    void DealDamage(){
+    void DealDamage(bool remove){
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
@@ -100,13 +105,17 @@ public class WeaponBase : MonoBehaviour
                 
             }
         }
-        RemoveFromList();
+        if(remove){
+            RemoveFromList();
+        }
     }
     void RemoveFromList(){
         foreach(GameObject removeObjects in toRemove){
                 //Remove items that need to be removed
                 inRange.Remove(removeObjects);
-            }
+
+        }
+        toRemove.Clear();
     }
 }
 

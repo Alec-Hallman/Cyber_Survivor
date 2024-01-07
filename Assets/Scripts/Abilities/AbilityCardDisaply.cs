@@ -26,12 +26,10 @@ public class AbilityCardDisaply : MonoBehaviour
        
     }
     private void Update(){
-        if(card.abilityName != nameText.text){
-            nameText.text = card.abilityName;
-            description.text = card.description;
-            type.text = card.type;
-            icon.sprite = card.icon;
+        nameText.text = card.abilityName;
+        description.text = card.description;
+        type.text = card.type;
+        icon.sprite = card.icon;
 
-        }
     }
 }

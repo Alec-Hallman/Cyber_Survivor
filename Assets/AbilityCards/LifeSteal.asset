@@ -39,12 +39,12 @@ MonoBehaviour:
     tier: 4
     pair: 0
     description: Large increase in health gain on damage
-  - name: 'Max: LifeSteal'
+  - name: LifeSteal
     type: 
     tier: 5
     pair: 1
-    description: Is this even balanced?
-  - name: 
+    description: 'Max: Is this even balanced?'
+  - name: LifeSteal
     type: 
     tier: 6
     pair: 1

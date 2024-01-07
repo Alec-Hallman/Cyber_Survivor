@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
             ammount = 1;
            }
             if(col.name.Contains("Purple")){
-            ammount = 2;
+            ammount = 5;
            }
             IncreaseXp(ammount);
             Destroy(col.gameObject);

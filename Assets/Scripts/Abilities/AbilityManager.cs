@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
 {
+    private bool removable;
+    public AbilityCards healthCard;
     public AbilityCards[] abilityCards;
     public List<AbilityCards> activeCards;
     private GameObject levelUI;
@@ -20,6 +22,7 @@ public class AbilityManager : MonoBehaviour
 
 
     void Start(){
+        removable = true;
         initializeCards();
         uiOn = false;
         levelUI = GameObject.Find("LevelUpScreen");
@@ -38,10 +41,29 @@ public class AbilityManager : MonoBehaviour
         if(uiOn){
             if(Input.GetKeyDown(KeyCode.Return)){
                  
-                if(!activeCards.Contains(chosenCards[selected])){
+                if((!activeCards.Contains(chosenCards[selected]) && (chosenCards[selected].name != "health"))){
                     AddAbility(chosenCards[selected]);
+                    chosenCards[selected].UpTier();
+                    if(selected == 0){ 
+                        card1.GetComponent<AbilityCardDisaply>().UpdateCard();
+                    }
+                    else if (selected == 1){
+                        card2.GetComponent<AbilityCardDisaply>().UpdateCard();
+
+                    }
+                    else if (selected == 2){
+                        card3.GetComponent<AbilityCardDisaply>().UpdateCard();
+
+                    }
+                } else{
+                    if(chosenCards[selected].name != "health"){
+                        chosenCards[selected].UpTier();
+                    }
+                    if(chosenCards[selected].tier >= 5){
+                        RemoveCard(chosenCards[selected]);
+                    }
                 }
-                Debug.Log("Selected: "+selected);
+                //Debug.Log("Selected: "+selected);
                 uiOn = false;
                 levelUI.SetActive(false);
                 Time.timeScale = 1; 
@@ -81,23 +103,27 @@ public class AbilityManager : MonoBehaviour
     public void GenerateDisplay(){
         Time.timeScale = 0; //(This line pauses the game)
         chosenCards.Clear();
-        while(chosenCards.Count < 3){
+        if(abilityCards.Length > 3){
+            while(chosenCards.Count < 3){
             int randomIndex = Random.Range(0,abilityCards.Length);
             if(!chosenCards.Contains(abilityCards[randomIndex])){
                 //chosenCards.Add(abilityCards[randomIndex]);
-                if(activeCards.Contains(abilityCards[randomIndex])){
-                    abilityCards[randomIndex].UpTier();
+                // if(activeCards.Contains(abilityCards[randomIndex])){
+                //     abilityCards[randomIndex].UpTier();
                    
+                // }
+                if(abilityCards[randomIndex].tier < 5){
+                    chosenCards.Add(abilityCards[randomIndex]);
                 }
-                chosenCards.Add(abilityCards[randomIndex]);
-                
-
             }
+            }
+        } else{
+            chosenCards = new List<AbilityCards>(abilityCards);
         }
         card1.GetComponent<AbilityCardDisaply>().card = chosenCards[0];
         card2.GetComponent<AbilityCardDisaply>().card = chosenCards[1];
         card3.GetComponent<AbilityCardDisaply>().card = chosenCards[2];
-        Print();
+        //Print();
         uiOn = true;
         levelUI.SetActive(true);
     }
@@ -106,7 +132,7 @@ public class AbilityManager : MonoBehaviour
         foreach(AbilityCards card in chosenCards ){
             output = output + card.name + " ";
         }
-        Debug.Log(output);
+        //Debug.Log(output);
     }
     private void AddAbility(AbilityCards ability){
         activeCards.Add(ability);
@@ -115,6 +141,21 @@ public class AbilityManager : MonoBehaviour
         foreach(AbilityCards card in abilityCards){
             card.initCard();
         }
+    }
+    void RemoveCard(AbilityCards card){
+        if(removable){
+            List<AbilityCards> temp = new List<AbilityCards>(abilityCards);
+            temp.Remove(card);
+            if(temp.Count < 3){
+                while(temp.Count < 3){
+                    //add health cards until there are 3 cards in the choosable pool
+                    temp.Add(healthCard);
+                }
+                //removable = false;
+            }
+            abilityCards = temp.ToArray();  
+        }
+        
     }
     
 }

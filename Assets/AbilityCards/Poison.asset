@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: 'Max: Posion'
+  m_Name: Poison
   m_EditorClassIdentifier: 
   abilityName: Poison
   type: ability
-  description: Become radioactive
+  description: Adds a poison damage overtime effect to enemies hit by your weapons
   icon: {fileID: 21300000, guid: 15bb575ab29a9284f8bdb8ee73b48a41, type: 3}
-  tier: 4
+  tier: 0
   json: {fileID: 4900000, guid: e6e78bc6da011a2489c341e99137125f, type: 3}
   jsonArray:
   - name: Poison
@@ -24,7 +24,7 @@ MonoBehaviour:
     tier: 1
     pair: 0
     description: Adds a poison damage overtime effect to enemies hit by your weapons
-  - name: Posion
+  - name: Poison
     type: 
     tier: 2
     pair: 0
@@ -34,17 +34,17 @@ MonoBehaviour:
     tier: 3
     pair: 0
     description: Greatly increses the durration of the poison effect
-  - name: Posion
+  - name: Poison
     type: 
     tier: 4
     pair: 0
     description: Poison can now stack 2 times
-  - name: 'Max: Posion'
+  - name: Poison
     type: 
     tier: 5
     pair: 1
-    description: Become radioactive
-  - name: 
+    description: 'Max: Become radioactive'
+  - name: Poison
     type: 
     tier: 6
     pair: 1

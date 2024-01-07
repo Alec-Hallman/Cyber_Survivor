@@ -10,14 +10,18 @@ public class SpawnScript : MonoBehaviour
     public GameObject swarmEnemy;
     private float time;
      private float time2;
+    private float swarmTimer;
     public float spawnRate;
     private GameObject player;
     public bool swarm;
     public float swarmDurration;
     private bool positionSet;
+    private float swarmSpawnTimer;
     private Vector2 randCircularSpawn;
     void Start()
     {
+        swarmTimer = Random.Range(10, 30);
+        swarmSpawnTimer = Time.realtimeSinceStartup;
         positionSet = false;
         player = GameObject.Find("Player");
         GetCurrentTime();
@@ -36,8 +40,14 @@ public class SpawnScript : MonoBehaviour
             GetCurrentTime();
             //Debug.Log("Spawned");
         }
+        if((Time.realtimeSinceStartup - swarmSpawnTimer) > swarmTimer){
+            //Debug.Log("Starting Swarm");
+            swarm = true;
+            swarmTimer = Random.Range(10, 30);
+            swarmSpawnTimer = Time.realtimeSinceStartup;
+        }
         if(swarm){
-            SwarmUpdate();
+            StartSwarm();
         }
     }
     void GetCurrentTime(){
@@ -46,7 +56,7 @@ public class SpawnScript : MonoBehaviour
     void GetSwarmTime(){
         time2 = Time.realtimeSinceStartup;
     }
-    void SwarmUpdate(){
+    void StartSwarm(){
         if(Time.realtimeSinceStartup - time2 < swarmDurration && positionSet){
             
             Instantiate(swarmEnemy, randCircularSpawn, transform.rotation);
