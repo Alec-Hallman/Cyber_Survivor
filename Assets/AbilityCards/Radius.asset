@@ -18,6 +18,7 @@ MonoBehaviour:
     idk yet
   icon: {fileID: 21300000, guid: 901b9f1ff442f334f8a6e817742835ee, type: 3}
   tier: 0
+  radius: 1
   json: {fileID: 4900000, guid: 819ca584aca0af842affe9ee5b3963d4, type: 3}
   jsonArray:
   - name: Radius
@@ -26,28 +27,34 @@ MonoBehaviour:
     pair: 0
     description: Increases the pickup radius of all xp and health items Evo's with
       idk yet
+    radius: 1
   - name: Radius
     type: 
     tier: 2
     pair: 0
     description: Slight increase in pickup radius of all xp and health items
+    radius: 2
   - name: Radius
     type: 
     tier: 3
     pair: 0
     description: Small increase in pickup radius of all xp and health items
+    radius: 4
   - name: Radius
     type: 
     tier: 4
     pair: 0
     description: Small increase in pickup radius of all xp and health items
+    radius: 6
   - name: Radius
     type: 
     tier: 5
     pair: 1
     description: 'Max: Greatly Increases pickup radius of all xp and health items'
+    radius: 10
   - name: Radius
     type: 
     tier: 6
     pair: 1
     description: 
+    radius: 0

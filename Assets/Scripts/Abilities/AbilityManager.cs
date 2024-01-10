@@ -41,26 +41,45 @@ public class AbilityManager : MonoBehaviour
         if(uiOn){
             if(Input.GetKeyDown(KeyCode.Return)){
                  
-                if((!activeCards.Contains(chosenCards[selected]) && (chosenCards[selected].name != "health"))){
-                    AddAbility(chosenCards[selected]);
-                    chosenCards[selected].UpTier();
-                    if(selected == 0){ 
-                        card1.GetComponent<AbilityCardDisaply>().UpdateCard();
-                    }
-                    else if (selected == 1){
-                        card2.GetComponent<AbilityCardDisaply>().UpdateCard();
+                if(chosenCards[selected].name != "health"){
+                    bool newAbility = false;
+                    if(!activeCards.Contains(chosenCards[selected])){
+                        newAbility = true;
+                        AddAbility(chosenCards[selected]);
+                        chosenCards[selected].UpTier();
+                    } else{
+                        chosenCards[selected].UpTier();
+                        if(chosenCards[selected].tier >= 5){
+                            RemoveCard(chosenCards[selected]);
+                            }
+                        }
+                        if(selected == 0){ 
+                            var cardScript = card1.GetComponent<AbilityCardDisaply>();
+                            if(newAbility){
+                                cardScript.ApplyCard();
+                            }else{
+                                cardScript.UpgradeCard();
+                            }
+
+                        }
+                        else if (selected == 1){
+                            var cardScript = card2.GetComponent<AbilityCardDisaply>();
+                            if(newAbility){
+                                cardScript.ApplyCard();
+                            }else{
+                                cardScript.UpgradeCard();
+                            }
+
 
                     }
                     else if (selected == 2){
-                        card3.GetComponent<AbilityCardDisaply>().UpdateCard();
+                        var cardScript = card3.GetComponent<AbilityCardDisaply>();
+                        if(newAbility){
+                            cardScript.ApplyCard();
+                        }else{
+                            cardScript.UpgradeCard();
+                        }
 
-                    }
-                } else{
-                    if(chosenCards[selected].name != "health"){
-                        chosenCards[selected].UpTier();
-                    }
-                    if(chosenCards[selected].tier >= 5){
-                        RemoveCard(chosenCards[selected]);
                     }
                 }
                 //Debug.Log("Selected: "+selected);
@@ -101,6 +120,7 @@ public class AbilityManager : MonoBehaviour
     }
 
     public void GenerateDisplay(){
+        Debug.Log("Display is being generated");
         Time.timeScale = 0; //(This line pauses the game)
         chosenCards.Clear();
         if(abilityCards.Length > 3){
@@ -121,8 +141,11 @@ public class AbilityManager : MonoBehaviour
             chosenCards = new List<AbilityCards>(abilityCards);
         }
         card1.GetComponent<AbilityCardDisaply>().card = chosenCards[0];
+        card1.GetComponent<AbilityCardDisaply>().UpdateCard();
         card2.GetComponent<AbilityCardDisaply>().card = chosenCards[1];
+        card2.GetComponent<AbilityCardDisaply>().UpdateCard();
         card3.GetComponent<AbilityCardDisaply>().card = chosenCards[2];
+        card3.GetComponent<AbilityCardDisaply>().UpdateCard();
         //Print();
         uiOn = true;
         levelUI.SetActive(true);

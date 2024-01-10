@@ -17,6 +17,7 @@ MonoBehaviour:
   description: Reduces incoming damage by 3%
   icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
   tier: 0
+  radius: 0
   json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
   jsonArray:
   - name: Armor
@@ -24,28 +25,34 @@ MonoBehaviour:
     tier: 1
     pair: 0
     description: Reduces incoming damage by 3%
+    radius: 0
   - name: Armor
     type: 
     tier: 2
     pair: 0
     description: Increases damage reduction to 5%
+    radius: 0
   - name: Armor
     type: 
     tier: 3
     pair: 0
     description: Increases damage reduction to 7%
+    radius: 0
   - name: Armor
     type: 
     tier: 4
     pair: 0
     description: Increases damage reduction to 10%
+    radius: 0
   - name: Armor
     type: 
     tier: 5
     pair: 1
     description: 'Max: Increases damage reduction to 15%'
+    radius: 0
   - name: Armor
     type: 
     tier: 6
     pair: 1
     description: 
+    radius: 0

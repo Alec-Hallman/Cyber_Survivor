@@ -2471,6 +2471,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &2009177474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009177462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d32ed2a8f5d76a4c8db037a7f57e57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2111298878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,7 +2639,7 @@ PrefabInstance:
       objectReference: {fileID: 7252087925915479264, guid: 0090cf97219c6fa41936b434c758e9e8, type: 3}
     - target: {fileID: 5158046518160440227, guid: 270fa55bc87b96b4ba862f401a44754e, type: 3}
       propertyPath: swarmTimer
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5158046518160440227, guid: 270fa55bc87b96b4ba862f401a44754e, type: 3}
       propertyPath: swarmDurration
@@ -2767,6 +2779,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6301139057537741946, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2009177469}
+    - targetCorrespondingSourceObject: {fileID: 6301139057537741946, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2009177474}
   m_SourcePrefab: {fileID: 100100000, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
 --- !u!1001 &6465035764355329893
 PrefabInstance:

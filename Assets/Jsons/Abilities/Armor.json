@@ -4,6 +4,7 @@
             "name": "Armor",
             "tier": 1,
             "pair": false,
+            "value":0.97,
             "description": "Reduces incoming damage by 3%"
 
         },
@@ -11,6 +12,7 @@
             "name": "Armor",
             "tier": 2,
             "pair": false,
+            "value":0.95,
             "description": "Increases damage reduction to 5%"
 
         },
@@ -18,6 +20,7 @@
             "name": "Armor",
             "tier": 3,
             "pair": false,
+            "value":0.93,
             "description": "Increases damage reduction to 7%"
 
         },
@@ -25,6 +28,7 @@
             "name": "Armor",
             "tier": 4,
             "pair": false,
+            "value":0.90,
             "description": "Increases damage reduction to 10%"
 
         },
@@ -32,12 +36,14 @@
             "name": "Armor",
             "tier": 5,
             "pair": true,
+            "value":0.85,
             "description": "Max: Increases damage reduction to 15%"
         },
         {
             "name": "Armor",
             "tier": 6,
             "pair": true,
+            "value":0.85,
             "description": ""
         }
     ]

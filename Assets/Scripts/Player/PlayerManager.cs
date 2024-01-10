@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     private List<AbilitiesWrapper> abilities;
     void Start()
     {
-        manager = GameObject.Find(("Manager"));
+        manager = GameObject.Find("Manager");
         xpBar = GameObject.Find("Xp");
         xpBar.transform.localScale = new Vector2(0f,0.2125f);
         //Debug.Log("Xp Bar is: " +xpBar.name);
@@ -66,17 +66,17 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
-    void OnTriggerEnter2D(Collider2D col){
-        if(col.tag == "XP"){
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == "XP"){
             int ammount = 0;
-           if(col.name.Contains("Green")){
+            if(col.gameObject.name.Contains("Green")){
             ammount = 1;
            }
-            if(col.name.Contains("Purple")){
+            if(col.gameObject.name.Contains("Purple")){
             ammount = 5;
            }
             IncreaseXp(ammount);
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
         }
     }
     void loadAbility(string name){

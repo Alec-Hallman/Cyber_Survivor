@@ -9,14 +9,20 @@ public class AbilityCards : ScriptableObject
     public string description;
     public Sprite icon;
     public int tier;
+    public float value;
     public TextAsset json;
     public Abilities[] jsonArray;
+
     public void initCard(){
         tier = 0;
         name = jsonArray[tier].name;
+        if(name == "Radius" || name == "Armor"){
+            value = jsonArray[tier].value;
+        }
         description = jsonArray[tier].description;
         AbilitiesWrapper abilitiesWrapper = JsonUtility.FromJson<AbilitiesWrapper>(json.text);
         jsonArray = abilitiesWrapper.abilities;
+        //tier = -1;
         //Debug.Log(jsonArray.Length);
     }
     public void UpTier(){
@@ -26,11 +32,13 @@ public class AbilityCards : ScriptableObject
         }
         //name = jsonArray[tier].name;
         description = jsonArray[tier].description;
-        Debug.Log("Description: " + description + " Tier: "+tier);
+         if(name == "Radius" || name == "Armor"){
+            value = jsonArray[tier - 1].value;
+            //Debug.Log("AbilityCards has Radius: " +radius);
+        }
+        
+        //Debug.Log("Description: " + description + " Tier: "+tier);
         //Debug.Log(jsonArray[tier].description);
-
-    }
-    private void UpdateDescription(){
 
     }
 

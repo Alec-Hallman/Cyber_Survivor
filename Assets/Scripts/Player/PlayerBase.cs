@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerBase : MonoBehaviour
 {
 
+    public float resist;
     public string className;
     public GameObject weaponObject;
     private GameObject weapon;
@@ -18,6 +19,7 @@ public class PlayerBase : MonoBehaviour
     private GameObject UI;
      
     void Start(){
+        resist = 1f;
         UI = GameObject.Find("Canvas");
         string json = File.ReadAllText("Assets/Jsons/Classes/Ninja.json");
         Calsses classInfo = JsonUtility.FromJson<Calsses>(json);
@@ -67,8 +69,8 @@ public class PlayerBase : MonoBehaviour
     public void takeDamage(float damage){
         if(!dead){
             //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
-            UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject);
-            health -= damage;
+            UI.GetComponent<UIManager>().DisplayHit((damage * resist),this.gameObject);
+            health -= damage * resist;
             if(health <= 0){
                 Died();
             }

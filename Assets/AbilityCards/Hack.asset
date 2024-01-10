@@ -17,6 +17,7 @@ MonoBehaviour:
   description: periodically hacks enemies in a small radius
   icon: {fileID: 21300000, guid: 2e046a82437587a4b984488282dad4eb, type: 3}
   tier: 0
+  radius: 0
   json: {fileID: 4900000, guid: 206a0f53e65709a4695b694eadfe79af, type: 3}
   jsonArray:
   - name: Hack
@@ -24,28 +25,34 @@ MonoBehaviour:
     tier: 1
     pair: 0
     description: periodically hacks enemies in a small radius
+    radius: 0
   - name: Hack
     type: 
     tier: 2
     pair: 0
     description: Slight Increases hack radius
+    radius: 0
   - name: Hack
     type: 
     tier: 3
     pair: 0
     description: Slight increase in hack frequency
+    radius: 0
   - name: Hack
     type: 
     tier: 4
     pair: 0
     description: large increase in hack frequency and radius
+    radius: 0
   - name: Hack
     type: 
     tier: 5
     pair: 1
     description: 'Max: HACK THE WORLD'
+    radius: 0
   - name: Hack
     type: 
     tier: 6
     pair: 1
     description: 
+    radius: 0

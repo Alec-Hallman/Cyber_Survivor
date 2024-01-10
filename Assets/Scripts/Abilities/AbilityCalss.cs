@@ -9,6 +9,7 @@ public class Abilities
     public int tier;
     public bool pair;
     public string description;
+    public float value;
 }
 [System.Serializable]
 public class AbilitiesWrapper{
