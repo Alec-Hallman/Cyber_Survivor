@@ -64,7 +64,7 @@ public class EnemyBase : MonoBehaviour
             Debug.Log("hacked");
             hacked = true;
             GetComponent<Rigidbody2D>().velocity = ZERO;
-            Invoke("StopHack", 2f);
+            Invoke("StopHack", 0.5f);
         }
     }
     void OnTriggerExit2D(Collider2D hit){

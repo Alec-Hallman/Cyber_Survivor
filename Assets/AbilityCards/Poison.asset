@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Poison
   type: ability
-  description: Adds a poison damage overtime effect to enemies hit by your weapons
+  description: Slightly increases poison damage
   icon: {fileID: 21300000, guid: 15bb575ab29a9284f8bdb8ee73b48a41, type: 3}
-  tier: 0
+  tier: 1
   value: 0
   value2: 0
   json: {fileID: 4900000, guid: e6e78bc6da011a2489c341e99137125f, type: 3}

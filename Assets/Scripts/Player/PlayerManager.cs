@@ -8,17 +8,19 @@ public class PlayerManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public int level;
-    private int neededXp;
-    private int currentXp;
+    private float neededXp;
+    private float currentXp;
     private Levels[] levelInfo;
     private GameObject xpBar;
     private float xChange;
     private Vector3 scaleChange;
     private GameObject manager;
+    private float xpNeeded;
     
     private List<AbilitiesWrapper> abilities;
     void Start()
     {
+        xpNeeded = 5f;
         manager = GameObject.Find("Manager");
         xpBar = GameObject.Find("Xp");
         xpBar.transform.localScale = new Vector2(0f,0.2125f);
@@ -55,7 +57,8 @@ public class PlayerManager : MonoBehaviour
         manager.GetComponent<AbilityManager>().GenerateDisplay();
         level += 1;
         currentXp = currentXp - neededXp;
-        neededXp = levelInfo[0].requiredXp;
+        xpNeeded *= 1.15f;
+        neededXp = xpNeeded;
         xpBar.transform.localScale = new Vector2(0f,0.2125f);
         xChange = 11.627f / neededXp;
         scaleChange = new Vector3(xChange,0f,0f);
