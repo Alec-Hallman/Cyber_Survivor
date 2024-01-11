@@ -14,11 +14,14 @@ public class PlayerBase : MonoBehaviour
     private GameObject weapon;
     public string ability;
     public float speed = 5.0f;
+    public float maxHealth;
     public float health;
     private bool dead = false;
     private GameObject UI;
+    public bool paused = false;
      
     void Start(){
+        health = maxHealth;
         resist = 1f;
         UI = GameObject.Find("Canvas");
         string json = File.ReadAllText("Assets/Jsons/Classes/Ninja.json");
@@ -67,9 +70,9 @@ public class PlayerBase : MonoBehaviour
         // }
     }
     public void takeDamage(float damage){
-        if(!dead){
+        if(!dead && !(Time.timeScale == 0)){
             //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
-            UI.GetComponent<UIManager>().DisplayHit((damage * resist),this.gameObject);
+            UI.GetComponent<UIManager>().DisplayHit((damage * resist),this.gameObject, false, false);
             health -= damage * resist;
             if(health <= 0){
                 Died();
@@ -81,5 +84,14 @@ public class PlayerBase : MonoBehaviour
         dead = true;
         //visual queue showing dead until further UI changes.
         this.GetComponent<SpriteRenderer>().color = Color.red;
+    }
+    public void GainHealth(float ammount){
+        if(health < maxHealth && !dead){
+            health += ammount;
+            if(health > maxHealth){
+                health = maxHealth; 
+            }
+            UI.GetComponent<UIManager>().DisplayHit(ammount,this.gameObject, true, false);
+        }
     }
 }

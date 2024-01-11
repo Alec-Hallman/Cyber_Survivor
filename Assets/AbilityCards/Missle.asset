@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Mini Missles
   type: Weapon
-  description: Increases missle frequency
+  description: periodically shoot an explosive missle
   icon: {fileID: 21300000, guid: 9b44c3cdfb62fbe4b9281f259444f4c6, type: 3}
-  tier: 1
+  tier: 0
   value: 0
   value2: 0
+  radioactive: 0
   json: {fileID: 4900000, guid: 54ea25bfcc42d2e4eb267c4f7b923c0b, type: 3}
   jsonArray:
   - name: Missle
@@ -28,6 +29,7 @@ MonoBehaviour:
     description: periodically shoot an explosive missle
     value: 0
     value2: 0
+    radioactive: 0
   - name: Missle
     type: 
     tier: 2
@@ -35,6 +37,7 @@ MonoBehaviour:
     description: Increases missle frequency
     value: 0
     value2: 0
+    radioactive: 0
   - name: Missle
     type: 
     tier: 3
@@ -42,6 +45,7 @@ MonoBehaviour:
     description: Now shoot 2 missles!
     value: 0
     value2: 0
+    radioactive: 0
   - name: Missle
     type: 
     tier: 4
@@ -49,6 +53,7 @@ MonoBehaviour:
     description: Greatly increases missle explosion
     value: 0
     value2: 0
+    radioactive: 0
   - name: Missle
     type: 
     tier: 5
@@ -56,6 +61,7 @@ MonoBehaviour:
     description: 'Max: why stop at 2, HOW ABOUT 12'
     value: 0
     value2: 0
+    radioactive: 0
   - name: Missle
     type: 
     tier: 6
@@ -63,3 +69,4 @@ MonoBehaviour:
     description: 
     value: 0
     value2: 0
+    radioactive: 0

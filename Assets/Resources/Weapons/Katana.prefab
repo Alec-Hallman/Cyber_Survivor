@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5922891972824906146}
   m_Layer: 8
   m_Name: Katana
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackInterval: 0.2
   radius: 1
+  steal: 0
 --- !u!61 &3240251939593786181
 BoxCollider2D:
   m_ObjectHideFlags: 0

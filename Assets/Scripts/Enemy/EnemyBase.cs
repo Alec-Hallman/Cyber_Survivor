@@ -20,10 +20,18 @@ public class EnemyBase : MonoBehaviour
     private Vector2 ZERO = new Vector2(0,0);
     public bool tracking;
     protected bool hacked;
+    private float distance;
+    private bool poisoned = false;
+    private float pDamage;
+    public bool radioactiveBool;
+    private float pTimer;
+    private float pDurration;
+    private Color startColor;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        startColor = this.GetComponent<SpriteRenderer>().color;
         hacked = false;
         player = GameObject.Find("Player");
         UI = GameObject.Find("Canvas");
@@ -37,6 +45,11 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void EnemyMoveUpdate()
     {
+        distance = Vector2.Distance(player.transform.position, this.transform.position);
+        if(distance > 30f){
+            Destroy(this);
+        }
+        //Debug.Log(distance);
         if(walking && !hacked){
             transform.right = player.transform.position - transform.position;
             if(tracking){
@@ -45,14 +58,27 @@ public class EnemyBase : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = direction * walkSpeed;
         } else if (!hacked){
             GetComponent<Rigidbody2D>().velocity = ZERO;
-        } else{
-            Debug.Log("Im hacked asf");
+        }
+        if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f){
+            takeDamage(pDamage, true);
+            pDurration -= 1;
+            GetPTime();
+            if(pDurration <= 0){
+                poisoned = false;
+                this.GetComponent<SpriteRenderer>().color = startColor;
+            }
         }
        
 
 
     }
     void OnTriggerEnter2D(Collider2D hit){
+        if(radioactiveBool){
+            if(hit.gameObject.tag == "Enemy"){
+                //Debug.Log("Poison Enemy");
+                hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, radioactiveBool);
+            }
+        }
         if(hit.gameObject.tag == "Player"){
             //Debug.Log("Hitting player");
             hittingPlayer = true;
@@ -61,7 +87,7 @@ public class EnemyBase : MonoBehaviour
         }
         //Debug.Log("Hit: " + hit.gameObject.name);
         if(hit.gameObject.name.Contains("Hack")){
-            Debug.Log("hacked");
+            //Debug.Log("hacked");
             hacked = true;
             GetComponent<Rigidbody2D>().velocity = ZERO;
             Invoke("StopHack", 0.5f);
@@ -75,9 +101,20 @@ public class EnemyBase : MonoBehaviour
     public void GetCurrentTime(){
         time = Time.realtimeSinceStartup;
     }
-    public void takeDamage(float damage){
-        health -= damage;
-        UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject);
+    public void takeDamage(float damage, bool poison){
+        
+        if(poison){
+            if((health - damage) <= 0){ //If the enemy is going to die from poison, don't, but still display the number.
+                UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+            } else{
+                health -= damage;
+                UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+            }
+            
+        } else{
+            health -= damage;
+            UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
+        }
         if(health <= 0){
             Died();
         }
@@ -88,7 +125,27 @@ public class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
     void StopHack(){
-        Debug.Log("Stopping Hack");
+       // Debug.Log("Stopping Hack");
         hacked = false;
     }
+    public void Poisoned(float durration, float damage, bool radioactive){
+        if(!poisoned){
+            GetPTime();
+            pDurration = durration;
+            poisoned = true;   
+            pDamage = damage;
+            radioactiveBool = radioactive;
+            this.GetComponent<SpriteRenderer>().color = Color.green;    
+        }
+    }
+    void GetPTime(){
+        pTimer = Time.realtimeSinceStartup;
+    }
+
 }
+
+
+//poison max how it will work:
+//When the enemy enters a trigger that has the tag enemy, if it's "radioactive" bool is true, then if the enemy is in that trigger for say, 5 seconds, it will make this enemy radioactive,
+//radiactive won't be applied to enemies until an enemy is hit by a player who has poisoned maxed out.
+//This way I can avoid triggering a bool or some kind of method on every single enemy once the player gains the maxed ability.

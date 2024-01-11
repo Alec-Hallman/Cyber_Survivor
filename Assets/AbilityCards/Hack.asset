@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Hack
   type: ability
-  description: 
+  description: Slight Increases hack radius
   icon: {fileID: 21300000, guid: 2e046a82437587a4b984488282dad4eb, type: 3}
-  tier: 5
-  value: 10
-  value2: 0.5
+  tier: 1
+  value: 5
+  value2: 2.5
+  radioactive: 0
   json: {fileID: 4900000, guid: 206a0f53e65709a4695b694eadfe79af, type: 3}
   jsonArray:
   - name: Hack
@@ -28,6 +29,7 @@ MonoBehaviour:
     description: periodically hacks enemies in a small radius
     value: 5
     value2: 2.5
+    radioactive: 0
   - name: Hack
     type: 
     tier: 2
@@ -35,6 +37,7 @@ MonoBehaviour:
     description: Slight Increases hack radius
     value: 6.5
     value2: 2.5
+    radioactive: 0
   - name: Hack
     type: 
     tier: 3
@@ -42,6 +45,7 @@ MonoBehaviour:
     description: Slight increase in hack frequency
     value: 6.5
     value2: 1.7
+    radioactive: 0
   - name: Hack
     type: 
     tier: 4
@@ -49,6 +53,7 @@ MonoBehaviour:
     description: large increase in hack frequency and radius
     value: 8.5
     value2: 1
+    radioactive: 0
   - name: Hack
     type: 
     tier: 5
@@ -56,6 +61,7 @@ MonoBehaviour:
     description: 'Max: HACK THE WORLD'
     value: 10
     value2: 0.5
+    radioactive: 0
   - name: Hack
     type: 
     tier: 6
@@ -63,3 +69,4 @@ MonoBehaviour:
     description: 
     value: 10
     value2: 0.5
+    radioactive: 0

@@ -11,6 +11,7 @@ public class Abilities
     public string description;
     public float value;
     public float value2;
+    public bool radioactive;
 }
 [System.Serializable]
 public class AbilitiesWrapper{

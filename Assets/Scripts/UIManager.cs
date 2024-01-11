@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     {
 
     }
-    public void DisplayHit(float number, GameObject givenObject){
+    public void DisplayHit(float number, GameObject givenObject, bool gain, bool poison){
         //Note Number = the damage
         objectPointer = givenObject;
         textClone = Instantiate(text, transform);
@@ -48,11 +48,23 @@ public class UIManager : MonoBehaviour
 
         if(givenObject.tag == "Player"){
             //if the object hit is the player than the text colour should be red, makes it easier to read
-            textClone.GetComponent<TextMeshProUGUI>().color = Color.red;
+            if(!gain){
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.red;
+            } else if (poison){
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            }else{
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.green;
+            }
         }
         else if(givenObject.tag == "Enemy"){
             //if the object is an enemy make the colour black.
-            textClone.GetComponent<TextMeshProUGUI>().color = Color.black;
+            if(!gain){
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.black;
+            } else if (poison){
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            }else{
+                textClone.GetComponent<TextMeshProUGUI>().color = Color.green;
+            }
         }
 
     }

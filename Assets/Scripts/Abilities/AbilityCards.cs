@@ -11,6 +11,7 @@ public class AbilityCards : ScriptableObject
     public int tier;
     public float value;
     public float value2;
+    public bool radioactive;
     public TextAsset json;
     public Abilities[] jsonArray;
 
@@ -20,6 +21,7 @@ public class AbilityCards : ScriptableObject
         value = jsonArray[tier].value;
         value2 = jsonArray[tier].value2;
         description = jsonArray[tier].description;
+        radioactive = jsonArray[tier].radioactive;
         AbilitiesWrapper abilitiesWrapper = JsonUtility.FromJson<AbilitiesWrapper>(json.text);
         jsonArray = abilitiesWrapper.abilities;
         //tier = -1;
@@ -31,6 +33,7 @@ public class AbilityCards : ScriptableObject
             tier = 5;
         }
         //name = jsonArray[tier].name;
+        radioactive = jsonArray[tier - 1].radioactive;
         description = jsonArray[tier].description;
         value = jsonArray[tier - 1].value;
         value2 = jsonArray[tier - 1].value2;

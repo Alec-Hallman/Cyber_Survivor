@@ -4,6 +4,9 @@
             "name": "Poison",
             "tier": 1,
             "pair": false,
+            "value": 1,
+            "value2": 5,
+            "radioactive": false,
             "description": "Adds a poison damage overtime effect to enemies hit by your weapons"
 
         },
@@ -11,6 +14,9 @@
             "name": "Poison",
             "tier": 2,
             "pair": false,
+            "value": 1.5,
+            "value2": 5,
+            "radioactive": false,
             "description": "Slightly increases poison damage"
 
         },
@@ -18,6 +24,9 @@
             "name": "Poison",
             "tier": 3,
             "pair": false,
+            "value": 1.5,
+            "value2": 7,
+            "radioactive": false,
             "description": "Greatly increses the durration of the poison effect"
 
         },
@@ -25,14 +34,20 @@
             "name": "Poison",
             "tier": 4,
             "pair": false,
-            "description": "Poison can now stack 2 times"
+            "value": 2,
+            "value2": 7,
+            "radioactive": false,
+            "description": "slightly increases poison damage"
 
         },
         {
             "name": "Poison",
             "tier": 5,
             "pair": true,
-            "description": "Max: Become radioactive"
+            "value": 2,
+            "value2": 7,
+            "radioactive": true,
+            "description": "Max: Enemies you hit become radioactive"
         },
         {
             "name": "Poison",

@@ -10,10 +10,13 @@ public class PlayerAbilitys : MonoBehaviour
     private PlayerBase playerScript;
     public GameObject hack;
     private bool hackCheck;
+    public WeaponBase weaponScript;
     private float time;
     private float frequency;
+    private GameObject[] weapons;
     void Start()
     {
+        weapons = GameObject.FindGameObjectsWithTag("Weapon");
        hackCheck = false;
     }
 
@@ -46,6 +49,16 @@ public class PlayerAbilitys : MonoBehaviour
             hackCheck = true;
             hack.GetComponent<HackScript>().radius = card.value;
 
+        } else if(card.abilityName == "LifeSteal"){
+            foreach(GameObject weapon in weapons){
+                weapon.GetComponent<WeaponBase>().steal = card.value;
+            }
+        } else if(card.abilityName == "Poison"){
+            foreach(GameObject weapon in weapons){
+                weapon.GetComponent<WeaponBase>().poison = true;
+                weapon.GetComponent<WeaponBase>().pDamage = card.value;
+                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
+            }
         }
     }
     public void UpgradeAbility(AbilityCards card){
@@ -58,9 +71,17 @@ public class PlayerAbilitys : MonoBehaviour
         } else if (card.abilityName == "Hack"){
             frequency = card.value2;
             hack.GetComponent<HackScript>().radius = card.value;
+        } else if(card.abilityName == "LifeSteal"){
+            foreach(GameObject weapon in weapons){
+                weapon.GetComponent<WeaponBase>().steal = card.value;
+            }
+        }else if(card.abilityName == "Poison"){
+            foreach(GameObject weapon in weapons){
+                weapon.GetComponent<WeaponBase>().pDamage = card.value;
+                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
+                weapon.GetComponent<WeaponBase>().radioactive = card.radioactive;
 
-            
-            
+            }
         }
     }
     private void GetTime(){

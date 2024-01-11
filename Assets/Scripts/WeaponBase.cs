@@ -18,9 +18,16 @@ public class WeaponBase : MonoBehaviour
     private HashSet<GameObject> toRemove = new HashSet<GameObject>();
     private bool hit2 = false;
     private Animator animator;
+    private GameObject player;
+    public float pDamage;
+    public float pDurration;
+    public bool poison;
+    public bool radioactive;
+    public float steal = 0;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
         GetComponent<CircleCollider2D>().radius = radius;
     }
@@ -34,7 +41,7 @@ public class WeaponBase : MonoBehaviour
                 animator.SetBool("L-R", false);
                 
         }
-        if(dealDamage){
+        if(dealDamage && !(Time.timeScale == 0)){
             //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
@@ -96,13 +103,16 @@ public class WeaponBase : MonoBehaviour
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
-                if((listObject.GetComponent<EnemyBase>().health - damage) <= 0){
+                if(listObject.gameObject != null && (listObject.GetComponent<EnemyBase>().health - damage) <= 0){
                     //add it to a list to remove after this list is ran to avoid C# errors
                     toRemove.Add(listObject);
                     //inRange.Remove(listObject);
                 }
-                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage);
-                
+                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage, false);
+                if(poison){
+                    listObject.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration,pDamage,radioactive);
+                }
+                player.GetComponent<PlayerBase>().GainHealth(damage * steal);
             }
         }
         if(remove){

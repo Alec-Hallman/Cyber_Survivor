@@ -19,6 +19,7 @@ MonoBehaviour:
   tier: 3
   value: 4
   value2: 0
+  radioactive: 0
   json: {fileID: 4900000, guid: 819ca584aca0af842affe9ee5b3963d4, type: 3}
   jsonArray:
   - name: Radius
@@ -29,6 +30,7 @@ MonoBehaviour:
       idk yet
     value: 1
     value2: 0
+    radioactive: 0
   - name: Radius
     type: 
     tier: 2
@@ -36,6 +38,7 @@ MonoBehaviour:
     description: Slight increase in pickup radius of all xp and health items
     value: 2
     value2: 0
+    radioactive: 0
   - name: Radius
     type: 
     tier: 3
@@ -43,6 +46,7 @@ MonoBehaviour:
     description: Small increase in pickup radius of all xp and health items
     value: 4
     value2: 0
+    radioactive: 0
   - name: Radius
     type: 
     tier: 4
@@ -50,6 +54,7 @@ MonoBehaviour:
     description: Greatly Increases Pickup radius of all XP and Health items
     value: 6
     value2: 0
+    radioactive: 0
   - name: Radius
     type: 
     tier: 5
@@ -57,6 +62,7 @@ MonoBehaviour:
     description: 'Max: Greatly Increases pickup radius of all xp and health items'
     value: 10
     value2: 0
+    radioactive: 0
   - name: Radius
     type: 
     tier: 6
@@ -64,3 +70,4 @@ MonoBehaviour:
     description: 
     value: 10
     value2: 0
+    radioactive: 0

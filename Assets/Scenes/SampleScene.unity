@@ -1187,6 +1187,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aae61d7272021854d9a1fe88a4b62cec, type: 2}
   activeCards: []
   chosenCards: []
+  weapons: []
 --- !u!1 &1247379742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,6 +2485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hack: {fileID: 6107054452068971814, guid: 6c212ec8aecd8444daa9101a7810f689, type: 3}
+  weaponScript: {fileID: 0}
 --- !u!1 &2111298878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,9 +2632,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1272015415542598496, guid: 270fa55bc87b96b4ba862f401a44754e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5158046518160440227, guid: 270fa55bc87b96b4ba862f401a44754e, type: 3}
       propertyPath: spawnRate
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5158046518160440227, guid: 270fa55bc87b96b4ba862f401a44754e, type: 3}
       propertyPath: swarmEnemy

@@ -16,12 +16,16 @@ public class AbilityManager : MonoBehaviour
     private GameObject card1;
     private GameObject card2;
     private GameObject card3;
+    public GameObject[] weapons;
     private Color cardColor;
+    private GameObject enemyManager;
     private int selected = 0;
     private bool uiOn;
 
 
     void Start(){
+        weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        enemyManager = GameObject.Find("EnemyManager");
         removable = true;
         initializeCards();
         uiOn = false;
@@ -40,7 +44,6 @@ public class AbilityManager : MonoBehaviour
     void Update(){
         if(uiOn){
             if(Input.GetKeyDown(KeyCode.Return)){
-                 
                 if(chosenCards[selected].name != "health"){
                     bool newAbility = false;
                     if(!activeCards.Contains(chosenCards[selected])){
