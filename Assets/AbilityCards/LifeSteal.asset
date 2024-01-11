@@ -17,7 +17,8 @@ MonoBehaviour:
   description: on hit, gain health based on how much damage you deal
   icon: {fileID: 21300000, guid: 07c90ca3d3b237e4884b521e75e320f2, type: 3}
   tier: 0
-  radius: 0
+  value: 0
+  value2: 0
   json: {fileID: 4900000, guid: 42a20efe958a20f4dad2ad1b566227ce, type: 3}
   jsonArray:
   - name: LifeSteal
@@ -25,34 +26,40 @@ MonoBehaviour:
     tier: 1
     pair: 0
     description: on hit, gain health based on how much damage you deal
-    radius: 0
+    value: 0
+    value2: 0
   - name: LifeSteal
     type: 
     tier: 2
     pair: 0
     description: Slight increase in health gain on damage
-    radius: 0
+    value: 0
+    value2: 0
   - name: LifeSteal
     type: 
     tier: 3
     pair: 0
     description: Slight increase in health gain on damage
-    radius: 0
+    value: 0
+    value2: 0
   - name: LifeSteal
     type: 
     tier: 4
     pair: 0
     description: Large increase in health gain on damage
-    radius: 0
+    value: 0
+    value2: 0
   - name: LifeSteal
     type: 
     tier: 5
     pair: 1
     description: 'Max: Is this even balanced?'
-    radius: 0
+    value: 0
+    value2: 0
   - name: LifeSteal
     type: 
     tier: 6
     pair: 1
     description: 
-    radius: 0
+    value: 0
+    value2: 0

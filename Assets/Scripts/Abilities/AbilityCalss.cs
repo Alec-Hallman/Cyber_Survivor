@@ -10,6 +10,7 @@ public class Abilities
     public bool pair;
     public string description;
     public float value;
+    public float value2;
 }
 [System.Serializable]
 public class AbilitiesWrapper{

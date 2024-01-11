@@ -19,7 +19,7 @@ public class EnemyRangedBase : EnemyBase
         if(hittingPlayer){
             float timer = Time.realtimeSinceStartup - time;
             base.walking = false;
-            if(timer >= attackSpeed){
+            if((timer >= attackSpeed) && !hacked){
                 GameObject bullet = Instantiate(projectile);
                 bullet.transform.position = transform.position;
                 bullet.GetComponent<ProjectileScript>().targetLocation = base.player.transform;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -13,14 +14,17 @@ public class EnemyBase : MonoBehaviour
     private Vector2 direction;
     private GameObject UI;
     public float time;
+    private float hackTime;
     public bool walking;
     public GameObject[] xpObjects;
     private Vector2 ZERO = new Vector2(0,0);
     public bool tracking;
+    protected bool hacked;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        hacked = false;
         player = GameObject.Find("Player");
         UI = GameObject.Find("Canvas");
         if(!tracking){
@@ -33,14 +37,16 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void EnemyMoveUpdate()
     {
-        transform.right = player.transform.position - transform.position;
-        if(walking){
+        if(walking && !hacked){
+            transform.right = player.transform.position - transform.position;
             if(tracking){
                 direction = (player.transform.position - transform.position).normalized;
             }
             GetComponent<Rigidbody2D>().velocity = direction * walkSpeed;
-        } else{
+        } else if (!hacked){
             GetComponent<Rigidbody2D>().velocity = ZERO;
+        } else{
+            Debug.Log("Im hacked asf");
         }
        
 
@@ -52,6 +58,13 @@ public class EnemyBase : MonoBehaviour
             hittingPlayer = true;
             GetCurrentTime();
 
+        }
+        //Debug.Log("Hit: " + hit.gameObject.name);
+        if(hit.gameObject.name.Contains("Hack")){
+            Debug.Log("hacked");
+            hacked = true;
+            GetComponent<Rigidbody2D>().velocity = ZERO;
+            Invoke("StopHack", 2f);
         }
     }
     void OnTriggerExit2D(Collider2D hit){
@@ -73,5 +86,9 @@ public class EnemyBase : MonoBehaviour
         GameObject xp = Instantiate(xpObjects[Random.Range(0,xpObjects.Length)]);
         xp.transform.position = transform.position;
         Destroy(gameObject);
+    }
+    void StopHack(){
+        Debug.Log("Stopping Hack");
+        hacked = false;
     }
 }

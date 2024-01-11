@@ -17,7 +17,8 @@ MonoBehaviour:
   description: Adds a poison damage overtime effect to enemies hit by your weapons
   icon: {fileID: 21300000, guid: 15bb575ab29a9284f8bdb8ee73b48a41, type: 3}
   tier: 0
-  radius: 0
+  value: 0
+  value2: 0
   json: {fileID: 4900000, guid: e6e78bc6da011a2489c341e99137125f, type: 3}
   jsonArray:
   - name: Poison
@@ -25,34 +26,40 @@ MonoBehaviour:
     tier: 1
     pair: 0
     description: Adds a poison damage overtime effect to enemies hit by your weapons
-    radius: 0
+    value: 0
+    value2: 0
   - name: Poison
     type: 
     tier: 2
     pair: 0
     description: Slightly increases poison damage
-    radius: 0
+    value: 0
+    value2: 0
   - name: Poison
     type: 
     tier: 3
     pair: 0
     description: Greatly increses the durration of the poison effect
-    radius: 0
+    value: 0
+    value2: 0
   - name: Poison
     type: 
     tier: 4
     pair: 0
     description: Poison can now stack 2 times
-    radius: 0
+    value: 0
+    value2: 0
   - name: Poison
     type: 
     tier: 5
     pair: 1
     description: 'Max: Become radioactive'
-    radius: 0
+    value: 0
+    value2: 0
   - name: Poison
     type: 
     tier: 6
     pair: 1
     description: 
-    radius: 0
+    value: 0
+    value2: 0

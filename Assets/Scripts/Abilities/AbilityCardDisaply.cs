@@ -44,6 +44,7 @@ public class AbilityCardDisaply : MonoBehaviour
 
        
     }
+
     public void ApplyCard(){
         playerScript.ApplyAbility(card);
     }
