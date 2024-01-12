@@ -46,7 +46,7 @@ public class EnemyBase : MonoBehaviour
     public void EnemyMoveUpdate()
     {
         distance = Vector2.Distance(player.transform.position, this.transform.position);
-        if(distance > 30f){
+        if(distance > 20f){
             Destroy(this);
         }
         //Debug.Log(distance);
@@ -76,7 +76,7 @@ public class EnemyBase : MonoBehaviour
         if(radioactiveBool){
             if(hit.gameObject.tag == "Enemy"){
                 //Debug.Log("Poison Enemy");
-                hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, radioactiveBool);
+                hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, false);
             }
         }
         if(hit.gameObject.tag == "Player"){

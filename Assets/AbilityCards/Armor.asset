@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Armor
   type: ability
-  description: Increases damage reduction to 5%
+  description: Reduces incoming damage by 3%
   icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
-  tier: 1
+  tier: 0
   value: 0.97
   value2: 0
   radioactive: 0

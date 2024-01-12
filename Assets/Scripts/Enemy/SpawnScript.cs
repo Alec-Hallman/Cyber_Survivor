@@ -81,4 +81,7 @@ public class SpawnScript : MonoBehaviour
            positionSet = true;
             
     }
+    public void IncreaseRate(){
+        spawnRate *= 0.8f;
+    }
 }

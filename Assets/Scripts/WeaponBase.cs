@@ -37,6 +37,8 @@ public class WeaponBase : MonoBehaviour
     {
         if(inRange.Count == 0){
                 dealDamage = false;
+                hit1 = true;
+                hit2 = false;
                 animator.SetBool("R-L", false);
                 animator.SetBool("L-R", false);
                 
@@ -45,27 +47,27 @@ public class WeaponBase : MonoBehaviour
             //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
-                DealDamage(false);
-                animator.SetBool("R-L", true);
-                animator.SetBool("L-R", false);
+                DealDamage(true);
+                //Debug.Log("Hit1");
+                animator.SetBool("R-L", false);
+                animator.SetBool("L-R", true);
                 Timer();
                 hit1 = false;
                 hit2 = true;
-                return;
             }
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
                 DealDamage(true);
-                animator.SetBool("L-R", true);
-                animator.SetBool("R-L", false);
+                //Debug.Log("Hit2");
+                animator.SetBool("L-R", false);
+                animator.SetBool("R-L", true);
                 Timer();
                 hit2 = false;
                 hit1 = true;
-                return;
             }
             //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
         }
     }
-    void OnTriggerEnter2D(Collider2D collider){
+    void OnTriggerStay2D(Collider2D collider){
         //Debug.Log(collider.name);
         if(collider.gameObject.tag == "Enemy"){
             if(time == 0F){
@@ -80,8 +82,6 @@ public class WeaponBase : MonoBehaviour
             //Debug.Log(inRange.ToString());
             dealDamage = true;
             //animator.SetBool("DealDamage", true);
-            hit1 = true;
-            hit2 = false;
             enemyObject = collider;
 
             //Debug.Log("Hit enemy called deal Damage");
