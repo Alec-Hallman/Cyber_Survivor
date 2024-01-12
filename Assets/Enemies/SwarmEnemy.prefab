@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7252087925915479271}
   - component: {fileID: 7252087925915479268}
   - component: {fileID: -7371532481532303394}
-  - component: {fileID: 2593966330482353774}
+  - component: {fileID: -6402395427307567707}
   m_Layer: 0
   m_Name: SwarmEnemy
   m_TagString: Enemy
@@ -195,7 +195,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9
---- !u!114 &2593966330482353774
+--- !u!114 &-6402395427307567707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7252087925915479264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0f14ced86ec0540bb373c0920ccb2f, type: 3}
+  m_Script: {fileID: 11500000, guid: f446ea3e6c785864080c59276fe161ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
@@ -218,3 +218,4 @@ MonoBehaviour:
   xpObjects:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   tracking: 0
+  lifeTime: 7

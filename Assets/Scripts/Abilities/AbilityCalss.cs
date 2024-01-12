@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public abstract class Abilities
+public class Abilities
 {
     public string name;
     public string type;
     public int tier;
     public bool pair;
     public string description;
-
-    public abstract void Activate(GameObject something);
-
-}
-public class Radius : Abilities
-{
-    int circleRadius;
-    public override void Activate(GameObject player){
-        player.GetComponent<CircleCollider2D>().radius = circleRadius;
-    }
+    public float value;
+    public float value2;
+    public bool radioactive;
 }
 [System.Serializable]
 public class AbilitiesWrapper{

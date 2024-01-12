@@ -1,37 +1,51 @@
-[
 {
-    "name": "pickup",
-    "tier": 1,
-    "pair": false,
-    "description": "Increases the pickup radius of all xp and health items Evo's with idk yet",
-    "radius": 2
-},
-{
-    "name": "pickup",
-    "tier": 2,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 3
-},
-{
-    "name": "pickup",
-    "tier": 3,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 4
-},
-{
-    "name": "pickup",
-    "tier": 4,
-    "pair": false,
-    "description": "Slight increase in pickup radius of all xp and health items",
-    "radius": 5
-},
-{
-    "name": "pickup",
-    "tier": 5,
-    "pair": true,
-    "description": "Greatly Increases pickup radius of all xp and health items",
-    "radius": 7
+    "abilities":[
+        {
+            "name": "Radius",
+            "tier": 1,
+            "pair": false,
+            "value": 1,
+            "description": "Increases the pickup radius of all xp and health items Evo's with idk yet"
+            
+
+        },
+        {
+            "name": "Radius",
+            "tier": 2,
+            "pair": false,
+            "value": 2,
+            "description": "Slight increase in pickup radius of all xp and health items"
+
+        },
+        {
+            "name": "Radius",
+            "tier": 3,
+            "pair": false,
+            "value": 4,
+            "description": "Small increase in pickup radius of all xp and health items"
+
+        },
+        {
+            "name": "Radius",
+            "tier": 4,
+            "pair": false,
+            "value": 6,
+            "description": "Greatly Increases Pickup radius of all XP and Health items"
+
+        },
+        {
+            "name": "Radius",
+            "tier": 5,
+            "pair": true,
+            "value": 10,
+            "description": "Max: Greatly Increases pickup radius of all xp and health items"
+        },
+        {
+            "name": "Radius",
+            "tier": 6,
+            "pair": true,
+            "value": 10,
+            "description": ""
+        }
+    ]
 }
-]

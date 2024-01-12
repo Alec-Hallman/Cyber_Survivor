@@ -17,7 +17,7 @@ public class EnemyMeeleBase : EnemyBase
         EnemyMoveUpdate();
         if(hittingPlayer){
             float timer = Time.realtimeSinceStartup - time;
-            if(timer >= attackSpeed){
+            if((timer >= attackSpeed) && !hacked){
                 player.GetComponent<PlayerBase>().takeDamage(damage);
                 GetCurrentTime();
                 //Debug.Log("Player Taking Damage");

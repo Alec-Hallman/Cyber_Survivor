@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 //Player Weapon base behaviour
 public class WeaponBase : MonoBehaviour
@@ -13,13 +14,20 @@ public class WeaponBase : MonoBehaviour
     private float time = 0F;
     private Collider2D enemyObject;
     private bool hit1 = true;
-    private List<GameObject> inRange = new List<GameObject>();
-    private List<GameObject> toRemove = new List<GameObject>();
+    private HashSet<GameObject> inRange = new HashSet<GameObject>();
+    private HashSet<GameObject> toRemove = new HashSet<GameObject>();
     private bool hit2 = false;
     private Animator animator;
+    private GameObject player;
+    public float pDamage;
+    public float pDurration;
+    public bool poison;
+    public bool radioactive;
+    public float steal = 0;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
         GetComponent<CircleCollider2D>().radius = radius;
     }
@@ -29,34 +37,37 @@ public class WeaponBase : MonoBehaviour
     {
         if(inRange.Count == 0){
                 dealDamage = false;
+                hit1 = true;
+                hit2 = false;
                 animator.SetBool("R-L", false);
                 animator.SetBool("L-R", false);
                 
         }
-        if(dealDamage){
+        if(dealDamage && !(Time.timeScale == 0)){
+            //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
-                DealDamage();
-                animator.SetBool("R-L", true);
-                animator.SetBool("L-R", false);
+                DealDamage(true);
+                //Debug.Log("Hit1");
+                animator.SetBool("R-L", false);
+                animator.SetBool("L-R", true);
                 Timer();
                 hit1 = false;
                 hit2 = true;
-                return;
             }
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
-                DealDamage();
-                animator.SetBool("L-R", true);
-                animator.SetBool("R-L", false);
+                DealDamage(true);
+                //Debug.Log("Hit2");
+                animator.SetBool("L-R", false);
+                animator.SetBool("R-L", true);
                 Timer();
                 hit2 = false;
                 hit1 = true;
-                return;
             }
             //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
         }
     }
-    void OnTriggerEnter2D(Collider2D collider){
+    void OnTriggerStay2D(Collider2D collider){
         //Debug.Log(collider.name);
         if(collider.gameObject.tag == "Enemy"){
             if(time == 0F){
@@ -65,11 +76,12 @@ public class WeaponBase : MonoBehaviour
             if(!collider.isTrigger && !inRange.Contains(collider.gameObject)){
                 inRange.Add(collider.gameObject); // add game object to list of objects to deal damage to
             }
+            if(toRemove.Contains(collider.gameObject)){
+                toRemove.Remove(collider.gameObject);
+            }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
-            animator.SetBool("DealDamage", true);
-            hit1 = true;
-            hit2 = false;
+            //animator.SetBool("DealDamage", true);
             enemyObject = collider;
 
             //Debug.Log("Hit enemy called deal Damage");
@@ -87,26 +99,33 @@ public class WeaponBase : MonoBehaviour
     void Timer(){
         time = Time.realtimeSinceStartup;
     }
-    void DealDamage(){
+    void DealDamage(bool remove){
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
-                if((listObject.GetComponent<EnemyBase>().health - damage) <= 0){
+                if(listObject.gameObject != null && (listObject.GetComponent<EnemyBase>().health - damage) <= 0){
                     //add it to a list to remove after this list is ran to avoid C# errors
                     toRemove.Add(listObject);
                     //inRange.Remove(listObject);
                 }
-                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage);
-                
+                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage, false);
+                if(poison){
+                    listObject.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration,pDamage,radioactive);
+                }
+                player.GetComponent<PlayerBase>().GainHealth(damage * steal);
             }
         }
-        RemoveFromList();
+        if(remove){
+            RemoveFromList();
+        }
     }
     void RemoveFromList(){
         foreach(GameObject removeObjects in toRemove){
                 //Remove items that need to be removed
                 inRange.Remove(removeObjects);
-            }
+
+        }
+        toRemove.Clear();
     }
 }
 

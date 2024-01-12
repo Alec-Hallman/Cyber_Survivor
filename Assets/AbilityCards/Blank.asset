@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
+  m_Name: Blank
+  m_EditorClassIdentifier: 
+  abilityName: None left
+  type: 
+  description: Sorry, sold out!
+  icon: {fileID: 21300000, guid: f3ac88a4721f1224fa572918193237d2, type: 3}
+  tier: 5
+  json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
+  jsonArray:
+  - name: Armor
+    type: 
+    tier: 1
+    pair: 0
+    description: Reduces incoming damage by 3%
+  - name: Armor
+    type: 
+    tier: 2
+    pair: 0
+    description: Increases damage reduction to 5%
+  - name: Armor
+    type: 
+    tier: 3
+    pair: 0
+    description: Increases damage reduction to 7%
+  - name: Armor
+    type: 
+    tier: 4
+    pair: 0
+    description: Increases damage reduction to 10%
+  - name: 'Max: Armor'
+    type: 
+    tier: 5
+    pair: 1
+    description: Increases damage reduction to 15%
+  - name: 
+    type: 
+    tier: 6
+    pair: 1
+    description: 

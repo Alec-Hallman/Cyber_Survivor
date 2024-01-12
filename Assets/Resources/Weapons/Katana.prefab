@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5922891972824906146}
   m_Layer: 8
   m_Name: Katana
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackInterval: 0.2
   radius: 1
+  steal: 0
 --- !u!61 &3240251939593786181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011140361, y: -0.008542299}
+  m_Offset: {x: -0.008020401, y: 0.29892683}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -301,7 +302,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29204306, y: 1.3018217}
+  m_Size: {x: 2.3195076, y: 1.91676}
   m_EdgeRadius: 0
 --- !u!95 &5922891972824906146
 Animator:

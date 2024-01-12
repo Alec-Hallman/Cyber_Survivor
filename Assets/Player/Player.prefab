@@ -161,8 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4852f4a4e8073a46988098374d8ee4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resist: 0
   className: 
   weaponObject: {fileID: 0}
   ability: 
   speed: 5
-  health: 10
+  maxHealth: 100
+  paused: 0

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
+  m_Name: Health
+  m_EditorClassIdentifier: 
+  abilityName: Health
+  type: Buff
+  description: 
+  icon: {fileID: 21300000, guid: 46a74452c61f5ac4dbca7cc5175f262a, type: 3}
+  tier: 0
+  json: {fileID: 4900000, guid: d0ca80411596d8343ab8bc94346f3367, type: 3}
+  jsonArray:
+  - name: Armor
+    type: 
+    tier: 1
+    pair: 0
+    description: Reduces incoming damage by 3%
+  - name: Armor
+    type: 
+    tier: 2
+    pair: 0
+    description: Increases damage reduction to 5%
+  - name: Armor
+    type: 
+    tier: 3
+    pair: 0
+    description: Increases damage reduction to 7%
+  - name: Armor
+    type: 
+    tier: 4
+    pair: 0
+    description: Increases damage reduction to 10%
+  - name: 'Max: Armor'
+    type: 
+    tier: 5
+    pair: 1
+    description: Increases damage reduction to 15%
+  - name: 
+    type: 
+    tier: 6
+    pair: 1
+    description: 

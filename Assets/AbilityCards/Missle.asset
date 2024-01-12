@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
+  m_Name: Missle
+  m_EditorClassIdentifier: 
+  abilityName: Mini Missles
+  type: Weapon
+  description: periodically shoot an explosive missle
+  icon: {fileID: 21300000, guid: 9b44c3cdfb62fbe4b9281f259444f4c6, type: 3}
+  tier: 0
+  value: 0
+  value2: 0
+  radioactive: 0
+  json: {fileID: 4900000, guid: 54ea25bfcc42d2e4eb267c4f7b923c0b, type: 3}
+  jsonArray:
+  - name: Missle
+    type: 
+    tier: 1
+    pair: 0
+    description: periodically shoot an explosive missle
+    value: 0
+    value2: 0
+    radioactive: 0
+  - name: Missle
+    type: 
+    tier: 2
+    pair: 0
+    description: Increases missle frequency
+    value: 0
+    value2: 0
+    radioactive: 0
+  - name: Missle
+    type: 
+    tier: 3
+    pair: 0
+    description: Now shoot 2 missles!
+    value: 0
+    value2: 0
+    radioactive: 0
+  - name: Missle
+    type: 
+    tier: 4
+    pair: 0
+    description: Greatly increases missle explosion
+    value: 0
+    value2: 0
+    radioactive: 0
+  - name: Missle
+    type: 
+    tier: 5
+    pair: 1
+    description: 'Max: why stop at 2, HOW ABOUT 12'
+    value: 0
+    value2: 0
+    radioactive: 0
+  - name: Missle
+    type: 
+    tier: 6
+    pair: 1
+    description: 
+    value: 0
+    value2: 0
+    radioactive: 0

@@ -1,0 +1,50 @@
+{
+    "abilities":[
+        {
+            "name": "LifeSteal",
+            "tier": 1,
+            "value":0.05,
+            "pair": false,
+            "description": "on hit, gain health based on how much damage you deal"
+
+        },
+        {
+            "name": "LifeSteal",
+            "tier": 2,
+            "value":0.1,
+            "pair": false,
+            "description": "Slight increase in health gain on damage"
+
+        },
+        {
+            "name": "LifeSteal",
+            "tier": 3,
+            "value":0.15,
+            "pair": false,
+            "description": "Slight increase in health gain on damage"
+
+        },
+        {
+            "name": "LifeSteal",
+            "tier": 4,
+            "pair": false,
+            "value":0.25,
+            "description": "Large increase in health gain on damage"
+
+        },
+        {
+            "name": "LifeSteal",
+            "tier": 5,
+            "pair": true,
+            "value":0.35,
+            "description": "Max: Is this even balanced?"
+        },
+        {
+            "name": "LifeSteal",
+            "tier": 6,
+            "value":0.3,
+            "pair": true,
+            "description": ""
+        }
+    ]
+}
