@@ -47,7 +47,7 @@ public class EnemyBase : MonoBehaviour
     {
         distance = Vector2.Distance(player.transform.position, this.transform.position);
         if(distance > 20f){
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         //Debug.Log(distance);
         if(walking && !hacked){
@@ -59,7 +59,7 @@ public class EnemyBase : MonoBehaviour
         } else if (!hacked){
             GetComponent<Rigidbody2D>().velocity = ZERO;
         }
-        if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f){
+        if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f && Time.timeScale != 0){
             takeDamage(pDamage, true);
             pDurration -= 1;
             GetPTime();
