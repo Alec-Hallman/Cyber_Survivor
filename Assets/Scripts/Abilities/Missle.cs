@@ -12,7 +12,7 @@ public class Missle : MonoBehaviour
     private float angle = 0f;
     private Vector2 previousPosition;
     public Queue<GameObject> enemyQueue;
-    public int missleNumber;
+    public float missleNumber;
 
     public GameObject missle;
     public float spawnTimer;

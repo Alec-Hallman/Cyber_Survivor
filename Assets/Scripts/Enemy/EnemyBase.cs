@@ -27,10 +27,12 @@ public class EnemyBase : MonoBehaviour
     private float pTimer;
     private float pDurration;
     private Color startColor;
+    private bool dead;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        dead = false;
         startColor = this.GetComponent<SpriteRenderer>().color;
         hacked = false;
         player = GameObject.Find("Player");
@@ -113,9 +115,11 @@ public class EnemyBase : MonoBehaviour
             
         } else{
             health -= damage;
+            damage = Mathf.Round(damage);
             UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
         }
-        if(health <= 0){
+        if(health <= 0 && !dead){
+            dead = true;
             Died();
         }
     } 

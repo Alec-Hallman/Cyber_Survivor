@@ -10,63 +10,63 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Missle
+  m_Name: Missile
   m_EditorClassIdentifier: 
-  abilityName: Mini Missles
+  abilityName: Missile
   type: Weapon
-  description: 
+  description: 'Max: why stop at 2, HOW ABOUT 12'
   icon: {fileID: 21300000, guid: 9b44c3cdfb62fbe4b9281f259444f4c6, type: 3}
-  tier: 5
-  value: 0
-  value2: 0
+  tier: 4
+  value: 2
+  value2: 3
   radioactive: 0
   json: {fileID: 4900000, guid: 54ea25bfcc42d2e4eb267c4f7b923c0b, type: 3}
   jsonArray:
-  - name: Missle
+  - name: Missile
     type: 
     tier: 1
     pair: 0
     description: periodically shoot an explosive missle
-    value: 0
-    value2: 0
+    value: 1
+    value2: 5
     radioactive: 0
-  - name: Missle
+  - name: Missile
     type: 
     tier: 2
     pair: 0
     description: Increases missle frequency
-    value: 0
-    value2: 0
+    value: 1
+    value2: 4
     radioactive: 0
-  - name: Missle
+  - name: Missile
     type: 
     tier: 3
     pair: 0
     description: Now shoot 2 missles!
-    value: 0
-    value2: 0
+    value: 2
+    value2: 4
     radioactive: 0
-  - name: Missle
+  - name: Missile
     type: 
     tier: 4
     pair: 0
-    description: Greatly increases missle explosion
-    value: 0
-    value2: 0
+    description: Greatly increases missle frequency
+    value: 2
+    value2: 3
     radioactive: 0
-  - name: Missle
+  - name: Missile
     type: 
     tier: 5
     pair: 1
     description: 'Max: why stop at 2, HOW ABOUT 12'
-    value: 0
-    value2: 0
+    value: 12
+    value2: 3
     radioactive: 0
-  - name: Missle
+  - name: Missile
     type: 
     tier: 6
     pair: 1
     description: 
-    value: 0
-    value2: 0
+    value: 12
+    value2: 3
     radioactive: 0

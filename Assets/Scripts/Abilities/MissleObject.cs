@@ -21,14 +21,16 @@ public class MissleObject : MonoBehaviour
     private bool expand;
     private CircleCollider2D radius;
     private float maxRadius = 2.5f;
+    public List<GameObject> blastEnemies;
     void Start()
     {
+        blastEnemies = new List<GameObject>();
         radius = gameObject.GetComponent<CircleCollider2D>();
         radius.radius = 1;
         startTime = Time.realtimeSinceStartup;
         this.transform.position = GameObject.Find("Player").GetComponent<Transform>().position;
         particles = gameObject.GetComponent<ParticleSystem>();
-        searcher = GameObject.Find("MissleFinder").GetComponent<Transform>();
+        searcher = GameObject.FindWithTag("Finder").GetComponent<Transform>();
         enemy = null;
     }
 
@@ -66,26 +68,40 @@ public class MissleObject : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D hit){
-        if(hit.gameObject.name == targetName && flying){
+        if(hit.gameObject == enemyObject && flying){
             hit.gameObject.GetComponent<EnemyBase>().takeDamage(damage,false);
             SelfDestruct();
-        } else if(expand && hit.gameObject.tag == "Enemy" && hit.gameObject.name != targetName){
-            float distance = Vector3.Distance(this.transform.position, hit.gameObject.transform.position);
-            distance *= 10;
-            //If the distance multiplier makes it so that the missle will do negative damage just dont do the damage.
-            if(distance < damage){
-                hit.gameObject.GetComponent<EnemyBase>().takeDamage(damage - distance,false);
+            flying = false;
+        } else if(expand && hit.gameObject.tag == "Enemy" && hit.gameObject != enemyObject){
+            if(!blastEnemies.Contains(hit.gameObject)){
+                blastEnemies.Add(hit.gameObject);
             }
         }
     }
     public void SelfDestruct(){
+        if(!expand){
+            Invoke("DealDamage", 0.1f);
+        }
         expand = true;
+
         Invoke("BlowUp", 0.5f);
         if(!particles.isPlaying){
             particles.Play();
         }
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    }
+    void DealDamage(){
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        foreach(GameObject enemy in blastEnemies){
+            if(enemy != null){
+            float distance = Vector3.Distance(this.transform.position, enemy.transform.position);
+            distance *= 10;
+            if(distance < damage){
+                enemy.GetComponent<EnemyBase>().takeDamage(damage - distance,false);
+            }
+            }
+        }
     }
     void BlowUp(){
         Destroy(this.gameObject);

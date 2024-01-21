@@ -31,6 +31,10 @@ public class UIManager : MonoBehaviour
         if(givenObject.tag == "Enemy"){
             //If an enemy is taking damage set the size to always be 0.8F
             scale = 0.8F;
+            //Unless It's poisoned because it gets hard to see things with all the big markers.
+            if(poison){
+                scale = 0.4f;
+            }
         }
         else if(number > 30){
             scale = 2;

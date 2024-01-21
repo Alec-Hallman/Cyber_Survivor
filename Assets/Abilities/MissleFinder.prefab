@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2138008956363553990}
   m_Layer: 0
   m_Name: MissleFinder
-  m_TagString: Untagged
+  m_TagString: Finder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   maxSpeed: 5
   searchTimer: 0
   orbitRadius: 1.5
-  missleNumber: 10
+  missleNumber: 1
   missle: {fileID: 2888031286392370417, guid: 6452e0d50631ac641ac61a55622f0aab, type: 3}
   spawnTimer: 5
   range: 4

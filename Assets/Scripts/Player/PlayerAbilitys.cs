@@ -9,10 +9,12 @@ public class PlayerAbilitys : MonoBehaviour
     private CircleCollider2D radiusTrigger;
     private PlayerBase playerScript;
     public GameObject hack;
+    public GameObject missileFinder;
     private bool hackCheck;
     public WeaponBase weaponScript;
     private float time;
     private float frequency;
+    private Missle missleFinderScript;
     private GameObject[] weapons;
     void Start()
     {
@@ -55,10 +57,17 @@ public class PlayerAbilitys : MonoBehaviour
             }
         } else if(card.abilityName == "Poison"){
             foreach(GameObject weapon in weapons){
-                weapon.GetComponent<WeaponBase>().poison = true;
-                weapon.GetComponent<WeaponBase>().pDamage = card.value;
-                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
+                WeaponBase script = weapon.GetComponent<WeaponBase>();
+                script.poison = true;
+                script.pDamage = card.value;
+                script.pDurration = card.value2;
             }
+        } else if(card.abilityName == "Missile"){
+            Debug.Log("I was given missile");
+            GameObject finder = Instantiate(missileFinder);
+            missleFinderScript = finder.GetComponent<Missle>();
+            missleFinderScript.spawnTimer = card.value2;
+            missleFinderScript.missleNumber = card.value;
         }
     }
     public void UpgradeAbility(AbilityCards card){
@@ -77,11 +86,15 @@ public class PlayerAbilitys : MonoBehaviour
             }
         }else if(card.abilityName == "Poison"){
             foreach(GameObject weapon in weapons){
-                weapon.GetComponent<WeaponBase>().pDamage = card.value;
-                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
-                weapon.GetComponent<WeaponBase>().radioactive = card.radioactive;
+                WeaponBase script = weapon.GetComponent<WeaponBase>();
+                script.pDamage = card.value;
+                script.pDurration = card.value2;
+                script.radioactive = card.radioactive;
 
             }
+        } else if(card.abilityName == "Missile"){
+            missleFinderScript.spawnTimer = card.value2;
+            missleFinderScript.missleNumber = card.value;
         }
     }
     private void GetTime(){
