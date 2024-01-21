@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Mini Missles
   type: Weapon
-  description: Increases missle frequency
+  description: 
   icon: {fileID: 21300000, guid: 9b44c3cdfb62fbe4b9281f259444f4c6, type: 3}
-  tier: 1
+  tier: 5
   value: 0
   value2: 0
   radioactive: 0

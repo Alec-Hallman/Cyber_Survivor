@@ -31,7 +31,7 @@ public class PlayerAbilitys : MonoBehaviour
     public void ApplyAbility(AbilityCards card){
 //        Debug.Log("I was given a Card! Name: " +card.abilityName + "Tier: " +card.tier);
         if(card.abilityName == "Radius"){
-            Debug.Log("I was given Radius! It currently has radius: " + card.value);
+//            Debug.Log("I was given Radius! It currently has radius: " + card.value);
             radiusTrigger = this.GetComponent<CircleCollider2D>();
             radiusTrigger.radius = card.value;
         } else if(card.abilityName == "Armor"){
@@ -43,7 +43,7 @@ public class PlayerAbilitys : MonoBehaviour
 
         }
         else if(card.abilityName == "Hack"){
-            Debug.Log("Hack Applied");
+          //  Debug.Log("Hack Applied");
             GetTime();
             frequency = card.value2;
             hackCheck = true;

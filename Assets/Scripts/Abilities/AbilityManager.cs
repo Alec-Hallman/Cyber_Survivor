@@ -123,7 +123,7 @@ public class AbilityManager : MonoBehaviour
     }
 
     public void GenerateDisplay(){
-        Debug.Log("Display is being generated");
+//        Debug.Log("Display is being generated");
         Time.timeScale = 0; //(This line pauses the game)
         chosenCards.Clear();
         if(abilityCards.Length > 3){
