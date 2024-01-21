@@ -9,10 +9,12 @@ public class PlayerAbilitys : MonoBehaviour
     private CircleCollider2D radiusTrigger;
     private PlayerBase playerScript;
     public GameObject hack;
+    public GameObject missileFinder;
     private bool hackCheck;
     public WeaponBase weaponScript;
     private float time;
     private float frequency;
+    private Missle missleFinderScript;
     private GameObject[] weapons;
     void Start()
     {
@@ -31,7 +33,7 @@ public class PlayerAbilitys : MonoBehaviour
     public void ApplyAbility(AbilityCards card){
 //        Debug.Log("I was given a Card! Name: " +card.abilityName + "Tier: " +card.tier);
         if(card.abilityName == "Radius"){
-            Debug.Log("I was given Radius! It currently has radius: " + card.value);
+//            Debug.Log("I was given Radius! It currently has radius: " + card.value);
             radiusTrigger = this.GetComponent<CircleCollider2D>();
             radiusTrigger.radius = card.value;
         } else if(card.abilityName == "Armor"){
@@ -43,7 +45,7 @@ public class PlayerAbilitys : MonoBehaviour
 
         }
         else if(card.abilityName == "Hack"){
-            Debug.Log("Hack Applied");
+          //  Debug.Log("Hack Applied");
             GetTime();
             frequency = card.value2;
             hackCheck = true;
@@ -55,10 +57,17 @@ public class PlayerAbilitys : MonoBehaviour
             }
         } else if(card.abilityName == "Poison"){
             foreach(GameObject weapon in weapons){
-                weapon.GetComponent<WeaponBase>().poison = true;
-                weapon.GetComponent<WeaponBase>().pDamage = card.value;
-                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
+                WeaponBase script = weapon.GetComponent<WeaponBase>();
+                script.poison = true;
+                script.pDamage = card.value;
+                script.pDurration = card.value2;
             }
+        } else if(card.abilityName == "Missile"){
+            Debug.Log("I was given missile");
+            GameObject finder = Instantiate(missileFinder);
+            missleFinderScript = finder.GetComponent<Missle>();
+            missleFinderScript.spawnTimer = card.value2;
+            missleFinderScript.missleNumber = card.value;
         }
     }
     public void UpgradeAbility(AbilityCards card){
@@ -77,11 +86,15 @@ public class PlayerAbilitys : MonoBehaviour
             }
         }else if(card.abilityName == "Poison"){
             foreach(GameObject weapon in weapons){
-                weapon.GetComponent<WeaponBase>().pDamage = card.value;
-                weapon.GetComponent<WeaponBase>().pDurration = card.value2;
-                weapon.GetComponent<WeaponBase>().radioactive = card.radioactive;
+                WeaponBase script = weapon.GetComponent<WeaponBase>();
+                script.pDamage = card.value;
+                script.pDurration = card.value2;
+                script.radioactive = card.radioactive;
 
             }
+        } else if(card.abilityName == "Missile"){
+            missleFinderScript.spawnTimer = card.value2;
+            missleFinderScript.missleNumber = card.value;
         }
     }
     private void GetTime(){

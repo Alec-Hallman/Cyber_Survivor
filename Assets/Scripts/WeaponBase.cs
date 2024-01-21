@@ -76,9 +76,6 @@ public class WeaponBase : MonoBehaviour
             if(!collider.isTrigger && !inRange.Contains(collider.gameObject)){
                 inRange.Add(collider.gameObject); // add game object to list of objects to deal damage to
             }
-            if(toRemove.Contains(collider.gameObject)){
-                toRemove.Remove(collider.gameObject);
-            }
             //Debug.Log(inRange.ToString());
             dealDamage = true;
             //animator.SetBool("DealDamage", true);
@@ -102,8 +99,9 @@ public class WeaponBase : MonoBehaviour
     void DealDamage(bool remove){
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
+                EnemyBase enemyBase = listObject.GetComponent<EnemyBase>();
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
-                if(listObject.gameObject != null && (listObject.GetComponent<EnemyBase>().health - damage) <= 0){
+                if((enemyBase.health - damage) <= 0){
                     //add it to a list to remove after this list is ran to avoid C# errors
                     toRemove.Add(listObject);
                     //inRange.Remove(listObject);

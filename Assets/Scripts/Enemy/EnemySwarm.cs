@@ -29,9 +29,6 @@ public class EnemySwarm : EnemyBase
             }
             
         }
-        if(Time.realtimeSinceStartup - timer > lifeTime){
-            Destroy(this.gameObject);
-        }
         
     }
 }

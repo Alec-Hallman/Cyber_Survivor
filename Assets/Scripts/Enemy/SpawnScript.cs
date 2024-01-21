@@ -32,7 +32,8 @@ public class SpawnScript : MonoBehaviour
     void Update()
     {
         if(!(Time.timeScale == 0)){
-            if(((Time.realtimeSinceStartup - time) > spawnRate )){
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if(((Time.realtimeSinceStartup - time) > spawnRate ) && enemies.Length < 50){
                 Vector2 playerPositio = player.transform.position;
                 float angle = Random.Range(0,2 * Mathf.PI);
                 Vector2 randPosition = playerPositio + (new Vector2( Mathf.Cos(angle), Mathf.Sin(angle)) * 12);

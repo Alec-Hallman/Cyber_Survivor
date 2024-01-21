@@ -27,10 +27,12 @@ public class EnemyBase : MonoBehaviour
     private float pTimer;
     private float pDurration;
     private Color startColor;
+    private bool dead;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        dead = false;
         startColor = this.GetComponent<SpriteRenderer>().color;
         hacked = false;
         player = GameObject.Find("Player");
@@ -47,7 +49,7 @@ public class EnemyBase : MonoBehaviour
     {
         distance = Vector2.Distance(player.transform.position, this.transform.position);
         if(distance > 20f){
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         //Debug.Log(distance);
         if(walking && !hacked){
@@ -59,7 +61,7 @@ public class EnemyBase : MonoBehaviour
         } else if (!hacked){
             GetComponent<Rigidbody2D>().velocity = ZERO;
         }
-        if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f){
+        if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f && Time.timeScale != 0){
             takeDamage(pDamage, true);
             pDurration -= 1;
             GetPTime();
@@ -113,9 +115,11 @@ public class EnemyBase : MonoBehaviour
             
         } else{
             health -= damage;
+            damage = Mathf.Round(damage);
             UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
         }
-        if(health <= 0){
+        if(health <= 0 && !dead){
+            dead = true;
             Died();
         }
     } 
