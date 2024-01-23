@@ -1,0 +1,56 @@
+{
+    "abilities":[
+        {
+            "name": "Shield",
+            "tier": 1,
+            "difficulty": 1,
+            "pair": false,
+            "value":0.05,
+            "description": "Small chance to not take damage from a enemy projectile"
+
+        },
+        {
+            "name": "Shield",
+            "tier": 2,
+            "difficulty": 1,
+            "pair": false,
+            "value":0.1,
+            "description": "Slightly increased chance to avoid damage from an enemy projectile"
+
+        },
+        {
+            "name": "Shield",
+            "tier": 3,
+            "difficulty": 1,
+            "pair": false,
+            "value":0.15,
+            "description": "Slightly increased chance to avoid damage from an enemy projectile"
+
+        },
+        {
+            "name": "Shield",
+            "tier": 4,
+            "difficulty": 1,
+            "pair": false,
+            "value":0.20,
+            "description": "Slightly increased chance to avoid damage from an enemy projectile"
+
+        },
+        {
+            "name": "Shield",
+            "tier": 5,
+            "difficulty": 1,
+            "pair": true,
+            "value":0.33,
+            "description": "MAX: High chance to avoid damage from an enemy projectile"
+        },
+        {
+            "name": "Shield",
+            "tier": 6,
+            "difficulty": 1,
+            "pair": true,
+            "value":0.85,
+            "description": ""
+        }
+    ]
+}

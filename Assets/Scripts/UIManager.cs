@@ -77,4 +77,14 @@ public class UIManager : MonoBehaviour
         }
 
     }
+    public void DisplayImmune(string message, GameObject givenObject){
+        textClone = Instantiate(text, transform);
+        textClone.GetComponent<TextMeshProUGUI>().text = message;
+        textClone.GetComponent<TextMeshProUGUI>().color = Color.grey;
+        textClone.GetComponent<TextMeshProUGUI>().fontSize = 28f;
+        textClone.GetComponent<DamageNumber>().getObject = givenObject;
+        float scale = 1f;
+        size = new Vector2(scale,scale);
+        textClone.transform.localScale = size;
+    }
 }

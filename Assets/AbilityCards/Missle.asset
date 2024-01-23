@@ -42,7 +42,7 @@ MonoBehaviour:
     value2: 4
     radioactive: 0
   - name: Missile
-    difficulty: 1
+    difficulty: 2
     type: 
     tier: 3
     pair: 0

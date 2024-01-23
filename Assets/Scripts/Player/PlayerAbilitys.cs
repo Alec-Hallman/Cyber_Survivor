@@ -40,7 +40,7 @@ public class PlayerAbilitys : MonoBehaviour
             radiusTrigger = this.GetComponent<CircleCollider2D>();
             radiusTrigger.radius = card.value;
         } else if(card.abilityName == "Armor"){
-            Debug.Log("I was given Armor! Value is: " + card.value);
+            //Debug.Log("I was given Armor! Value is: " + card.value);
             if(playerScript == null){
                 playerScript = GetComponent<PlayerBase>();
             }
@@ -71,6 +71,12 @@ public class PlayerAbilitys : MonoBehaviour
             missleFinderScript = finder.GetComponent<Missle>();
             missleFinderScript.spawnTimer = card.value2;
             missleFinderScript.missleNumber = card.value;
+        }else if(card.abilityName == "Shield"){
+            if(playerScript == null){
+                playerScript = GetComponent<PlayerBase>();
+                playerScript.projectileDodgeFactor = card.value;
+
+            }
         }
     }
     public void UpgradeAbility(AbilityCards card){
@@ -100,6 +106,8 @@ public class PlayerAbilitys : MonoBehaviour
         } else if(card.abilityName == "Missile"){
             missleFinderScript.spawnTimer = card.value2;
             missleFinderScript.missleNumber = card.value;
+        } else if(card.abilityName == "Shield"){
+            playerScript.projectileDodgeFactor = card.value;
         }
     }
     private void GetTime(){

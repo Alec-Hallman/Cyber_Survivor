@@ -17,6 +17,8 @@ public class AbilityCards : ScriptableObject
     public Abilities[] jsonArray;
 
     public void initCard(){
+        AbilitiesWrapper abilitiesWrapper = JsonUtility.FromJson<AbilitiesWrapper>(json.text);
+        jsonArray = abilitiesWrapper.abilities;
         tier = 0;
         name = jsonArray[tier].name;
         value = jsonArray[tier].value;
@@ -24,8 +26,6 @@ public class AbilityCards : ScriptableObject
         description = jsonArray[tier].description;
         radioactive = jsonArray[tier].radioactive;
         difficulty = jsonArray[tier].difficulty;
-        AbilitiesWrapper abilitiesWrapper = JsonUtility.FromJson<AbilitiesWrapper>(json.text);
-        jsonArray = abilitiesWrapper.abilities;
         //tier = -1;
         //Debug.Log(jsonArray.Length);
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6709712976019290181}
   - component: {fileID: -5635078208574684506}
   m_Layer: 0
-  m_Name: RangedEnemy
+  m_Name: RangedEnemyBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.99215686, g: 0.4503878, b: 0.38823533, a: 1}
+  m_Color: {r: 0.408805, g: 0.089727566, b: 0.052707534, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -194,7 +194,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10
 --- !u!114 &-5635078208574684506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  attackSpeed: 0.5
-  walkSpeed: 0.5
-  damage: 10
+  attackSpeed: 2.5
+  walkSpeed: 3
+  damage: 2.5
   hittingPlayer: 0
   player: {fileID: 0}
   time: 0
@@ -221,5 +221,5 @@ MonoBehaviour:
   - {fileID: 3290207037802396383, guid: b0a932c081ef47846995ae54660abdde, type: 3}
   tracking: 1
   radioactiveBool: 0
-  ammount: 1
-  projectile: {fileID: 7875342382005790881, guid: 4f75e1b1c64d3444a8148ed954038e85, type: 3}
+  ammount: 3
+  projectile: {fileID: 7875342382005790881, guid: 05327748f1bfbd9409db0b999f5e0877, type: 3}

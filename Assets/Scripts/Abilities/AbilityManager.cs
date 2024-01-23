@@ -153,7 +153,6 @@ public class AbilityManager : MonoBehaviour
         uiOn = true;
         levelUI.SetActive(true);
         Time.timeScale = 0; //(This line pauses the game)
-
     }
     private void Print(){
         string output = "Cards generated: ";

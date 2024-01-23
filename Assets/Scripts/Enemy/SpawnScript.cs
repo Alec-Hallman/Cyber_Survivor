@@ -93,7 +93,7 @@ public class SpawnScript : MonoBehaviour
         Debug.Log("Difficulty: " + difficulty);
         if(difficulty % 10 == 0){
             Debug.Log("Increasing health");
-            healthMultiplier += 0.2f;
+            healthMultiplier += 0.1f;
         }
     }
 }

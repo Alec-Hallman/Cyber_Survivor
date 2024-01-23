@@ -34,7 +34,6 @@ public class ProjectileScript : MonoBehaviour
         explosive = false;
         timer2 = Time.realtimeSinceStartup;
         currentPosition = targetLocation.position;
-        travelTime = Random.Range(0.5F, 1.5F);
         GetCurrentTime();
         direction = (currentPosition - transform.position).normalized;
     }
@@ -73,7 +72,7 @@ public class ProjectileScript : MonoBehaviour
         //if it hits the player
         if( !traveling && hit.gameObject.tag == "Player"){
             //Then get the player base component and call the take damage method, passing the damage of this enemy.
-            hit.gameObject.GetComponent<PlayerBase>().takeDamage(damage);
+            hit.gameObject.GetComponent<PlayerBase>().takeDamage(damage, true);
             //Destroy the projectile
             if(!explosive){
                 Destroy(this.gameObject);

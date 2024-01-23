@@ -21,15 +21,20 @@ public class PlayerBase : MonoBehaviour
     private GameObject UI;
     public bool paused = false;
     private Animator animator;
+    public float projectileDodgeFactor;
     private bool animating;
+    private bool dodged;
+    private UIManager uiScript;
      
     void Start(){
+        dodged = false;
         healthBar = GameObject.Find("Health").GetComponent<HealthBar>();
         animator = gameObject.GetComponent<Animator>();
         animating = false;
         health = maxHealth;
         resist = 1f;
         UI = GameObject.Find("Canvas");
+        uiScript = UI.GetComponent<UIManager>();
         string json = File.ReadAllText("Assets/Jsons/Classes/Ninja.json");
         Calsses classInfo = JsonUtility.FromJson<Calsses>(json);
         className = classInfo.name;
@@ -75,15 +80,25 @@ public class PlayerBase : MonoBehaviour
         //     Died();
         // }
     }
-    public void takeDamage(float damage){
-        if(!dead && !(Time.timeScale == 0)){
+    public void takeDamage(float damage, bool projectile){
+        if(projectile){
+            float randomFloat = Random.Range(0.00f, 1.00f);
+            if((randomFloat - projectileDodgeFactor) <= 0){
+                dodged = true;
+                //Debug.Log("Dodged");
+                uiScript.DisplayImmune("Immune", this.gameObject);
+            }
+        }
+        if(!dead && !(Time.timeScale == 0) && !dodged){
             //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
-            UI.GetComponent<UIManager>().DisplayHit((damage * resist),this.gameObject, false, false);
+            uiScript.DisplayHit((damage * resist),this.gameObject, false, false);
             healthBar.ReduceHealthBar(damage);
             health -= damage * resist;
             if(health <= 0){
                 Died();
             }
+        } else if(dodged){
+            dodged = false;
         }
     }
     void Died(){

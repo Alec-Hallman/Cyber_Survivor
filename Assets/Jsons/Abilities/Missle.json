@@ -23,7 +23,7 @@
         {
             "name": "Missile",
             "tier": 3,
-            "difficulty": 1,
+            "difficulty": 2,
             "value": 2,
             "value2": 4,
             "pair": false,
