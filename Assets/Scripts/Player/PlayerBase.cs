@@ -9,6 +9,7 @@ public class PlayerBase : MonoBehaviour
 {
 
     public float resist;
+    private HealthBar healthBar;
     public string className;
     public GameObject weaponObject;
     private GameObject weapon;
@@ -19,8 +20,13 @@ public class PlayerBase : MonoBehaviour
     private bool dead = false;
     private GameObject UI;
     public bool paused = false;
+    private Animator animator;
+    private bool animating;
      
     void Start(){
+        healthBar = GameObject.Find("Health").GetComponent<HealthBar>();
+        animator = gameObject.GetComponent<Animator>();
+        animating = false;
         health = maxHealth;
         resist = 1f;
         UI = GameObject.Find("Canvas");
@@ -73,6 +79,7 @@ public class PlayerBase : MonoBehaviour
         if(!dead && !(Time.timeScale == 0)){
             //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
             UI.GetComponent<UIManager>().DisplayHit((damage * resist),this.gameObject, false, false);
+            healthBar.ReduceHealthBar(damage);
             health -= damage * resist;
             if(health <= 0){
                 Died();
@@ -82,16 +89,33 @@ public class PlayerBase : MonoBehaviour
     void Died(){
         //call dead
         dead = true;
+        animator.SetBool("Dead", true);
         //visual queue showing dead until further UI changes.
         this.GetComponent<SpriteRenderer>().color = Color.red;
     }
     public void GainHealth(float ammount){
-        if(health < maxHealth && !dead){
-            health += ammount;
-            if(health > maxHealth){
-                health = maxHealth; 
+        if(ammount > 0){
+            if(health < maxHealth && !dead){
+                if(!animating){
+                    //Debug.Log("Starting Animation");
+                    animator.SetBool("Heal", true);
+                    animating = true;
+                    Invoke("StopHealAnimation", 0.15f); 
+                }
+                health += ammount;
+                if(health > maxHealth){
+                    health = maxHealth; 
+                }
+                healthBar.IncreaseHealthBar(ammount);
+                UI.GetComponent<UIManager>().DisplayHit(ammount,this.gameObject, true, false);
+                //animator.SetBool("Heal", false);
+
             }
-            UI.GetComponent<UIManager>().DisplayHit(ammount,this.gameObject, true, false);
         }
+    }
+    private void StopHealAnimation(){
+//        Debug.Log("Turning off animation");
+        animator.SetBool("Heal", false);
+        animating = false;
     }
 }

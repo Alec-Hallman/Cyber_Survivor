@@ -207,10 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0214e7c53819ee9438cc3cbf05803c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  attackSpeed: 1.5
+  health: 30
+  attackSpeed: 0.5
   walkSpeed: 0.5
-  damage: 3
+  damage: 10
   hittingPlayer: 0
   player: {fileID: 0}
   time: 0
@@ -220,4 +220,5 @@ MonoBehaviour:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   - {fileID: 3290207037802396383, guid: b0a932c081ef47846995ae54660abdde, type: 3}
   tracking: 1
+  radioactiveBool: 0
   projectile: {fileID: 7875342382005790881, guid: 4f75e1b1c64d3444a8148ed954038e85, type: 3}

@@ -3,7 +3,8 @@
         {
             "name": "LifeSteal",
             "tier": 1,
-            "value":0.05,
+            "difficulty": 5,
+            "value":0.01,
             "pair": false,
             "description": "on hit, gain health based on how much damage you deal"
 
@@ -11,7 +12,8 @@
         {
             "name": "LifeSteal",
             "tier": 2,
-            "value":0.1,
+            "value":0.02,
+            "difficulty": 2,
             "pair": false,
             "description": "Slight increase in health gain on damage"
 
@@ -19,7 +21,8 @@
         {
             "name": "LifeSteal",
             "tier": 3,
-            "value":0.15,
+            "difficulty": 2,
+            "value":0.05,
             "pair": false,
             "description": "Slight increase in health gain on damage"
 
@@ -27,22 +30,25 @@
         {
             "name": "LifeSteal",
             "tier": 4,
+            "difficulty": 3,
             "pair": false,
-            "value":0.25,
+            "value":0.1,
             "description": "Large increase in health gain on damage"
 
         },
         {
             "name": "LifeSteal",
             "tier": 5,
+            "difficulty": 3,
             "pair": true,
-            "value":0.35,
+            "value":0.2,
             "description": "Max: Is this even balanced?"
         },
         {
             "name": "LifeSteal",
             "tier": 6,
-            "value":0.3,
+            "difficulty": 3,
+            "value":0.2,
             "pair": true,
             "description": ""
         }

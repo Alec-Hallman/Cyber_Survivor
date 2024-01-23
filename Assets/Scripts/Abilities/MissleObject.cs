@@ -6,7 +6,6 @@ public class MissleObject : MonoBehaviour
 {
     // Start is called before the first frame update
     private Transform searcher;
-    private Transform enemy;
     public float rotationRatio;
     public float maxSpeed;
     public float speed = 1f;
@@ -31,7 +30,6 @@ public class MissleObject : MonoBehaviour
         this.transform.position = GameObject.Find("Player").GetComponent<Transform>().position;
         particles = gameObject.GetComponent<ParticleSystem>();
         searcher = GameObject.FindWithTag("Finder").GetComponent<Transform>();
-        enemy = null;
     }
 
     // Update is called once per frame

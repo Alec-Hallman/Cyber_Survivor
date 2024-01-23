@@ -14,7 +14,7 @@ public class HackScript : MonoBehaviour
     {
         player = GameObject.Find("Player");
         targetTransform = transform.localScale * (radius * 8);
-        speed = 0.5f;
+        speed = 0.1f;
     }
 
     // Update is called once per frame

@@ -18,6 +18,7 @@ public class WeaponBase : MonoBehaviour
     private HashSet<GameObject> toRemove = new HashSet<GameObject>();
     private bool hit2 = false;
     private Animator animator;
+    private bool damaging;
     private GameObject player;
     public float pDamage;
     public float pDurration;
@@ -27,6 +28,7 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        damaging = false;
         player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
         GetComponent<CircleCollider2D>().radius = radius;
@@ -69,7 +71,7 @@ public class WeaponBase : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D collider){
         //Debug.Log(collider.name);
-        if(collider.gameObject.tag == "Enemy"){
+        if(collider.gameObject.tag == "Enemy" && !damaging){
             if(time == 0F){
                 Timer();
             }
@@ -97,6 +99,7 @@ public class WeaponBase : MonoBehaviour
         time = Time.realtimeSinceStartup;
     }
     void DealDamage(bool remove){
+        damaging = true;
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
             if(listObject != null){
                 EnemyBase enemyBase = listObject.GetComponent<EnemyBase>();
@@ -116,6 +119,7 @@ public class WeaponBase : MonoBehaviour
         if(remove){
             RemoveFromList();
         }
+        damaging = false;
     }
     void RemoveFromList(){
         foreach(GameObject removeObjects in toRemove){

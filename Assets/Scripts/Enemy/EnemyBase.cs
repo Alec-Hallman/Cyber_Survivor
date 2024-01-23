@@ -115,7 +115,6 @@ public class EnemyBase : MonoBehaviour
             
         } else{
             health -= damage;
-            damage = Mathf.Round(damage);
             UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
         }
         if(health <= 0 && !dead){
@@ -144,6 +143,11 @@ public class EnemyBase : MonoBehaviour
     }
     void GetPTime(){
         pTimer = Time.realtimeSinceStartup;
+    }
+    public void Balancing(float multiplier){
+        health *= multiplier;
+        damage *= multiplier;
+        //Debug.Log("multiplier: " +multiplier + "Damage Multiplier: " + multiplier/1.5f);
     }
 
 }

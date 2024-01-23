@@ -16,10 +16,12 @@ public class PlayerAbilitys : MonoBehaviour
     private float frequency;
     private Missle missleFinderScript;
     private GameObject[] weapons;
+    private SpawnScript enemyScript;
     void Start()
     {
+        enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
         weapons = GameObject.FindGameObjectsWithTag("Weapon");
-       hackCheck = false;
+        hackCheck = false;
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class PlayerAbilitys : MonoBehaviour
         }
     }
     public void ApplyAbility(AbilityCards card){
+        enemyScript.IncreaseDifficulty(card.difficulty);
 //        Debug.Log("I was given a Card! Name: " +card.abilityName + "Tier: " +card.tier);
         if(card.abilityName == "Radius"){
 //            Debug.Log("I was given Radius! It currently has radius: " + card.value);
@@ -71,6 +74,8 @@ public class PlayerAbilitys : MonoBehaviour
         }
     }
     public void UpgradeAbility(AbilityCards card){
+        enemyScript.IncreaseDifficulty(card.difficulty);
+
         if(card.abilityName == "Radius"){
             //Debug.Log("Upgrading Radius! it has radius: " + card.value);
             radiusTrigger.radius = card.value;

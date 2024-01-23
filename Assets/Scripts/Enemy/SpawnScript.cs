@@ -15,8 +15,10 @@ public class SpawnScript : MonoBehaviour
     private GameObject player;
     public bool swarm;
     public float swarmDurration;
+    private int difficulty;
     private bool positionSet;
     private float swarmSpawnTimer;
+    private float healthMultiplier = 1;
     private Vector2 randCircularSpawn;
     void Start()
     {
@@ -38,7 +40,8 @@ public class SpawnScript : MonoBehaviour
                 float angle = Random.Range(0,2 * Mathf.PI);
                 Vector2 randPosition = playerPositio + (new Vector2( Mathf.Cos(angle), Mathf.Sin(angle)) * 12);
                 GameObject enemyObject = enemyObjects[Random.Range(0,enemyObjects.Length)];
-                Instantiate(enemyObject, randPosition, transform.rotation);
+                GameObject tempEnemy = Instantiate(enemyObject, randPosition, transform.rotation);
+                tempEnemy.GetComponent<EnemyBase>().Balancing(healthMultiplier);
                 GetCurrentTime();
                 //Debug.Log("Spawned");
             }
@@ -84,5 +87,13 @@ public class SpawnScript : MonoBehaviour
     }
     public void IncreaseRate(){
         spawnRate *= 0.8f;
+    }
+    public void IncreaseDifficulty(int ammount){
+        difficulty += ammount;
+        Debug.Log("Difficulty: " + difficulty);
+        if(difficulty % 10 == 0){
+            Debug.Log("Increasing health");
+            healthMultiplier += 0.2f;
+        }
     }
 }

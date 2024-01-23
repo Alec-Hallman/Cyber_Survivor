@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 //This script manages the hitmarker text creation
 
 public class UIManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     public void DisplayHit(float number, GameObject givenObject, bool gain, bool poison){
         //Note Number = the damage
         objectPointer = givenObject;
+        number = (float)Math.Round(number, 1);
         textClone = Instantiate(text, transform);
         textClone.GetComponent<TextMeshProUGUI>().text = number.ToString();
         textClone.GetComponent<DamageNumber>().getObject = givenObject;
@@ -41,12 +43,15 @@ public class UIManager : MonoBehaviour
             //this is the max size of hit marker
             
         } else if(number > 15){
-            scale = 1.2F;
+            scale = 1.2f;
         }
         else{
-            scale = (number/4);
+            scale = 0.8f;
         }
         //apply scale changes
+        if(gain){
+            scale = 0.3f;
+        }
         size = new Vector2(scale,scale);
         textClone.transform.localScale = size;
 

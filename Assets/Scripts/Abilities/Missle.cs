@@ -21,7 +21,6 @@ public class Missle : MonoBehaviour
     private GameObject enemy;
     private GameObject enemy2;
     private float lastSpawn;
-    private float waitTime = 2f;
     public float range;
     bool spawn;
     private float spawnTime;
@@ -58,6 +57,7 @@ public class Missle : MonoBehaviour
         if( spawn && (Time.realtimeSinceStartup - lastSpawn > spawnTimer) && missleScript.Count == 0){
                 spawn = false;
                 float tempTimer = 0.5f;
+                Invoke("ClearEnemies",2.5f);
                 for(int i = 0; i < missleNumber; i++){
                     Invoke("SpawnMissle", tempTimer);
                     tempTimer += 0.2f;
@@ -120,5 +120,8 @@ public class Missle : MonoBehaviour
             // Debug.Log("invoking shoot");
             
         }
+    }
+    private void ClearEnemies(){
+        enemyQueue.Clear();
     }
 }

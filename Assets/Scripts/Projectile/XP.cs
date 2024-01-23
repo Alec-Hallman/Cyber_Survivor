@@ -26,7 +26,10 @@ public class XP : MonoBehaviour
             Destroy(this.gameObject);
         }
         direction = (player.transform.position - transform.position).normalized;
-        GetComponent<Rigidbody2D>().velocity = direction * (speed *= 1.05f);
+        if(speed < 20){
+            speed *= 1.05f;
+        }
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
         //transform.position = Vector2.Lerp(transform.position, playerPosition, (Time.deltaTime * 1.1f));
      }
      if(transform.position == player.transform.position){
@@ -40,6 +43,10 @@ public class XP : MonoBehaviour
             GetComponent<BoxCollider2D>().isTrigger = false;
             timer = Time.realtimeSinceStartup;
         }
+    }
+    public void GoToPlayer(){
+        timer = Time.realtimeSinceStartup;
+        fly = true;
     }
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.name == "Player"){

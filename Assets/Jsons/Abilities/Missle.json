@@ -3,6 +3,7 @@
         {
             "name": "Missile",
             "tier": 1,
+            "difficulty": 2,
             "value": 1,
             "value2": 5,
             "pair": false,
@@ -12,6 +13,7 @@
         {
             "name": "Missile",
             "tier": 2,
+            "difficulty": 1,
             "value": 1,
             "value2": 4,
             "pair": false,
@@ -21,6 +23,7 @@
         {
             "name": "Missile",
             "tier": 3,
+            "difficulty": 1,
             "value": 2,
             "value2": 4,
             "pair": false,
@@ -30,6 +33,7 @@
         {
             "name": "Missile",
             "tier": 4,
+            "difficulty": 1,
             "value": 2,
             "value2": 3,
             "pair": false,
@@ -39,6 +43,7 @@
         {
             "name": "Missile",
             "tier": 5,
+            "difficulty": 5,
             "value": 12,
             "value2": 3,
             "pair": true,

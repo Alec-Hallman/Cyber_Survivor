@@ -37,7 +37,7 @@ public class AbilityManager : MonoBehaviour
         card1 = GameObject.Find("Card1");
         card2 = GameObject.Find("Card2");
         card3 = GameObject.Find("Card3");
-       cardColor = card1.GetComponent<Image>().color;
+        cardColor = card1.GetComponent<Image>().color;
         levelUI.SetActive(false);
 
     }
@@ -60,6 +60,7 @@ public class AbilityManager : MonoBehaviour
                             var cardScript = card1.GetComponent<AbilityCardDisaply>();
                             if(newAbility){
                                 cardScript.ApplyCard();
+
                             }else{
                                 cardScript.UpgradeCard();
                             }
@@ -124,7 +125,6 @@ public class AbilityManager : MonoBehaviour
 
     public void GenerateDisplay(){
 //        Debug.Log("Display is being generated");
-        Time.timeScale = 0; //(This line pauses the game)
         chosenCards.Clear();
         if(abilityCards.Length > 3){
             while(chosenCards.Count < 3){
@@ -152,6 +152,8 @@ public class AbilityManager : MonoBehaviour
         //Print();
         uiOn = true;
         levelUI.SetActive(true);
+        Time.timeScale = 0; //(This line pauses the game)
+
     }
     private void Print(){
         string output = "Cards generated: ";

@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0f14ced86ec0540bb373c0920ccb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 60
   attackSpeed: 0.5
   walkSpeed: 1.5
   damage: 5
@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   - {fileID: 3290207037802396383, guid: b0a932c081ef47846995ae54660abdde, type: 3}
   tracking: 1
+  radioactiveBool: 0
 --- !u!222 &999489534303434262
 CanvasRenderer:
   m_ObjectHideFlags: 0
