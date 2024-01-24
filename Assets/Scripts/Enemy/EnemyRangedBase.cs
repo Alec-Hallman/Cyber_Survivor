@@ -17,7 +17,7 @@ public class EnemyRangedBase : EnemyBase
     void Update()
     {
         base.EnemyMoveUpdate();
-        if(hittingPlayer){
+        if(hittingPlayer && Time.timeScale != 0){
             float timer = Time.realtimeSinceStartup - time;
             base.walking = false;
             if(timer >= attackSpeed){
@@ -26,7 +26,6 @@ public class EnemyRangedBase : EnemyBase
                     Invoke("Spawn", tempTimer);
                     tempTimer += 0.1f;
                 }
-                
                 GetCurrentTime();
             }
             

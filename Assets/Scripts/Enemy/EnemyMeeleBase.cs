@@ -25,5 +25,11 @@ public class EnemyMeeleBase : EnemyBase
             
         }
     }
+    void OnTriggerEnter2D(Collider2D hit){
+        if(hit.gameObject.tag == "Player"){
+            GetCurrentTime();
+        }
+    }
+    
 
 }

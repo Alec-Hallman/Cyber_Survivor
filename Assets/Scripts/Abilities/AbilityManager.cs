@@ -16,7 +16,7 @@ public class AbilityManager : MonoBehaviour
     private GameObject card1;
     private GameObject card2;
     private GameObject card3;
-    public GameObject[] weapons;
+    private GameObject classCard;
     private Color cardColor;
     private GameObject enemyManager;
     private int selected = 0;
@@ -24,19 +24,18 @@ public class AbilityManager : MonoBehaviour
 
 
     void Start(){
-        weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        activeCards = new List<AbilityCards>();
+        chosenCards = new List<AbilityCards>();
         enemyManager = GameObject.Find("EnemyManager");
         removable = true;
         initializeCards();
         uiOn = false;
         levelUI = GameObject.Find("LevelUpScreen");
-        activeCards = new List<AbilityCards>();
-        chosenCards = new List<AbilityCards>();
-
-      //  levelUI.SetActive(true);
+        //  levelUI.SetActive(true);
         card1 = GameObject.Find("Card1");
         card2 = GameObject.Find("Card2");
         card3 = GameObject.Find("Card3");
+
         cardColor = card1.GetComponent<Image>().color;
         levelUI.SetActive(false);
 
@@ -75,7 +74,7 @@ public class AbilityManager : MonoBehaviour
                             }
 
 
-                    }
+                        }
                     else if (selected == 2){
                         var cardScript = card3.GetComponent<AbilityCardDisaply>();
                         if(newAbility){
@@ -162,6 +161,7 @@ public class AbilityManager : MonoBehaviour
         //Debug.Log(output);
     }
     private void AddAbility(AbilityCards ability){
+       // Debug.Log("adding ability: " +ability.name);
         activeCards.Add(ability);
     }
     void initializeCards(){
@@ -183,6 +183,22 @@ public class AbilityManager : MonoBehaviour
             abilityCards = temp.ToArray();  
         }
         
+    }
+    public AbilityCards ApplyClassCard(string name){
+        //Debug.Log("Applying ability");
+        string temp = "";
+        int counter = 0;
+        AbilityCards tempCard = null;
+        while(temp != name){
+            tempCard = abilityCards[counter];
+            temp = tempCard.name;
+            counter++;
+        }
+        //Debug.Log("TempCard: " + tempCard.name);
+        tempCard.tier += 1;
+        AddAbility(tempCard);
+        tempCard.UpdateCard();
+        return tempCard;
     }
     
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6062897241419218789}
   - component: {fileID: 6709712976019290181}
   - component: {fileID: -5635078208574684506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  attackSpeed: 0.5
+  attackSpeed: 1
   walkSpeed: 0.5
   damage: 10
   hittingPlayer: 0

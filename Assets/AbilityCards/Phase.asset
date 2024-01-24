@@ -10,65 +10,65 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Missile
+  m_Name: Phase
   m_EditorClassIdentifier: 
-  abilityName: Missile
-  type: Weapon
-  description: Greatly increases missle frequency
-  icon: {fileID: 21300000, guid: 9b44c3cdfb62fbe4b9281f259444f4c6, type: 3}
-  tier: 3
+  abilityName: Phase
+  type: Ability
+  description: Slightly increases phase durration
+  icon: {fileID: 21300000, guid: f09ddb48fd25c884eb86886d30212f1e, type: 3}
+  tier: 1
   difficulty: 2
-  value: 2
-  value2: 4
+  value: 1
+  value2: 5
   radioactive: 0
-  json: {fileID: 4900000, guid: 54ea25bfcc42d2e4eb267c4f7b923c0b, type: 3}
+  json: {fileID: 4900000, guid: 8c789919d69928643ab76bfd3b53bc8d, type: 3}
   jsonArray:
-  - name: Missile
-    difficulty: 2
+  - name: Phase
+    difficulty: 5
     type: 
     tier: 1
     pair: 0
-    description: periodically shoot an explosive missle
-    value: 1
+    description: When you take damage beifly become invunerable
+    value: 0.5
     value2: 5
     radioactive: 0
-  - name: Missile
-    difficulty: 1
+  - name: Phase
+    difficulty: 2
     type: 
     tier: 2
     pair: 0
-    description: Increases missle frequency
+    description: Slightly increases phase durration
     value: 1
-    value2: 4
+    value2: 5
     radioactive: 0
-  - name: Missile
+  - name: Phase
     difficulty: 2
     type: 
     tier: 3
     pair: 0
-    description: Now shoot 2 missles!
-    value: 2
+    description: Slightly decreases phase cooldown
+    value: 1
     value2: 4
     radioactive: 0
-  - name: Missile
-    difficulty: 1
+  - name: Phase
+    difficulty: 2
     type: 
     tier: 4
     pair: 0
-    description: Greatly increases missle frequency
-    value: 2
-    value2: 3
+    description: Slight increase in phase durration
+    value: 1.5
+    value2: 4
     radioactive: 0
-  - name: Missile
+  - name: Phase
     difficulty: 5
     type: 
     tier: 5
     pair: 1
-    description: 'Max: why stop at 2, HOW ABOUT 12'
-    value: 12
-    value2: 3
-    radioactive: 0
-  - name: Missile
+    description: durring phase you can now travel through enemies
+    value: 1.5
+    value2: 4
+    radioactive: 1
+  - name: Phase
     difficulty: 0
     type: 
     tier: 6

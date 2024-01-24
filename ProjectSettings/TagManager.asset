@@ -8,6 +8,9 @@ TagManager:
   - XP
   - Weapon
   - Finder
+  - Going
+  - SendBack
+  - Thrown
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - Player
   - Xp
   - Weapon
-  - 
-  - 
+  - Projectile
+  - Enemy
   - 
   - 
   - 

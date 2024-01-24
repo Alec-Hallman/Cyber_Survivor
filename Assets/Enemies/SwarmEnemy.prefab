@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7252087925915479268}
   - component: {fileID: -7371532481532303394}
   - component: {fileID: -6402395427307567707}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SwarmEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  attackSpeed: 0.2
+  attackSpeed: 0.4
   walkSpeed: 10
   damage: 2
   hittingPlayer: 0

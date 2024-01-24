@@ -5,7 +5,7 @@
             "tier": 1,
             "difficulty": 1,
             "pair": false,
-            "value": 1,
+            "value": 2,
             "description": "Increases the pickup radius of all xp and health items Evo's with idk yet"
             
 
@@ -15,7 +15,7 @@
             "tier": 2,
             "difficulty": 0,
             "pair": false,
-            "value": 2,
+            "value": 3,
             "description": "Slight increase in pickup radius of all xp and health items"
 
         },

@@ -14,6 +14,7 @@ public class AbilityCardDisaply : MonoBehaviour
     public TMP_Text difficulty;
     public TMP_Text description;
     public TMP_Text type;
+    public TMP_Text textTier;
     public Image icon; 
     public int tier;
     private GameObject player;
@@ -22,10 +23,12 @@ public class AbilityCardDisaply : MonoBehaviour
 
     private void Start(){
         nameText.text = card.abilityName;
+        textTier.text = card.tier.ToString();
         description.text = card.description;
         type.text = card.type;
         icon.sprite = card.icon;
         difficulty.text = card.difficulty.ToString();
+        tier = card.tier;
 
         player = GameObject.Find("Player");
 //        Debug.Log(player.name);
@@ -36,6 +39,7 @@ public class AbilityCardDisaply : MonoBehaviour
     {
         
         nameText.text = card.abilityName;
+        textTier.text = card.tier.ToString();
         difficulty.text = card.difficulty.ToString();
         description.text = card.description;
         type.text = card.type;
@@ -52,6 +56,7 @@ public class AbilityCardDisaply : MonoBehaviour
     public void UpgradeCard(){
         playerScript.UpgradeAbility(card);
     }
+    
     
     // private void Update(){
     //     nameText.text = card.abilityName;

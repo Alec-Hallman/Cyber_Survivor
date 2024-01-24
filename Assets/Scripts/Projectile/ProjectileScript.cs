@@ -10,6 +10,7 @@ public class ProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     [HideInInspector]
     public Transform targetLocation;
+    [SerializeField] private LayerMask layer;
     private Transform staticTargetLocation;
     public float damage;
     private Vector2 direction;
@@ -81,8 +82,21 @@ public class ProjectileScript : MonoBehaviour
                 explodeNow = true;
             }
         }
+        if(hit.gameObject.tag == "Weapon" && gameObject.tag == "Going"){
+            WeaponBase tempScript = hit.GetComponent<WeaponBase>();
+            if(tempScript.deflect && tempScript.swinging){
+                Debug.Log("hitWeapon");
+                SendBack();
+            }
+        }
     }
     void GetCurrentTime(){
         timer = Time.realtimeSinceStartup;
     } 
+    void SendBack(){
+        direction *= -1;
+        gameObject.tag = "SendBack";
+        gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
+        gameObject.layer = layer;
+    }
 }

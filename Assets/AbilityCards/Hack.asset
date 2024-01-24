@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Hack
   type: ability
-  description: periodically hacks enemies in a small radius
+  description: Slight increase in hack frequency
   icon: {fileID: 21300000, guid: 2e046a82437587a4b984488282dad4eb, type: 3}
-  tier: 0
-  difficulty: 3
-  value: 5
-  value2: 3.5
+  tier: 2
+  difficulty: 2
+  value: 6.5
+  value2: 3
   radioactive: 0
   json: {fileID: 4900000, guid: 206a0f53e65709a4695b694eadfe79af, type: 3}
   jsonArray:

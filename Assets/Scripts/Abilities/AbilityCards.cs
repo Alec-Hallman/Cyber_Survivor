@@ -30,7 +30,7 @@ public class AbilityCards : ScriptableObject
         //Debug.Log(jsonArray.Length);
     }
     public void UpTier(){
-        Debug.Log("Difficulty" + jsonArray[tier].difficulty);
+        //Debug.Log("Difficulty" + jsonArray[tier].difficulty);
         tier += 1;
         //string message = "";
         // for(int i = 0; i < 5; i++){
@@ -45,7 +45,7 @@ public class AbilityCards : ScriptableObject
         //name = jsonArray[tier].name;
         radioactive = jsonArray[tier - 1].radioactive;
         difficulty = jsonArray[tier - 1].difficulty;
-        Debug.Log("Difficulty" + jsonArray[tier].difficulty);
+        //Debug.Log("Difficulty" + jsonArray[tier].difficulty);
         description = jsonArray[tier].description;
         value = jsonArray[tier - 1].value;
         value2 = jsonArray[tier - 1].value2;
@@ -54,6 +54,14 @@ public class AbilityCards : ScriptableObject
         //Debug.Log("Description: " + description + " Tier: "+tier);
         //Debug.Log(jsonArray[tier].description);
 
+    }
+    public void UpdateCard(){
+        name = jsonArray[tier].name;
+        value = jsonArray[tier].value;
+        value2 = jsonArray[tier].value2;
+        description = jsonArray[tier].description;
+        radioactive = jsonArray[tier].radioactive;
+        difficulty = jsonArray[tier].difficulty;
     }
 
    

@@ -20,14 +20,18 @@ public class WeaponBase : MonoBehaviour
     private Animator animator;
     private bool damaging;
     private GameObject player;
+    private float speedHolder;
     public float pDamage;
     public float pDurration;
+    public bool swinging;
     public bool poison;
     public bool radioactive;
+    public bool deflect;
     public float steal = 0;
     // Start is called before the first frame update
     void Start()
     {
+        attackSpeed = 1.5f;
         damaging = false;
         player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
@@ -43,13 +47,14 @@ public class WeaponBase : MonoBehaviour
                 hit2 = false;
                 animator.SetBool("R-L", false);
                 animator.SetBool("L-R", false);
-                
         }
         if(dealDamage && !(Time.timeScale == 0)){
             //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
                 DealDamage(true);
+                swinging = true;
+                Invoke("NotSwinging",0.1f);
                 //Debug.Log("Hit1");
                 animator.SetBool("R-L", false);
                 animator.SetBool("L-R", true);
@@ -58,6 +63,8 @@ public class WeaponBase : MonoBehaviour
                 hit2 = true;
             }
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
+                swinging = true;
+                Invoke("NotSwinging",0.2f);
                 DealDamage(true);
                 //Debug.Log("Hit2");
                 animator.SetBool("L-R", false);
@@ -84,6 +91,17 @@ public class WeaponBase : MonoBehaviour
             enemyObject = collider;
 
             //Debug.Log("Hit enemy called deal Damage");
+        } else if( deflect && collider.gameObject.tag == "Going"){
+            if(time == 0f){
+                Timer();
+            }
+            if(inRange.Count == 0){
+                inRange.Add(collider.gameObject);
+                dealDamage = true;
+                speedHolder = attackSpeed;
+                attackSpeed = 0.2f;
+                Invoke("CleanInRange", 0.4f);
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collider){
@@ -101,7 +119,7 @@ public class WeaponBase : MonoBehaviour
     void DealDamage(bool remove){
         damaging = true;
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
-            if(listObject != null){
+            if(listObject != null && listObject.tag == "Enemy"){
                 EnemyBase enemyBase = listObject.GetComponent<EnemyBase>();
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
                 if((enemyBase.health - damage) <= 0){
@@ -113,6 +131,7 @@ public class WeaponBase : MonoBehaviour
                 if(poison){
                     listObject.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration,pDamage,radioactive);
                 }
+                //Debug.Log("Gain Health, Damage = " + damage + " Life steal ammount = " + damage*steal + "Steal = " + steal);
                 player.GetComponent<PlayerBase>().GainHealth(damage * steal);
             }
         }
@@ -128,6 +147,13 @@ public class WeaponBase : MonoBehaviour
 
         }
         toRemove.Clear();
+    }
+    private void NotSwinging(){
+        swinging = false;
+    }
+    void CleanInRange(){
+        attackSpeed = speedHolder;
+        inRange.Clear();
     }
 }
 

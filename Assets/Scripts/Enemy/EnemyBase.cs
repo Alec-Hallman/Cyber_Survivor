@@ -75,16 +75,10 @@ public class EnemyBase : MonoBehaviour
 
     }
     void OnTriggerEnter2D(Collider2D hit){
-        if(radioactiveBool){
-            if(hit.gameObject.tag == "Enemy"){
-                //Debug.Log("Poison Enemy");
-                hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, false);
-            }
-        }
         if(hit.gameObject.tag == "Player"){
             //Debug.Log("Hitting player");
             hittingPlayer = true;
-            GetCurrentTime();
+            //GetCurrentTime();
 
         }
         //Debug.Log("Hit: " + hit.gameObject.name);
@@ -93,6 +87,25 @@ public class EnemyBase : MonoBehaviour
             hacked = true;
             GetComponent<Rigidbody2D>().velocity = ZERO;
             Invoke("StopHack", 0.5f);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D hit){
+        if(hit.gameObject.tag == "Player"){
+            //Debug.Log("Hitting player");
+            hittingPlayer = true;
+            //GetCurrentTime();
+
+        }
+        if(radioactiveBool){
+            if(hit.gameObject.tag == "Enemy"){
+                //Debug.Log("Poison Enemy");
+                hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, false);
+            }
+        }
+        if(hit.gameObject.tag == "SendBack"){
+            this.takeDamage(5,false);
+            Destroy(hit.gameObject);
+
         }
     }
     void OnTriggerExit2D(Collider2D hit){
