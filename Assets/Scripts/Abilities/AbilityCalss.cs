@@ -5,6 +5,7 @@ using UnityEngine;
 public class Abilities
 {
     public string name;
+    public int difficulty;
     public string type;
     public int tier;
     public bool pair;

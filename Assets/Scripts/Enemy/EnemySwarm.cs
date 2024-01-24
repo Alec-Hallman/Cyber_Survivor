@@ -23,12 +23,14 @@ public class EnemySwarm : EnemyBase
         if(hittingPlayer){
             float timer = Time.realtimeSinceStartup - time;
             if(timer >= attackSpeed){
-                player.GetComponent<PlayerBase>().takeDamage(damage);
+                player.GetComponent<PlayerBase>().takeDamage(damage, false);
                 GetCurrentTime();
                 //Debug.Log("Player Taking Damage");
             }
             
         }
-        
+    }
+    void GetTime(){
+        timer = Time.realtimeSinceStartup;
     }
 }

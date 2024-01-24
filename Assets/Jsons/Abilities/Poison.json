@@ -3,6 +3,7 @@
         {
             "name": "Poison",
             "tier": 1,
+            "difficulty": 2,
             "pair": false,
             "value": 1,
             "value2": 5,
@@ -13,6 +14,7 @@
         {
             "name": "Poison",
             "tier": 2,
+            "difficulty": 1,
             "pair": false,
             "value": 1.5,
             "value2": 5,
@@ -23,6 +25,7 @@
         {
             "name": "Poison",
             "tier": 3,
+            "difficulty": 1,
             "pair": false,
             "value": 1.5,
             "value2": 7,
@@ -33,6 +36,7 @@
         {
             "name": "Poison",
             "tier": 4,
+            "difficulty": 1,
             "pair": false,
             "value": 2,
             "value2": 7,
@@ -43,6 +47,7 @@
         {
             "name": "Poison",
             "tier": 5,
+            "difficulty": 5,
             "pair": true,
             "value": 2,
             "value2": 7,
@@ -51,6 +56,7 @@
         },
         {
             "name": "Poison",
+            "difficulty": 10,
             "tier": 6,
             "pair": true,
             "description": ""

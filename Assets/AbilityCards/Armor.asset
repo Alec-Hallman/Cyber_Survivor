@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Armor
   type: ability
-  description: Reduces incoming damage by 3%
+  description: Increases damage reduction to 5%
   icon: {fileID: 21300000, guid: 62f6eba58ef20a64fa7b4d973eecdc76, type: 3}
-  tier: 0
+  tier: 1
+  difficulty: 0
   value: 0.97
   value2: 0
   radioactive: 0
   json: {fileID: 4900000, guid: c6d931304bdeb8947998ab9b56b15722, type: 3}
   jsonArray:
   - name: Armor
+    difficulty: 0
     type: 
     tier: 1
     pair: 0
@@ -31,6 +33,7 @@ MonoBehaviour:
     value2: 0
     radioactive: 0
   - name: Armor
+    difficulty: 1
     type: 
     tier: 2
     pair: 0
@@ -39,6 +42,7 @@ MonoBehaviour:
     value2: 0
     radioactive: 0
   - name: Armor
+    difficulty: 1
     type: 
     tier: 3
     pair: 0
@@ -47,6 +51,7 @@ MonoBehaviour:
     value2: 0
     radioactive: 0
   - name: Armor
+    difficulty: 1
     type: 
     tier: 4
     pair: 0
@@ -55,6 +60,7 @@ MonoBehaviour:
     value2: 0
     radioactive: 0
   - name: Armor
+    difficulty: 1
     type: 
     tier: 5
     pair: 1
@@ -63,6 +69,7 @@ MonoBehaviour:
     value2: 0
     radioactive: 0
   - name: Armor
+    difficulty: 5
     type: 
     tier: 6
     pair: 1

@@ -14,59 +14,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: LifeSteal
   type: ability
-  description: Slight increase in health gain on damage
+  description: Large increase in health gain on damage
   icon: {fileID: 21300000, guid: 07c90ca3d3b237e4884b521e75e320f2, type: 3}
-  tier: 2
-  value: 0.1
+  tier: 3
+  difficulty: 2
+  value: 0.05
   value2: 0
   radioactive: 0
   json: {fileID: 4900000, guid: 42a20efe958a20f4dad2ad1b566227ce, type: 3}
   jsonArray:
   - name: LifeSteal
+    difficulty: 5
     type: 
     tier: 1
     pair: 0
     description: on hit, gain health based on how much damage you deal
-    value: 0.05
+    value: 0.01
     value2: 0
     radioactive: 0
   - name: LifeSteal
+    difficulty: 2
     type: 
     tier: 2
     pair: 0
     description: Slight increase in health gain on damage
-    value: 0.1
+    value: 0.02
     value2: 0
     radioactive: 0
   - name: LifeSteal
+    difficulty: 2
     type: 
     tier: 3
     pair: 0
     description: Slight increase in health gain on damage
-    value: 0.15
+    value: 0.05
     value2: 0
     radioactive: 0
   - name: LifeSteal
+    difficulty: 3
     type: 
     tier: 4
     pair: 0
     description: Large increase in health gain on damage
-    value: 0.25
+    value: 0.1
     value2: 0
     radioactive: 0
   - name: LifeSteal
+    difficulty: 3
     type: 
     tier: 5
     pair: 1
     description: 'Max: Is this even balanced?'
-    value: 0.35
+    value: 0.2
     value2: 0
     radioactive: 0
   - name: LifeSteal
+    difficulty: 3
     type: 
     tier: 6
     pair: 1
     description: 
-    value: 0.3
+    value: 0.2
     value2: 0
     radioactive: 0

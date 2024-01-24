@@ -1,0 +1,66 @@
+{
+    "abilities":[
+        {
+            "name": "Phase",
+            "tier": 1,
+            "difficulty": 5,
+            "radioactive":false,
+            "value": 0.5,
+            "value2": 5,
+            "pair": false,
+            "description": "When you take damage beifly become invunerable"
+
+        },
+        {
+            "name": "Phase",
+            "tier": 2,
+            "difficulty": 2,
+            "radioactive":false,
+            "value": 1,
+            "value2": 5,
+            "pair": false,
+            "description": "Slightly increases phase durration"
+
+        },
+        {
+            "name": "Phase",
+            "tier": 3,
+            "difficulty": 2,
+            "radioactive":false,
+            "value": 1,
+            "value2": 4,
+            "pair": false,
+            "description": "Slightly decreases phase cooldown"
+
+        },
+        {
+            "name": "Phase",
+            "tier": 4,
+            "difficulty": 2,
+            "radioactive":false,
+            "value": 1.5,
+            "value2": 4,
+            "pair": false,
+            "description": "Slight increase in phase durration"
+
+        },
+        {
+            "name": "Phase",
+            "tier": 5,
+            "difficulty": 5,
+            "value": 1.5,
+            "value2": 4,
+            "radioactive":true,
+            "pair": true,
+            "description": "durring phase you can now travel through enemies"
+        },
+        {
+            "name": "Phase",
+            "tier": 6,
+            "value": 12,
+            "value2": 3,
+            "pair": true,
+            "description": ""
+        }
+    ]
+}

@@ -3,50 +3,56 @@
         {
             "name": "Hack",
             "tier": 1,
+            "difficulty": 3,
             "pair": false,
             "value": 5,
-            "value2": 2.5,
+            "value2": 3.5,
             "description": "periodically hacks enemies in a small radius"
 
         },
         {
             "name": "Hack",
             "tier": 2,
+            "difficulty": 2,
             "pair": false,
             "value": 6.5,
-            "value2": 2.5,
+            "value2": 3,
             "description": "Slight Increases hack radius"
 
         },
         {
             "name": "Hack",
             "tier": 3,
+            "difficulty": 1,
             "pair": false,
             "value": 6.5,
-            "value2": 1.7,
+            "value2": 2.5,
             "description": "Slight increase in hack frequency"
 
         },
         {
             "name": "Hack",
             "tier": 4,
+            "difficulty": 4,
             "pair": false,
             "value": 8.5,
-            "value2": 1,
+            "value2": 2,
             "description": "large increase in hack frequency and radius"
 
         },
         {
             "name": "Hack",
             "tier": 5,
+            "difficulty": 5,
             "pair": true,
             "value": 10,
-            "value2": 0.5,
+            "value2": 1.5,
             "description": "Max: HACK THE WORLD"
         },
         {
             "name": "Hack",
             "tier": 6,
+            "difficulty": 5,
             "pair": true,
             "value": 10,
             "value2": 0.5,

@@ -1,0 +1,67 @@
+{
+    "abilities":[
+        {
+            "name": "Katana",
+            "tier": 1,
+            "difficulty": 0,
+            "pair": false,
+            "value":10,
+            "value2":1.5,
+            "radioactive": false,
+            "description": "You get a Katana, thats it."
+
+        },
+        {
+            "name": "Katana",
+            "tier": 2,
+            "difficulty": 0,
+            "pair": false,
+            "value":10,
+            "value2":1,
+            "radioactive": false,
+            "description": "Increases Katana attack speed"
+
+        },
+        {
+            "name": "Katana",
+            "tier": 3,
+            "difficulty": 0,
+            "pair": false,
+            "value":10,
+            "value2":0.85,
+            "radioactive": false,
+            "description": "Slight increases attack speed"
+
+        },
+        {
+            "name": "Katana",
+            "tier": 4,
+            "difficulty": 10,
+            "pair": false,
+            "value":10,
+            "value2":0.3,
+            "radioactive": false,
+            "description": "Greatly increases katana attack Speed"
+
+        },
+        {
+            "name": "Katana",
+            "tier": 5,
+            "difficulty": 5,
+            "pair": true,
+            "value":10,
+            "value2":0.3,
+            "radioactive": true,
+            "description": "MAX: you can now deflect projectiles"
+        },
+        {
+            "name": "Katana",
+            "tier": 6,
+            "difficulty": 0,
+            "pair": true,
+            "value":15,
+            "value2":0.3,
+            "description": ""
+        }
+    ]
+}

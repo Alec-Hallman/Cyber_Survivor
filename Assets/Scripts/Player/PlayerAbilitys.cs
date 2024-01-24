@@ -8,6 +8,7 @@ public class PlayerAbilitys : MonoBehaviour
     // Start is called before the first frame update
     private CircleCollider2D radiusTrigger;
     private PlayerBase playerScript;
+    public GameObject[] avalibleWeapons;
     public GameObject hack;
     public GameObject missileFinder;
     private bool hackCheck;
@@ -15,11 +16,15 @@ public class PlayerAbilitys : MonoBehaviour
     private float time;
     private float frequency;
     private Missle missleFinderScript;
-    private GameObject[] weapons;
+    private List<GameObject>activeWeapons;
+    private List<WeaponBase>weaponScripts;
+    private SpawnScript enemyScript;
     void Start()
     {
-        weapons = GameObject.FindGameObjectsWithTag("Weapon");
-       hackCheck = false;
+        weaponScripts = new List<WeaponBase>();
+        activeWeapons = new List<GameObject>();
+        enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
+        hackCheck = false;
     }
 
     // Update is called once per frame
@@ -31,13 +36,18 @@ public class PlayerAbilitys : MonoBehaviour
         }
     }
     public void ApplyAbility(AbilityCards card){
+        Debug.Log("Card Name: " +card.name);
+        if(enemyScript == null){
+            enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
+        }
+        enemyScript.IncreaseDifficulty(card.difficulty);
 //        Debug.Log("I was given a Card! Name: " +card.abilityName + "Tier: " +card.tier);
         if(card.abilityName == "Radius"){
 //            Debug.Log("I was given Radius! It currently has radius: " + card.value);
             radiusTrigger = this.GetComponent<CircleCollider2D>();
             radiusTrigger.radius = card.value;
         } else if(card.abilityName == "Armor"){
-            Debug.Log("I was given Armor! Value is: " + card.value);
+            //Debug.Log("I was given Armor! Value is: " + card.value);
             if(playerScript == null){
                 playerScript = GetComponent<PlayerBase>();
             }
@@ -52,11 +62,13 @@ public class PlayerAbilitys : MonoBehaviour
             hack.GetComponent<HackScript>().radius = card.value;
 
         } else if(card.abilityName == "LifeSteal"){
-            foreach(GameObject weapon in weapons){
+            Debug.Log("Activating life steal");
+            foreach(GameObject weapon in activeWeapons){
+                Debug.Log("Setting steal to: " + card.value);
                 weapon.GetComponent<WeaponBase>().steal = card.value;
             }
         } else if(card.abilityName == "Poison"){
-            foreach(GameObject weapon in weapons){
+            foreach(GameObject weapon in activeWeapons){
                 WeaponBase script = weapon.GetComponent<WeaponBase>();
                 script.poison = true;
                 script.pDamage = card.value;
@@ -68,9 +80,43 @@ public class PlayerAbilitys : MonoBehaviour
             missleFinderScript = finder.GetComponent<Missle>();
             missleFinderScript.spawnTimer = card.value2;
             missleFinderScript.missleNumber = card.value;
+        }else if(card.abilityName == "Shield"){
+            if(playerScript == null){
+                playerScript = GetComponent<PlayerBase>();
+            }
+            playerScript.projectileDodgeFactor = card.value;
+        } else if(card.abilityName == "Phase"){
+            if(playerScript == null){
+                playerScript = GetComponent<PlayerBase>();
+            }
+            playerScript.phaseDurration = card.value;
+            playerScript.passThrough = card.radioactive;
+            playerScript.PhaseCooldown = card.value2;
+        } else if(card.type == "Weapon"){
+            int counter = 0;
+            GameObject tempObj = avalibleWeapons[counter];
+            while(tempObj.name != card.abilityName){
+                tempObj = avalibleWeapons[counter];
+                counter++;
+            }
+            GameObject weapon = Instantiate(tempObj);
+            activeWeapons.Add(weapon);
+            if(card.abilityName == "Katana"){
+                WeaponBase tempScript;
+                tempScript = weapon.GetComponent<WeaponBase>();
+                tempScript.attackSpeed = card.value2;
+                tempScript.damage = card.value;
+                Vector3 scale = new Vector3(weapon.transform.localScale.x,(weapon.transform.localScale.y),0f);
+                weapon.transform.parent = this.transform;
+                weapon.transform.localScale = (scale + scale);
+                weapon.transform.position = new Vector3 ((weapon.transform.position.x + 100f), weapon.transform.position.y, 0f);
+            }
+            weaponScripts.Add(weapon.GetComponent<WeaponBase>());
         }
     }
     public void UpgradeAbility(AbilityCards card){
+        enemyScript.IncreaseDifficulty(card.difficulty);
+        Debug.Log("Card Name: " +card.name);
         if(card.abilityName == "Radius"){
             //Debug.Log("Upgrading Radius! it has radius: " + card.value);
             radiusTrigger.radius = card.value;
@@ -81,20 +127,42 @@ public class PlayerAbilitys : MonoBehaviour
             frequency = card.value2;
             hack.GetComponent<HackScript>().radius = card.value;
         } else if(card.abilityName == "LifeSteal"){
-            foreach(GameObject weapon in weapons){
+            Debug.Log("Activating life steal");
+            foreach(GameObject weapon in activeWeapons){
+                Debug.Log("Setting steal to: " + card.value);
                 weapon.GetComponent<WeaponBase>().steal = card.value;
             }
         }else if(card.abilityName == "Poison"){
-            foreach(GameObject weapon in weapons){
+            foreach(GameObject weapon in activeWeapons){
                 WeaponBase script = weapon.GetComponent<WeaponBase>();
                 script.pDamage = card.value;
                 script.pDurration = card.value2;
                 script.radioactive = card.radioactive;
-
             }
         } else if(card.abilityName == "Missile"){
             missleFinderScript.spawnTimer = card.value2;
             missleFinderScript.missleNumber = card.value;
+        } else if(card.abilityName == "Shield"){
+            playerScript.projectileDodgeFactor = card.value;
+        } else if(card.abilityName == "Phase"){
+            playerScript.phaseDurration = card.value;
+            playerScript.passThrough = card.radioactive;
+            playerScript.PhaseCooldown = card.value2;
+        } else if(card.type == "Weapon"){
+            Debug.Log(weaponScripts[0].name + " Card Name: " + card.name);
+            int counter = 0;
+            WeaponBase tempScript = weaponScripts[0];
+            while(!tempScript.name.Contains(card.name)){
+                counter++;
+                tempScript = weaponScripts[counter];
+            }
+            //Everything above this point is for finding the actual weapon script to edit
+            if(card.name == "Katana"){
+                tempScript.attackSpeed = card.value2;
+                tempScript.damage = card.value;
+                tempScript.deflect = card.radioactive;
+            }
+            
         }
     }
     private void GetTime(){

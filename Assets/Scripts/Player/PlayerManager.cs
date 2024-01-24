@@ -59,7 +59,9 @@ public class PlayerManager : MonoBehaviour
         manager.GetComponent<AbilityManager>().GenerateDisplay();
         level += 1;
         currentXp = currentXp - neededXp;
-        xpNeeded *= 1.15f;
+        if(xpNeeded < 80){
+            xpNeeded *= 1.15f;
+        }
         neededXp = xpNeeded;
         xpBar.transform.localScale = new Vector2(0f,0.2125f);
         xChange = 11.627f / neededXp;
