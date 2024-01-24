@@ -63,6 +63,8 @@ public class SpawnScript : MonoBehaviour
                 swarmSpawnTimer = Time.realtimeSinceStartup;
             }
         }
+    }
+    void FixedUpdate(){
         if(swarm){
             StartSwarm();
         }

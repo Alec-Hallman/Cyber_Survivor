@@ -17,7 +17,7 @@ public class EnemyRangedBase : EnemyBase
     void Update()
     {
         base.EnemyMoveUpdate();
-        if(hittingPlayer && Time.timeScale != 0){
+        if(playerInRange && Time.timeScale != 0){
             float timer = Time.realtimeSinceStartup - time;
             base.walking = false;
             if(timer >= attackSpeed){
@@ -29,9 +29,10 @@ public class EnemyRangedBase : EnemyBase
                 GetCurrentTime();
             }
             
-        } else if (base.walking == false){
+        } else if (!playerInRange && base.walking == false){
             base.walking = true;
         }
+        //Note to future me: sChange this code to stop using a trigger, this will simplify the base script and this script. Just use Vector3 distance
     }
     void Spawn(){
         if(Time.timeScale != 0){

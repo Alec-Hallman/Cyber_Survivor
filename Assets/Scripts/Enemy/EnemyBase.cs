@@ -28,10 +28,14 @@ public class EnemyBase : MonoBehaviour
     private float pDurration;
     private Color startColor;
     private bool dead;
+    protected bool playerInRange;
+    private bool knockBack;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        playerInRange = false;
+        knockBack = false;
         dead = false;
         startColor = this.GetComponent<SpriteRenderer>().color;
         hacked = false;
@@ -54,10 +58,17 @@ public class EnemyBase : MonoBehaviour
         //Debug.Log(distance);
         if(walking && !hacked){
             transform.right = player.transform.position - transform.position;
-            if(tracking){
-                direction = (player.transform.position - transform.position).normalized;
+            if(!knockBack){ //Tracking refers to enemies that will walk directly towards the player, the swarm is the only non tracking enemy atm.
+                if(tracking){
+                    direction = (player.transform.position - transform.position).normalized;
+                }
+                GetComponent<Rigidbody2D>().velocity = direction * walkSpeed;
+
+            } else if(knockBack){
+                direction = -1 * (player.transform.position - transform.position).normalized; //If the enemy is going to be knocked back make the direction towards the player negative so it moves away from the player.
+                GetComponent<Rigidbody2D>().velocity = direction * 1f; //The 1f here is what controls how fast the enemy moves when it is knocked back.
+
             }
-            GetComponent<Rigidbody2D>().velocity = direction * walkSpeed;
         } else if (!hacked){
             GetComponent<Rigidbody2D>().velocity = ZERO;
         }
@@ -78,6 +89,7 @@ public class EnemyBase : MonoBehaviour
         if(hit.gameObject.tag == "Player"){
             //Debug.Log("Hitting player");
             hittingPlayer = true;
+            playerInRange = true;
             //GetCurrentTime();
 
         }
@@ -111,6 +123,7 @@ public class EnemyBase : MonoBehaviour
     void OnTriggerExit2D(Collider2D hit){
         if(hit.gameObject.tag == "Player"){
             hittingPlayer = false;
+            playerInRange = false;
         }
     }
     public void GetCurrentTime(){
@@ -127,6 +140,11 @@ public class EnemyBase : MonoBehaviour
             }
             
         } else{
+            if(!poisoned){
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white; //if not poisoned don't change the enemies colour.
+            }
+            knockBack = true;
+            Invoke("StopKnockBack",0.1f); //0.1f controls how long the knockback
             health -= damage;
             UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
         }
@@ -161,6 +179,12 @@ public class EnemyBase : MonoBehaviour
         health *= multiplier;
         damage *= multiplier;
         //Debug.Log("multiplier: " +multiplier + "Damage Multiplier: " + multiplier/1.5f);
+    }
+    private void StopKnockBack(){
+        if(!poisoned){
+            this.GetComponent<SpriteRenderer>().color = startColor; //if the enemy is poisoned, aka green, then don't make them change colour.
+        }
+        knockBack = false;
     }
 
 }

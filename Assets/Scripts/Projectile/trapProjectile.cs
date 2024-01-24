@@ -52,18 +52,31 @@ public class trapProjectile : ProjectileScript
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
         //float for tracking time
+        
+    }
+    void FixedUpdate(){
         float totalTime = Time.realtimeSinceStartup - timeTracker;
         //if the object is moving and the object has been around for half of the time it's traveling for
         if(traveling && totalTime < halfTravel){
             //Increase the scale by a damping float of 1.015F every frame
-            transform.localScale = new Vector2((currentXSize *= 1.015F),(currentYSize *= 1.015F));
+            if(currentXSize < 1.3f){
+                currentXSize *= 1.05f;
+                currentYSize *= 1.05f;
+            } else{
+                currentXSize *= 1.01f;
+                currentYSize *= 1.01f;
+
+            }
+            transform.localScale = new Vector2(currentXSize,currentYSize);
+            Debug.Log("Current x"  + currentXSize);
+
         }else if (traveling){
             //If we've past the half way mark for travel time than decrease the size, making sure it can't be smaller than the starting size 
             if(currentXSize > startXSize){
-                currentXSize *= 0.99F;
+                currentXSize *= 0.95F;
             }
             if(currentYSize > startYSize){
-                currentYSize *= 0.99F;
+                currentYSize *= 0.95F;
             }
             //Apply the vector 2 changes
             transform.localScale = new Vector2(currentXSize,currentYSize);
