@@ -2,6 +2,7 @@
 "name": "Ninja",
 "weapon": "Katana",
 "ability": "Phase",
+"description": "Swift meele fighter with defensive techniques.",
 "speed": 5,
 "health": 100
 }
