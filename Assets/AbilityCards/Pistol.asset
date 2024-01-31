@@ -10,70 +10,70 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Katana
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  abilityName: Katana
+  abilityName: Pistol
   type: Weapon
   description: 
-  icon: {fileID: 21300000, guid: 8c29e380dccca9445a4ca7fb6eab8ff1, type: 3}
+  icon: {fileID: 21300000, guid: 30a0c79ebfcadac4f865f0e4ea1ba778, type: 3}
   tier: 5
   difficulty: 5
-  value: 10
-  value2: 0.3
+  value: 0.1
+  value2: 30
   radioactive: 1
-  json: {fileID: 4900000, guid: 178fc7aae72ac3d43b25d9ba9c3a43dd, type: 3}
+  json: {fileID: 4900000, guid: f83c97cb8fa7cfe49b53181ba99a57e0, type: 3}
   jsonArray:
-  - name: Katana
+  - name: Pistol
     difficulty: 0
     type: 
     tier: 1
     pair: 0
-    description: You get a Katana, thats it.
-    value: 10
-    value2: 1.5
+    description: You get a Pistol, thats it.
+    value: 0.8
+    value2: 10
     radioactive: 0
-  - name: Katana
+  - name: Pistol
     difficulty: 0
     type: 
     tier: 2
     pair: 0
-    description: Increases Katana attack speed
-    value: 10
-    value2: 1
+    description: Increases Pistol attack speed
+    value: 0.5
+    value2: 10
     radioactive: 0
-  - name: Katana
+  - name: Pistol
     difficulty: 0
     type: 
     tier: 3
     pair: 0
-    description: Slight increases attack speed
-    value: 10
-    value2: 0.85
+    description: Increases Pistol magazine size
+    value: 0.5
+    value2: 20
     radioactive: 0
-  - name: Katana
+  - name: Pistol
     difficulty: 10
     type: 
     tier: 4
     pair: 0
-    description: Greatly increases katana attack Speed
-    value: 10
-    value2: 0.3
+    description: Greatly Increase pistol attack speed
+    value: 0.1
+    value2: 30
     radioactive: 0
-  - name: Katana
+  - name: Pistol
     difficulty: 5
     type: 
     tier: 5
     pair: 1
-    description: 'MAX: you can now deflect projectiles'
-    value: 10
-    value2: 0.3
+    description: 'MAX: Not sure what this should do yet.'
+    value: 0.1
+    value2: 30
     radioactive: 1
-  - name: Katana
+  - name: Pistol
     difficulty: 0
     type: 
     tier: 6
     pair: 1
     description: 
-    value: 15
-    value2: 0.3
+    value: 0.1
+    value2: 30
     radioactive: 0

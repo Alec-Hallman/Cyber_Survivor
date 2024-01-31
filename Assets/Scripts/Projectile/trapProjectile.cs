@@ -68,7 +68,7 @@ public class trapProjectile : ProjectileScript
 
             }
             transform.localScale = new Vector2(currentXSize,currentYSize);
-            Debug.Log("Current x"  + currentXSize);
+            //Debug.Log("Current x"  + currentXSize);
 
         }else if (traveling){
             //If we've past the half way mark for travel time than decrease the size, making sure it can't be smaller than the starting size 

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Phase
   type: Ability
-  description: Slightly increases phase durration
+  description: 
   icon: {fileID: 21300000, guid: f09ddb48fd25c884eb86886d30212f1e, type: 3}
-  tier: 1
-  difficulty: 2
-  value: 1
-  value2: 5
-  radioactive: 0
+  tier: 5
+  difficulty: 5
+  value: 1.5
+  value2: 4
+  radioactive: 1
   json: {fileID: 4900000, guid: 8c789919d69928643ab76bfd3b53bc8d, type: 3}
   jsonArray:
   - name: Phase

@@ -1,41 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-//Player Weapon base behaviour
-public class WeaponBase : MonoBehaviour
+
+public class Katana : WeaponBase
 {
+    // Start is called before the first frame update
     private bool dealDamage = false;
-    public float damage;
-    public float attackSpeed;
-    public float attackInterval;
-    public float radius;
-    private float time = 0F;
-    private Collider2D enemyObject;
-    private bool hit1 = true;
+
     private HashSet<GameObject> inRange = new HashSet<GameObject>();
     private HashSet<GameObject> toRemove = new HashSet<GameObject>();
-    private bool hit2 = false;
-    private Animator animator;
-    private bool damaging;
-    private GameObject player;
+    private bool hit1 = true;
     private float speedHolder;
-    public float pDamage;
-    public float pDurration;
-    public bool swinging;
-    public bool poison;
-    public bool radioactive;
-    public bool deflect;
-    public float steal = 0;
-    // Start is called before the first frame update
+
+    private bool hit2 = false;
+    private Collider2D enemyObject;
+    private Animator animator;
+    private float time = 0F;
+
+    private bool damaging;
+
     void Start()
     {
+        base.WeaponStart();
         attackSpeed = 1.5f;
-        damaging = false;
-        player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
-        GetComponent<CircleCollider2D>().radius = radius;
+        damaging = false;
+        
     }
 
     // Update is called once per frame
@@ -75,10 +65,11 @@ public class WeaponBase : MonoBehaviour
             }
             //These hit 1 and 2 checks allow the attacks to hit on a 1-2 beat, this can be negated by making attack interval and attack speed the same value.
         }
+        
     }
     void OnTriggerStay2D(Collider2D collider){
         //Debug.Log(collider.name);
-        if(collider.gameObject.tag == "Enemy" && !damaging){
+        if(collider.gameObject.tag.Contains("Enemy") && !damaging){
             if(time == 0F){
                 Timer();
             }
@@ -105,7 +96,7 @@ public class WeaponBase : MonoBehaviour
         }
     }
     void OnTriggerExit2D(Collider2D collider){
-        if(collider.gameObject.tag == "Enemy"){
+        if(collider.gameObject.tag.Contains("Enemy")){
             //
             if(!collider.isTrigger){
                 toRemove.Add(collider.gameObject);
@@ -118,8 +109,10 @@ public class WeaponBase : MonoBehaviour
     }
     void DealDamage(bool remove){
         damaging = true;
+        //Debug.Log("Calling Deal Damage");
+
         foreach(GameObject listObject in inRange){ //for each loop that deals damage to all objects in list
-            if(listObject != null && listObject.tag == "Enemy"){
+            if(listObject != null && listObject.tag.Contains("Enemy")){
                 EnemyBase enemyBase = listObject.GetComponent<EnemyBase>();
                 //If statement to see if the damage about to be delt to object will be fatal, if it will be remove it from the list atleast thats the idea.
                 if((enemyBase.health - damage) <= 0){
@@ -131,8 +124,9 @@ public class WeaponBase : MonoBehaviour
                 if(poison){
                     listObject.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration,pDamage,radioactive);
                 }
+                LifeSteal();
+                //Debug.Log()
                 //Debug.Log("Gain Health, Damage = " + damage + " Life steal ammount = " + damage*steal + "Steal = " + steal);
-                player.GetComponent<PlayerBase>().GainHealth(damage * steal);
             }
         }
         if(remove){
@@ -156,10 +150,3 @@ public class WeaponBase : MonoBehaviour
         inRange.Clear();
     }
 }
-
-//Idea:
-//Weapon calls a take damage comand in the enemy object
-//So each enemy becomes responsible for it's own damage taken, making it track if it walks into weapon range
-//But this creates an issue, suddenly the enemy becomes responsible for traking attack time, which is super doable but the enemies would'nt take damage syncronusly. Unless the timer is delt with
-//In some kind of controller script. That can be publicly accessed, but this sounds more complicated. More efficient? Probobly, as it avoids the list. Overall this was simpliler and keeps the 
-//code in one chunk, so I've opted for this.

@@ -10,8 +10,14 @@ public class ProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     [HideInInspector]
     public Transform targetLocation;
-    [SerializeField] private LayerMask layer;
+    public bool poison;
+    public float pDamage;
+    public float pDurration;
+    public bool radioactive;
+    public LayerMask projectileLayer;
     private Transform staticTargetLocation;
+    private PlayerBase playerScript;
+    public WeaponBase parentScript;
     public float damage;
     private Vector2 direction;
     private Vector3 currentPosition;
@@ -70,10 +76,13 @@ public class ProjectileScript : MonoBehaviour
     }
     //This trigger deals with damage dealing.
     void OnTriggerEnter2D(Collider2D hit){
+       // Debug.Log("Hit something");
         //if it hits the player
         if( !traveling && hit.gameObject.tag == "Player"){
             //Then get the player base component and call the take damage method, passing the damage of this enemy.
-            hit.gameObject.GetComponent<PlayerBase>().takeDamage(damage, true);
+            
+            playerScript = hit.gameObject.GetComponent<PlayerBase>();
+            playerScript.takeDamage(damage, true);
             //Destroy the projectile
             if(!explosive){
                 Destroy(this.gameObject);
@@ -85,18 +94,40 @@ public class ProjectileScript : MonoBehaviour
         if(hit.gameObject.tag == "Weapon" && gameObject.tag == "Going"){
             WeaponBase tempScript = hit.GetComponent<WeaponBase>();
             if(tempScript.deflect && tempScript.swinging){
-                Debug.Log("hitWeapon");
-                SendBack();
+                //Debug.Log("hitWeapon");
+                SendBack(true);
+            }
+        }
+    }
+    void OnCollisionEnter2D(Collision2D hit){
+         if(hit.gameObject.tag.Contains("Enemy") && gameObject.tag == "SendBack"){
+            EnemyBase tempScript = hit.gameObject.GetComponent<EnemyBase>();
+            tempScript.takeDamage(damage, false);
+            if(parentScript != null){
+                parentScript.LifeSteal();
+            }
+            if(poison){
+                tempScript.Poisoned(pDurration, pDamage,radioactive);
+            }
+            if(!explosive){
+                Destroy(this.gameObject);
+            }
+            else{
+                explodeNow = true;
             }
         }
     }
     void GetCurrentTime(){
         timer = Time.realtimeSinceStartup;
     } 
-    void SendBack(){
-        direction *= -1;
+    public void SendBack(bool deflected){
+        if(deflected){
+            direction *= -1;
+        }
         gameObject.tag = "SendBack";
+        gameObject.layer = 9; //Set the 
+        gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        //Debug.Log(gameObject.layer);
         gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
-        gameObject.layer = layer;
     }
 }

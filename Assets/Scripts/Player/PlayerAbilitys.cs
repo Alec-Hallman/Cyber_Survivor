@@ -13,14 +13,20 @@ public class PlayerAbilitys : MonoBehaviour
     public GameObject missileFinder;
     private bool hackCheck;
     public WeaponBase weaponScript;
+    private bool stealActive;
     private float time;
     private float frequency;
     private Missle missleFinderScript;
-    private List<GameObject>activeWeapons;
+    public List<GameObject>activeWeapons;
     private List<WeaponBase>weaponScripts;
     private SpawnScript enemyScript;
+    private bool poisonActive;
+    private AbilityCards poison;
+    private AbilityCards lifeSteal;
     void Start()
     {
+        poisonActive = false;
+        stealActive = false;
         weaponScripts = new List<WeaponBase>();
         activeWeapons = new List<GameObject>();
         enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
@@ -62,20 +68,14 @@ public class PlayerAbilitys : MonoBehaviour
             hack.GetComponent<HackScript>().radius = card.value;
 
         } else if(card.abilityName == "LifeSteal"){
-            Debug.Log("Activating life steal");
-            foreach(GameObject weapon in activeWeapons){
-                Debug.Log("Setting steal to: " + card.value);
-                weapon.GetComponent<WeaponBase>().steal = card.value;
-            }
+            stealActive = true;
+            lifeSteal = card;
+            ApplySteal(null);
         } else if(card.abilityName == "Poison"){
-            foreach(GameObject weapon in activeWeapons){
-                WeaponBase script = weapon.GetComponent<WeaponBase>();
-                script.poison = true;
-                script.pDamage = card.value;
-                script.pDurration = card.value2;
-            }
+            poison = card;
+            ApplyPoison(null);
         } else if(card.abilityName == "Missile"){
-            Debug.Log("I was given missile");
+            //Debug.Log("I was given missile");
             GameObject finder = Instantiate(missileFinder);
             missleFinderScript = finder.GetComponent<Missle>();
             missleFinderScript.spawnTimer = card.value2;
@@ -99,20 +99,35 @@ public class PlayerAbilitys : MonoBehaviour
                 tempObj = avalibleWeapons[counter];
                 counter++;
             }
-            GameObject weapon = Instantiate(tempObj);
+            GameObject weapon = Instantiate(tempObj, this.transform);
             activeWeapons.Add(weapon);
+            //activeWeapons.Add(weapon);
             if(card.abilityName == "Katana"){
                 WeaponBase tempScript;
                 tempScript = weapon.GetComponent<WeaponBase>();
                 tempScript.attackSpeed = card.value2;
                 tempScript.damage = card.value;
                 Vector3 scale = new Vector3(weapon.transform.localScale.x,(weapon.transform.localScale.y),0f);
-                weapon.transform.parent = this.transform;
+                //weapon.transform.parent = this.transform;
                 weapon.transform.localScale = (scale + scale);
                 weapon.transform.position = new Vector3 ((weapon.transform.position.x + 100f), weapon.transform.position.y, 0f);
             }
+            else if(card.name == "Pistol"){
+                WeaponBase tempScript;
+                tempScript = weapon.GetComponent<WeaponBase>();
+                weapon.transform.localScale = new Vector2(2,2);
+                tempScript.attackSpeed = card.value;
+                tempScript.magazineSize = card.value2;
+            }
+            if(poisonActive){
+                ApplyPoison(weapon); //This only happens if poison has been chosen and a new weapon has just been made
+            }
+            if(stealActive){
+                ApplySteal(weapon); //This only happens if lifesteal has been chosen and a new weapon has just been made
+            }
             weaponScripts.Add(weapon.GetComponent<WeaponBase>());
         }
+        
     }
     public void UpgradeAbility(AbilityCards card){
         enemyScript.IncreaseDifficulty(card.difficulty);
@@ -127,18 +142,11 @@ public class PlayerAbilitys : MonoBehaviour
             frequency = card.value2;
             hack.GetComponent<HackScript>().radius = card.value;
         } else if(card.abilityName == "LifeSteal"){
-            Debug.Log("Activating life steal");
-            foreach(GameObject weapon in activeWeapons){
-                Debug.Log("Setting steal to: " + card.value);
-                weapon.GetComponent<WeaponBase>().steal = card.value;
-            }
+            lifeSteal = card;
+            ApplySteal(null);
         }else if(card.abilityName == "Poison"){
-            foreach(GameObject weapon in activeWeapons){
-                WeaponBase script = weapon.GetComponent<WeaponBase>();
-                script.pDamage = card.value;
-                script.pDurration = card.value2;
-                script.radioactive = card.radioactive;
-            }
+            poison = card;
+            ApplyPoison(null);
         } else if(card.abilityName == "Missile"){
             missleFinderScript.spawnTimer = card.value2;
             missleFinderScript.missleNumber = card.value;
@@ -149,7 +157,7 @@ public class PlayerAbilitys : MonoBehaviour
             playerScript.passThrough = card.radioactive;
             playerScript.PhaseCooldown = card.value2;
         } else if(card.type == "Weapon"){
-            Debug.Log(weaponScripts[0].name + " Card Name: " + card.name);
+            //Debug.Log(weaponScripts[0].name + " Card Name: " + card.name);
             int counter = 0;
             WeaponBase tempScript = weaponScripts[0];
             while(!tempScript.name.Contains(card.name)){
@@ -161,11 +169,52 @@ public class PlayerAbilitys : MonoBehaviour
                 tempScript.attackSpeed = card.value2;
                 tempScript.damage = card.value;
                 tempScript.deflect = card.radioactive;
+            } else if(card.name == "Pistol"){
+                tempScript.attackSpeed = card.value;
+                tempScript.magazineSize = card.value2;
             }
             
         }
     }
     private void GetTime(){
         time = Time.realtimeSinceStartup;
+    }
+    
+    //For apply poison and steal, it being passes null just means: apply to every weapon.
+        private void ApplyPoison(GameObject weapon){
+        AbilityCards cardToUse;
+        cardToUse = poison;
+        if(weapon == null){ //if no weapon is given then apply to all weapons all upgrades for weapons should NOT provide a weapon
+            foreach(GameObject weaponLoop in activeWeapons){
+                WeaponBase script = weaponLoop.GetComponent<WeaponBase>();
+                script.poison = true;
+                script.pDamage = cardToUse.value;
+                script.pDurration = cardToUse.value2;
+                script.radioactive = cardToUse.radioactive;
+                poisonActive = true;
+            }
+        }
+        else{ //if a weapon object is provided only make these changes to the provided object (apply) 
+            WeaponBase script = weapon.GetComponent<WeaponBase>();
+            script.poison = true;
+            script.pDamage = cardToUse.value;
+            script.pDurration = cardToUse.value2;
+            script.radioactive = cardToUse.radioactive;
+            poisonActive = true;
+        }
+        
+    }
+    private void ApplySteal(GameObject weapon){
+        AbilityCards cardToUse;
+        cardToUse = lifeSteal;
+        if(weapon == null){
+            foreach(GameObject weaponLoop in activeWeapons){
+            //Debug.Log("Setting steal to: " + card.value);
+                weaponLoop.GetComponent<WeaponBase>().steal = cardToUse.value;
+            }
+        } else{
+            weapon.GetComponent<WeaponBase>().steal = cardToUse.value;
+        }
+        
     }
 }

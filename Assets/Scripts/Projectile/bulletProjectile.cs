@@ -6,10 +6,12 @@ public class bulletProjectile : ProjectileScript
 {
     // Start is called before the first frame update
     private SpriteRenderer myRenderer;
+    public GameObject player; 
     private ParticleSystem particles;
     //Anmimation time refers to the time needed to run particle system
     public float animationTime;
     private float animationTimeTracker;
+    public bool lifeSteal;
     void Start()
     {
         base.BaseProjectileStart();
@@ -41,7 +43,6 @@ public class bulletProjectile : ProjectileScript
     }
     void Explode(){
         //Debug.Log("Called");
-
         float newCounter = Time.realtimeSinceStartup - animationTimeTracker;
         if(newCounter >= animationTime){
              Destroy(this.gameObject);

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 999489534303434262}
   m_Layer: 10
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: EasyEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0f14ced86ec0540bb373c0920ccb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 40
   attackSpeed: 0.5
   walkSpeed: 1.5
   damage: 5

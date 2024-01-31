@@ -178,9 +178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2815256285327590542}
   - component: {fileID: 7047164297981336241}
-  - component: {fileID: 5162197672098673760}
   - component: {fileID: 3240251939593786181}
   - component: {fileID: 5922891972824906146}
+  - component: {fileID: -6218279681607028677}
   m_Layer: 8
   m_Name: Katana
   m_TagString: Weapon
@@ -242,23 +242,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &5162197672098673760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6366370379397883178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ea127406fddfb4289d17d387711841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  attackSpeed: 1
-  attackInterval: 0.2
-  radius: 1
-  steal: 0
 --- !u!61 &3240251939593786181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325,6 +308,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6218279681607028677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366370379397883178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7325d4d2494a55040a0664473a55c5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackSpeed: 1
+  attackInterval: 0.2
+  radius: 1
+  player: {fileID: 0}
+  pDamage: 0
+  pDurration: 0
+  swinging: 0
+  poison: 0
+  radioactive: 0
+  deflect: 0
+  steal: 0
 --- !u!1 &7460613659263342187
 GameObject:
   m_ObjectHideFlags: 0

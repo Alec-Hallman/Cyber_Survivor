@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour
     public bool hittingPlayer;
     public GameObject player = null;
     private Vector2 direction;
+    public SpawnScript spawnScript;
     private GameObject UI;
     public float time;
     private float hackTime;
@@ -53,7 +54,7 @@ public class EnemyBase : MonoBehaviour
     {
         distance = Vector2.Distance(player.transform.position, this.transform.position);
         if(distance > 20f){
-            Destroy(this.gameObject);
+            Died();
         }
         //Debug.Log(distance);
         if(walking && !hacked){
@@ -114,11 +115,15 @@ public class EnemyBase : MonoBehaviour
                 hit.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration, pDamage, false);
             }
         }
-        if(hit.gameObject.tag == "SendBack"){
-            this.takeDamage(5,false);
-            Destroy(hit.gameObject);
-
-        }
+        // if(hit.gameObject.tag == "SendBack"){
+        //     ProjectileScript tempScript = hit.gameObject.GetComponent<ProjectileScript>();
+        //     float damage = tempScript.damage;
+        //     if(tempScript.poison){
+        //         Poisoned(tempScript.pDurration, tempScript.pDamage, tempScript.radioactive);
+        //     }
+        //     this.takeDamage(damage,false);
+        //     Destroy(hit.gameObject);
+        // }
     }
     void OnTriggerExit2D(Collider2D hit){
         if(hit.gameObject.tag == "Player"){
@@ -154,6 +159,12 @@ public class EnemyBase : MonoBehaviour
         }
     } 
     void Died(){
+        if(!this.gameObject.name.Contains("Swarm")){
+            if(spawnScript == null){
+                spawnScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>();
+            }
+            spawnScript.enemyCount = spawnScript.enemyCount - 1;
+        }
         GameObject xp = Instantiate(xpObjects[Random.Range(0,xpObjects.Length)]);
         xp.transform.position = transform.position;
         Destroy(gameObject);
