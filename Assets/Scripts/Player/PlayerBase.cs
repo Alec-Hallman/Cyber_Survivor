@@ -58,7 +58,6 @@ public class PlayerBase : MonoBehaviour
     void Update()
     {
         //Movement Block
-        Debug.Log(animator.GetBool("Walking"));
         Vector2 movement = new Vector2();
 
         if (Input.GetKey(KeyCode.W))
