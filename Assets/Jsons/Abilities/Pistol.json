@@ -1,0 +1,67 @@
+{
+    "abilities":[
+        {
+            "name": "Pistol",
+            "tier": 1,
+            "difficulty": 0,
+            "pair": false,
+            "value":0.8,
+            "value2":10,
+            "radioactive": false,
+            "description": "You get a Pistol, thats it."
+
+        },
+        {
+            "name": "Pistol",
+            "tier": 2,
+            "difficulty": 0,
+            "pair": false,
+            "value":0.5,
+            "value2":10,
+            "radioactive": false,
+            "description": "Increases Pistol attack speed"
+
+        },
+        {
+            "name": "Pistol",
+            "tier": 3,
+            "difficulty": 0,
+            "pair": false,
+            "value":0.5,
+            "value2":20,
+            "radioactive": false,
+            "description": "Increases Pistol magazine size"
+
+        },
+        {
+            "name": "Pistol",
+            "tier": 4,
+            "difficulty": 10,
+            "pair": false,
+            "value":0.1,
+            "value2":30,
+            "radioactive": false,
+            "description": "Greatly Increase pistol attack speed"
+
+        },
+        {
+            "name": "Pistol",
+            "tier": 5,
+            "difficulty": 5,
+            "pair": true,
+            "value":0.1,
+            "value2":30,
+            "radioactive": true,
+            "description": "Max: NEVER STOP FIRINIG"
+        },
+        {
+            "name": "Pistol",
+            "tier": 6,
+            "difficulty": 0,
+            "pair": true,
+            "value":0.1,
+            "value2":30,
+            "description": ""
+        }
+    ]
+}

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2593966330482353774}
   m_Layer: 10
   m_Name: FastEnemy
-  m_TagString: Enemy
+  m_TagString: HardEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,9 +213,11 @@ MonoBehaviour:
   damage: 1.2
   hittingPlayer: 0
   player: {fileID: 0}
+  spawnScript: {fileID: 0}
   time: 0
   walking: 0
   xpObjects:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   tracking: 1
   radioactiveBool: 0
+  chunkScript: {fileID: 0}

@@ -34,8 +34,10 @@ public class PlayerBase : MonoBehaviour
     private bool phasing;
     private bool canPhase;
     public float PhaseCooldown;
+    private AbilityManager managerScript;
      
     void Start(){
+        className = PlayerPrefs.GetString("Class");
         canPhase = true;
         spawnScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>();
         dodged = false;
@@ -47,6 +49,7 @@ public class PlayerBase : MonoBehaviour
         UI = GameObject.Find("Canvas");
         uiScript = UI.GetComponent<UIManager>();
         Invoke("initClassAbility",0.01f);
+        managerScript = GameObject.Find("Manager").GetComponent<AbilityManager>();
         
 
 
@@ -81,7 +84,7 @@ public class PlayerBase : MonoBehaviour
             walking = true;
         }
         if(!walking && Time.realtimeSinceStartup - standTimer > 10){ //If the player is standing still for more than 10 seconds to encourage them to move again.
-            spawnScript.StartWave("RangedEnemyBullet", 1); //For one second only spawn ranged enemies
+            //spawnScript.StartWave("RangedEnemyBullet", 1); //For one second only spawn ranged enemies
         }
         transform.Translate(movement * speed * Time.deltaTime);
         //End of movememnt block
@@ -173,8 +176,13 @@ public class PlayerBase : MonoBehaviour
     }
 
     void initClassAbility(){
-        string json = File.ReadAllText("Assets/Jsons/Classes/Ninja.json");
-        Calsses classInfo = JsonUtility.FromJson<Calsses>(json);
+        //managerScript.ApplyClassCard(className);
+        //Debug.Log("Name: " + className)
+        string fileLocation = "Jsons/Classes/" + className;
+        TextAsset jsonFile = Resources.Load<TextAsset>(fileLocation);
+        //Debug.Log("FileLocation: " + fileLocation);
+        string json = jsonFile.text;
+        Classes classInfo = JsonUtility.FromJson<Classes>(json);
         className = classInfo.name;
         speed = classInfo.speed;
         ability = classInfo.ability;

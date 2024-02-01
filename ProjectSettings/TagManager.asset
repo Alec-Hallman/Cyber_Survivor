@@ -11,6 +11,9 @@ TagManager:
   - Going
   - SendBack
   - Thrown
+  - MediumEnemy
+  - EasyEnemy
+  - HardEnemy
   layers:
   - Default
   - TransparentFX

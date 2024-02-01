@@ -25,12 +25,18 @@ public class UIManager : MonoBehaviour
     public void DisplayHit(float number, GameObject givenObject, bool gain, bool poison){
         //Note Number = the damage
         objectPointer = givenObject;
+        float tempNumber = number;
         number = (float)Math.Round(number, 1);
+        if(number == 0){
+            number = tempNumber;
+            number = (float)Math.Round(number,2);
+            Debug.Log(number);
+        }
         textClone = Instantiate(text, transform);
         textClone.GetComponent<TextMeshProUGUI>().text = number.ToString();
         textClone.GetComponent<DamageNumber>().getObject = givenObject;
         float scale = 0F;
-        if(givenObject.tag == "Enemy"){
+        if(givenObject.tag.Contains("Enemy")){
             //If an enemy is taking damage set the size to always be 0.8F
             scale = 0.8F;
             //Unless It's poisoned because it gets hard to see things with all the big markers.
@@ -65,7 +71,7 @@ public class UIManager : MonoBehaviour
                 textClone.GetComponent<TextMeshProUGUI>().color = Color.green;
             }
         }
-        else if(givenObject.tag == "Enemy"){
+        else if(givenObject.tag.Contains("Enemy")){
             //if the object is an enemy make the colour black.
             if(!gain){
                 textClone.GetComponent<TextMeshProUGUI>().color = Color.black;

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5635078208574684506}
   m_Layer: 10
   m_Name: RangedEnemyBullet
-  m_TagString: Enemy
+  m_TagString: HardEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,11 +208,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  attackSpeed: 2.5
+  attackSpeed: 4
   walkSpeed: 3
   damage: 2.5
   hittingPlayer: 0
   player: {fileID: 0}
+  spawnScript: {fileID: 0}
   time: 0
   walking: 0
   xpObjects:
@@ -221,5 +222,6 @@ MonoBehaviour:
   - {fileID: 3290207037802396383, guid: b0a932c081ef47846995ae54660abdde, type: 3}
   tracking: 1
   radioactiveBool: 0
+  chunkScript: {fileID: 0}
   ammount: 3
   projectile: {fileID: 7875342382005790881, guid: 05327748f1bfbd9409db0b999f5e0877, type: 3}

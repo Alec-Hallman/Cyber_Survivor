@@ -15,13 +15,13 @@ public class PlayerManager : MonoBehaviour
     private float xChange;
     private Vector3 scaleChange;
     private GameObject manager;
-    private GameObject enemyManager;
+    private SpawnScript spawnScript;
     private float xpNeeded;
     
     private List<AbilitiesWrapper> abilities;
     void Start()
     {
-        enemyManager = GameObject.Find("EnemyManager");
+        spawnScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>();
         xpNeeded = 10f;
         manager = GameObject.Find("Manager");
         xpBar = GameObject.Find("Xp");
@@ -58,6 +58,9 @@ public class PlayerManager : MonoBehaviour
     void LevelUp(){
         manager.GetComponent<AbilityManager>().GenerateDisplay();
         level += 1;
+        if(level == 5){
+            spawnScript.EnemyShift();
+        }
         currentXp = currentXp - neededXp;
         if(xpNeeded < 80){
             xpNeeded *= 1.15f;
@@ -71,7 +74,7 @@ public class PlayerManager : MonoBehaviour
                 xpBar.transform.localScale += scaleChange;
             }
         }
-        enemyManager.GetComponent<SpawnScript>().IncreaseRate();
+        spawnScript.IncreaseRate();
 
     }
     void OnCollisionEnter2D(Collision2D col){
