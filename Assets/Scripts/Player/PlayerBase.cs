@@ -103,7 +103,7 @@ public class PlayerBase : MonoBehaviour
         }
         if(!dead && !(Time.timeScale == 0) && !dodged && !phasing){
             //if not dead than display the hitmarker lower health and call died if health has hit or passed 0
-            uiScript.DisplayHit((damage * resist),this.gameObject, false, false);
+            //uiScript.DisplayHit((damage * resist),this.gameObject, false, false);
             healthBar.ReduceHealthBar(damage);
             health -= damage * resist;
             if(canPhase){
@@ -123,6 +123,8 @@ public class PlayerBase : MonoBehaviour
         } else if(dodged){
             dodged = false;
         }
+        animator.SetBool("Damage",true);
+        Invoke("StopDamage", 0.1f);
     }
     void Died(){
         //call dead
@@ -152,6 +154,9 @@ public class PlayerBase : MonoBehaviour
 
             }
         }
+    }
+    private void StopDamage(){
+        animator.SetBool("Damage", false);
     }
     private void StopHealAnimation(){
 //        Debug.Log("Turning off animation");

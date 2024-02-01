@@ -177,7 +177,7 @@ public class SpawnScript : MonoBehaviour
                     counter ++;
                 }
             } else{
-                while(waveObject != null && waveObject.tag.Contains("Hard") && !waveObject.name.Contains("Ranged")){
+                while(waveObject != null && waveObject.tag.Contains("Hard")){
                     waveObject = enemyObjects[Random.Range(0,currentSelectionEnemies.Count)];
 
                 }

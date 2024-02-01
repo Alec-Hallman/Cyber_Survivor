@@ -102,14 +102,14 @@ public class Missle : MonoBehaviour
     //Wait for 0.5 seconds before spawning the next missile
 }
     void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag == "Enemy"){
+        if(col.gameObject.tag.Contains("Enemy")){
             if(!enemyQueue.Contains(col.gameObject)){
                 enemyQueue.Enqueue(col.gameObject);
                // Debug.Log("Enqueue Length is now: " + enemyQueue.Count);
 
             }
         }
-        if(col.gameObject.tag == "Enemy" && enemy == null){
+        if(col.gameObject.tag.Contains("Enemy") && enemy == null){
             //Debug.Log("Hit enemy");
             //Debug.Log("I hit an enemy and have invoked ShootMissle");
             EnemyClean();
