@@ -80,7 +80,7 @@ public class SpawnScript : MonoBehaviour
                 float angle = Random.Range(0,2 * Mathf.PI);
                 Vector2 randPosition;
                 if(newPosition){
-                    randPosition = playerPositio + (new Vector2( Mathf.Cos(angle), Mathf.Sin(angle)) * 12);
+                    randPosition = playerPositio + (new Vector2( Mathf.Cos(angle), Mathf.Sin(angle)) * 15);
                     oldPosition = randPosition;
                 } else{
                     randPosition = oldPosition;
@@ -89,12 +89,12 @@ public class SpawnScript : MonoBehaviour
                 GameObject tempEnemy;
                 if(!wave){
                     tempEnemy = Instantiate(enemyObject, randPosition, transform.rotation);
-                    enemyCount++;
+                    enemyCount += 1;
 
                 } else{
                     tempEnemy = Instantiate(waveObject,randPosition + Random.insideUnitCircle * 2,transform.rotation);
                     newPosition = false;
-                    enemyCount++;
+                    enemyCount += 1;
                 }
                 EnemyBase tempScript = tempEnemy.GetComponent<EnemyBase>();
                 tempScript.Balancing(healthMultiplier);
@@ -109,7 +109,7 @@ public class SpawnScript : MonoBehaviour
                 swarmSpawnTimer = Time.realtimeSinceStartup;
             }
             if((Time.realtimeSinceStartup - waveTime) > waveTimer){
-                StartWave("",2);  //If its been long enough start a wave of a random enemy          
+                StartWave("",10);  //If its been long enough start a wave of a random enemy          
             }
         }
     }
@@ -146,7 +146,9 @@ public class SpawnScript : MonoBehaviour
            positionSet = true;
     }
     public void IncreaseRate(){
-        spawnRate *= 0.9f;
+        if(spawnRate > 0.4){
+            spawnRate *= 0.9f;
+        }
     }
     public void IncreaseDifficulty(int ammount){
         difficulty += ammount;
@@ -163,7 +165,7 @@ public class SpawnScript : MonoBehaviour
     }
     public void StartWave(string enemyName, float durration){
         if(!wave){
-            spawnRate *= 0.6f;
+            spawnRate *= 0.5f;
             waveDurration = durration;
             //Debug.Log("Starting a wave of: " + enemyName);
             if(enemyName != ""){ //if given an empty string start a random wave of enemies
@@ -175,7 +177,7 @@ public class SpawnScript : MonoBehaviour
                     counter ++;
                 }
             } else{
-                while(waveObject != null && waveObject.tag.Contains("Hard")){
+                while(waveObject != null && waveObject.tag.Contains("Hard") && !waveObject.name.Contains("Ranged")){
                     waveObject = enemyObjects[Random.Range(0,currentSelectionEnemies.Count)];
 
                 }
@@ -186,7 +188,7 @@ public class SpawnScript : MonoBehaviour
         }
     }
     void EndWave(){
-        spawnRate *= 1.4f;
+        spawnRate *= 1.5f;
         wave = false;
         newPosition = true;
         waveTime = Time.realtimeSinceStartup;
@@ -203,6 +205,7 @@ public class SpawnScript : MonoBehaviour
     }
     void NewWaveTimer(){
         waveTimer = Random.Range(60, 120);
+        //spawnRate *= 0.5f;
     }
     public void EnemyShift(){
         if(!med){

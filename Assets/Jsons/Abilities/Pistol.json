@@ -52,7 +52,7 @@
             "value":0.1,
             "value2":30,
             "radioactive": true,
-            "description": "MAX: Not sure what this should do yet."
+            "description": "Max: NEVER STOP FIRINIG"
         },
         {
             "name": "Pistol",

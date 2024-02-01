@@ -31,10 +31,13 @@ public class EnemyBase : MonoBehaviour
     private bool dead;
     protected bool playerInRange;
     private bool knockBack;
+    public ChunkManager chunkScript;
 
     // Start is called before the first frame update
     public void EnemyStart()
     {
+        //chunkScript = GameObject.Find("MapManager").GetComponent<ChunkManager>();
+        //Debug.Log("chunk");
         playerInRange = false;
         knockBack = false;
         dead = false;
@@ -82,9 +85,16 @@ public class EnemyBase : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().color = startColor;
             }
         }
-       
-
-
+    }
+    void FixedUpdate(){
+        // if(Time.frameCount % 100 == 0){
+        //     //Debug.Log("Chunk script name: " +chunkScript.name);
+        //     if(chunkScript == null){
+        //         Debug.Log("Chunk Script is null");
+        //     }
+        //     chunkScript.theMap.UpdateObjectChunk(gameObject);
+        //     //chunk.Tostring();
+        // }
     }
     void OnTriggerEnter2D(Collider2D hit){
         if(hit.gameObject.tag == "Player"){

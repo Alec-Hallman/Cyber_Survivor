@@ -172,6 +172,7 @@ public class PlayerAbilitys : MonoBehaviour
             } else if(card.name == "Pistol"){
                 tempScript.attackSpeed = card.value;
                 tempScript.magazineSize = card.value2;
+                tempScript.noReload = card.radioactive;
             }
             
         }

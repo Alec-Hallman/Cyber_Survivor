@@ -19,6 +19,7 @@ public class WeaponBase : MonoBehaviour
     public bool radioactive;
     public bool deflect;
     public float steal = 0;
+    public bool noReload;
     // Start is called before the first frame update
     public void WeaponStart()
     {

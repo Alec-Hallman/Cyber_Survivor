@@ -15,7 +15,7 @@ public class ClassSelectionScript : MonoBehaviour
 
     // Update is called once per frame
     void Start(){
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
         cards = GetComponentsInChildren<ClassCardDisplay>();
     }
     void Update()

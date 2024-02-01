@@ -84,7 +84,7 @@ public class PlayerBase : MonoBehaviour
             walking = true;
         }
         if(!walking && Time.realtimeSinceStartup - standTimer > 10){ //If the player is standing still for more than 10 seconds to encourage them to move again.
-            spawnScript.StartWave("RangedEnemyBullet", 1); //For one second only spawn ranged enemies
+            //spawnScript.StartWave("RangedEnemyBullet", 1); //For one second only spawn ranged enemies
         }
         transform.Translate(movement * speed * Time.deltaTime);
         //End of movememnt block
@@ -177,9 +177,11 @@ public class PlayerBase : MonoBehaviour
 
     void initClassAbility(){
         //managerScript.ApplyClassCard(className);
-        string fileLocation = "Assets/Jsons/Classes/" + className + ".json";
+        //Debug.Log("Name: " + className)
+        string fileLocation = "Jsons/Classes/" + className;
+        TextAsset jsonFile = Resources.Load<TextAsset>(fileLocation);
         //Debug.Log("FileLocation: " + fileLocation);
-        string json = File.ReadAllText(fileLocation);
+        string json = jsonFile.text;
         Classes classInfo = JsonUtility.FromJson<Classes>(json);
         className = classInfo.name;
         speed = classInfo.speed;

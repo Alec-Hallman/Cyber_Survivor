@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6619288842901715228}
   - component: {fileID: 6040670667948432516}
+  - component: {fileID: 673246126247652942}
   m_Layer: 0
-  m_Name: Map Manager
+  m_Name: MapManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +48,15 @@ MonoBehaviour:
   objects:
   - {fileID: 6062897241419218785, guid: 599af49be7bc5b843879157569280afa, type: 3}
   spawnCount: 10
+--- !u!114 &673246126247652942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437890968478377029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e4e60a9020b8a4ab1886fcdfc8a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

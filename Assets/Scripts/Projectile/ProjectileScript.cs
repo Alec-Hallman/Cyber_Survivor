@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
+//using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 //This script handels basic projectile behaviour. All projectiles will be chasing the gameobject given to them and travel to that location. They will also deal damage.
@@ -130,4 +130,5 @@ public class ProjectileScript : MonoBehaviour
         //Debug.Log(gameObject.layer);
         gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
     }
+
 }

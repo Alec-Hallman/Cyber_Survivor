@@ -22,10 +22,10 @@ public class MenuScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)){
             if(selection == 1){
                 classMenu.SetActive(true);
-                TurnOff();
+                //TurnOff();
                 //SceneManager.LoadScene("TheGame");
             }else{
-                TurnOff();
+                //TurnOff();
             }
         } else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){
             oldSelection = selection;

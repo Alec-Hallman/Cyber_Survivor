@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Pistol
   type: Weapon
-  description: 
+  description: You get a Pistol, thats it.
   icon: {fileID: 21300000, guid: 30a0c79ebfcadac4f865f0e4ea1ba778, type: 3}
-  tier: 5
-  difficulty: 5
-  value: 0.1
-  value2: 30
-  radioactive: 1
+  tier: 0
+  difficulty: 0
+  value: 0.8
+  value2: 10
+  radioactive: 0
   json: {fileID: 4900000, guid: f83c97cb8fa7cfe49b53181ba99a57e0, type: 3}
   jsonArray:
   - name: Pistol
@@ -64,7 +64,7 @@ MonoBehaviour:
     type: 
     tier: 5
     pair: 1
-    description: 'MAX: Not sure what this should do yet.'
+    description: 'Max: NEVER STOP FIRINIG'
     value: 0.1
     value2: 30
     radioactive: 1
