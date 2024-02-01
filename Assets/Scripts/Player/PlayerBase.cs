@@ -7,7 +7,7 @@ using UnityEngine;
 //manages base player behaviour
 public class PlayerBase : MonoBehaviour
 {
-
+    [SerializeField]private SpriteRenderer playerrenderer;
     public float resist;
     private HealthBar healthBar;
     public string className;
@@ -58,6 +58,7 @@ public class PlayerBase : MonoBehaviour
     void Update()
     {
         //Movement Block
+        Debug.Log(animator.GetBool("Walking"));
         Vector2 movement = new Vector2();
 
         if (Input.GetKey(KeyCode.W))
@@ -72,16 +73,27 @@ public class PlayerBase : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             movement.x = -1;
+
         }
         else if (Input.GetKey(KeyCode.D))
         {
             movement.x = 1;
         }
         if(walking && movement.y == 0 && movement.x == 0){
+            animator.SetBool("Walking", false);
             walking = false;
             GetStandTime();
         } if(movement.y != 0 || movement.x != 0){
+            if (movement.x > 0){
+                playerrenderer.flipX = true;
+            }
+            else if (movement.x < 0)
+            {
+                playerrenderer.flipX = false;
+            }
+            
             walking = true;
+            animator.SetBool("Walking", true);
         }
         if(!walking && Time.realtimeSinceStartup - standTimer > 10){ //If the player is standing still for more than 10 seconds to encourage them to move again.
             //spawnScript.StartWave("RangedEnemyBullet", 1); //For one second only spawn ranged enemies
@@ -108,10 +120,11 @@ public class PlayerBase : MonoBehaviour
             health -= damage * resist;
             if(canPhase){
                 phasing = true;
+
                 if(passThrough){
                     gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
                 }
-                animator.SetBool("Phasing",true);
+                //animator.SetBool("Phasing",true);
                 Invoke("StopPhase", phaseDurration);
                 canPhase = false;
                 Invoke("CanPhase", PhaseCooldown);
@@ -166,7 +179,7 @@ public class PlayerBase : MonoBehaviour
     }
     void StopPhase(){
         phasing = false;
-        animator.SetBool("Phasing",false);
+        //animator.SetBool("Phasing",false);
         if(passThrough){
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
