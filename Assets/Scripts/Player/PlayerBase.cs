@@ -80,6 +80,7 @@ public class PlayerBase : MonoBehaviour
         }
         if(walking && movement.y == 0 && movement.x == 0){
             animator.SetBool("Walking", false);
+            Debug.Log("Not Walking");
             walking = false;
             GetStandTime();
         } if(movement.y != 0 || movement.x != 0){
@@ -92,6 +93,7 @@ public class PlayerBase : MonoBehaviour
             }
             
             walking = true;
+            Debug.Log("Walking");
             animator.SetBool("Walking", true);
         }
         if(!walking && Time.realtimeSinceStartup - standTimer > 10){ //If the player is standing still for more than 10 seconds to encourage them to move again.
