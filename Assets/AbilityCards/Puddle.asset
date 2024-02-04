@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Puddle
   type: Weapon
-  description: 
+  description: Spit out a pool of chemical waste
   icon: {fileID: 21300000, guid: f6283f26a9013bc459e27489617918ef, type: 3}
-  tier: 5
-  difficulty: 5
-  value: 4
-  value2: 4
-  radioactive: 1
+  tier: 0
+  difficulty: 3
+  value: 2
+  value2: 1
+  radioactive: 0
   json: {fileID: 4900000, guid: 3f7c01f7fcd09e04b9b10472982efec3, type: 3}
   jsonArray:
   - name: Puddle

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Pistol
   type: Weapon
-  description: 
+  description: Increases Pistol attack speed
   icon: {fileID: 21300000, guid: 30a0c79ebfcadac4f865f0e4ea1ba778, type: 3}
-  tier: 5
-  difficulty: 5
-  value: 0.1
-  value2: 30
-  radioactive: 1
+  tier: 1
+  difficulty: 0
+  value: 0.8
+  value2: 5
+  radioactive: 0
   json: {fileID: 4900000, guid: f83c97cb8fa7cfe49b53181ba99a57e0, type: 3}
   jsonArray:
   - name: Pistol
@@ -30,7 +30,7 @@ MonoBehaviour:
     pair: 0
     description: You get a Pistol, thats it.
     value: 0.8
-    value2: 10
+    value2: 5
     radioactive: 0
   - name: Pistol
     difficulty: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     pair: 0
     description: Increases Pistol attack speed
     value: 0.5
-    value2: 10
+    value2: 5
     radioactive: 0
   - name: Pistol
     difficulty: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     pair: 0
     description: Increases Pistol magazine size
     value: 0.5
-    value2: 20
+    value2: 10
     radioactive: 0
   - name: Pistol
     difficulty: 10
@@ -56,8 +56,8 @@ MonoBehaviour:
     tier: 4
     pair: 0
     description: Greatly Increase pistol attack speed
-    value: 0.1
-    value2: 30
+    value: 0.3
+    value2: 20
     radioactive: 0
   - name: Pistol
     difficulty: 5

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuddleWeapon : WeaponBase
+public class PuddleWeapon : WeaponMeeleBase
 {
     // Start is called before the first frame update
     public float maxSize;
@@ -11,7 +11,7 @@ public class PuddleWeapon : WeaponBase
     void Start()
     {
         timer = Time.realtimeSinceStartup;
-        WeaponStart();
+        MeeleStart();
         this.transform.localScale = new Vector2(maxSize, maxSize);
         gameObject.GetComponent<CircleCollider2D>().radius = 0.5f;
     }
