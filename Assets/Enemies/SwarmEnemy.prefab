@@ -210,13 +210,15 @@ MonoBehaviour:
   health: 10
   attackSpeed: 0.4
   walkSpeed: 10
-  damage: 2
+  damage: 1
   hittingPlayer: 0
   player: {fileID: 0}
+  spawnScript: {fileID: 0}
   time: 0
   walking: 0
   xpObjects:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   tracking: 0
   radioactiveBool: 0
+  chunkScript: {fileID: 0}
   lifeTime: 7

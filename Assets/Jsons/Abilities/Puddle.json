@@ -1,0 +1,67 @@
+{
+    "abilities":[
+        {
+            "name": "Puddle",
+            "tier": 1,
+            "difficulty": 3,
+            "pair": false,
+            "radioactive": false,
+            "value": 2,
+            "value2": 1,
+            "description": "Spit out a pool of chemical waste"
+
+        },
+        {
+            "name": "Puddle",
+            "tier": 2,
+            "difficulty": 2,
+            "pair": false,
+            "radioactive": false,
+            "value": 2.5,
+            "value2": 1,
+            "description": "Increases pool size"
+
+        },
+        {
+            "name": "Puddle",
+            "tier": 3,
+            "difficulty": 1,
+            "pair": false,
+            "radioactive": false,
+            "value": 2.5,
+            "value2": 3,
+            "description": "Greatly increases damage"
+
+        },
+        {
+            "name": "Puddle",
+            "tier": 4,
+            "difficulty": 4,
+            "pair": false,
+            "radioactive": false,
+            "value": 4,
+            "value2": 4,
+            "description": "Increases pool damage and size"
+
+        },
+        {
+            "name": "Puddle",
+            "tier": 5,
+            "difficulty": 5,
+            "pair": true,
+            "radioactive": true,
+            "value": 4,
+            "value2": 4,
+            "description": "Max: Puddles now dirastically slow enemies"
+        },
+        {
+            "name": "Puddle",
+            "tier": 6,
+            "difficulty": 5,
+            "pair": true,
+            "value": 10,
+            "value2": 0.5,
+            "description": ""
+        }
+    ]
+}

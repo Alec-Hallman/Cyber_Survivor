@@ -11,7 +11,10 @@ public class FPSCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentFPS = Time.frameCount / Time.time;
-        text.text = currentFPS.ToString();
+        if(Time.frameCount % 200 == 0){
+            float currentFPS = Time.frameCount / Time.time;
+            text.text = (1/Time.deltaTime).ToString();
+        }
+        
     }
 }

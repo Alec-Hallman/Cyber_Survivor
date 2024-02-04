@@ -10,8 +10,12 @@ public class RangedWeaponBase : WeaponBase
     private Transform enemyLocation;
     public GameObject projectile;
     private int shotCounter;
+    private float bulletCounter;
+    private bool right;
+    private bool spawned;
     void Start()
     {
+        spawned = false;
         shotCounter = 0;
         player = GameObject.Find("Player");
     }
@@ -22,10 +26,16 @@ public class RangedWeaponBase : WeaponBase
         this.transform.position = player.transform.position;
     }
     void OnTriggerEnter2D(Collider2D hit){
-        if(hit.gameObject.tag.Contains("Enemy") && enemyLocation == null){
+        if(hit.gameObject.tag.Contains("Enemy") && enemyLocation == null && !spawned){
             //Debug.Log("Projectile Script hit enemy");
             enemyLocation = hit.gameObject.transform;
-            Invoke("SpawnProjectiles", attackSpeed);
+            for(int i = 0; i < projectileCount; i++){
+                Invoke("SpawnProjectiles", attackSpeed);
+                Invoke("Done", attackSpeed);
+                spawned = true;
+                //bulletCounter += 0.1f;
+            }
+            //bulletCounter = 0;
         }
         
     }
@@ -35,11 +45,24 @@ public class RangedWeaponBase : WeaponBase
         }
         
     }
+    private void Done(){
+        spawned = false;
+        //bulletCounter = 0;
+    }
     void SpawnProjectiles(){
         if(enemyLocation != null){ // if we have a enemy location
             GameObject tempObj = Instantiate(projectile);
             tempObj.transform.localScale = new Vector2(tempObj.transform.localScale.x + 0.05f, tempObj.transform.localScale.y + 0.05f);
-            tempObj.transform.position = transform.position;
+            tempObj.transform.position = transform.position + new Vector3(bulletCounter,0,0);
+            if(right){
+                bulletCounter += 0.001f;
+                bulletCounter *= -1;
+                right = false;
+            } else if(!right){
+                bulletCounter *= -1;
+                right = true;
+
+            }
             ProjectileScript tempScript = tempObj.GetComponent<ProjectileScript>();
             if(poison){ // if the poison ability is active on this weapon (this should be simplified into weapon base later on)
                // Debug.Log("Setting Poison Bullet");
@@ -48,7 +71,6 @@ public class RangedWeaponBase : WeaponBase
                 tempScript.pDurration = pDurration;
                 tempScript.radioactive = radioactive;
             }
-            
             tempScript.targetLocation = enemyLocation;
             tempScript.parentScript = gameObject.GetComponent<WeaponBase>();
             tempScript.SendBack(false);

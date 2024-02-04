@@ -18,7 +18,7 @@ public class HackScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.localScale = Vector2.Lerp(transform.localScale, targetTransform, (speed *= 1.01f));
         //Debug.Log("Current transform: " + transform.localScale + " Target Transform: " + targetTransform);
@@ -29,7 +29,7 @@ public class HackScript : MonoBehaviour
         transform.position = player.transform.position;
     }
     void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag == "Enemy"){
+        if(col.gameObject.tag.Contains("Enemy")){
             //Debug.Log("hacking enemy");
         }
 }    

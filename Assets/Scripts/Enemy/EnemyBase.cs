@@ -11,6 +11,7 @@ public class EnemyBase : MonoBehaviour
     public float damage;
     public bool hittingPlayer;
     public GameObject player = null;
+    //private Transform playerPosition;
     private Vector2 direction;
     public SpawnScript spawnScript;
     private GameObject UI;
@@ -22,7 +23,7 @@ public class EnemyBase : MonoBehaviour
     public bool tracking;
     protected bool hacked;
     private float distance;
-    private bool poisoned = false;
+    public bool poisoned = false;
     private float pDamage;
     public bool radioactiveBool;
     private float pTimer;
@@ -60,6 +61,10 @@ public class EnemyBase : MonoBehaviour
             Died();
         }
         //Debug.Log(distance);
+        // if(walking && !hacked){
+        //     Vector2 targetPosition = player.transform.position;
+        //     this.transform.position = Vector2.Lerp(this.transform.position, targetPosition, walkSpeed);
+        // }
         if(walking && !hacked){
             transform.right = player.transform.position - transform.position;
             if(!knockBack){ //Tracking refers to enemies that will walk directly towards the player, the swarm is the only non tracking enemy atm.
