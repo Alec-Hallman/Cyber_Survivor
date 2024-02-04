@@ -56,15 +56,16 @@ public class RangedWeaponBase : WeaponBase
     }
     void StartProjectiles(){
         if(!spawned){
+            Debug.Log("Shots: " + shotCounter + "Magazine size: " +magazineSize);
+            spawned = true;
             for(int i = 0; i < projectileCount; i++){
-                    Invoke("SpawnProjectiles", attackSpeed);
-                    Invoke("Done", attackSpeed);
-                    spawned = true;
+                    SpawnProjectiles();
                     //bulletCounter += 0.1f;
             }
-            spawned = true;
+            //spawned = true;
+            Invoke("Done", attackSpeed);
             Invoke("ResetCounter", attackSpeed + 0.05f);
-            if(shotCounter < magazineSize){
+            if(shotCounter < magazineSize - 1){
                 Invoke("StartProjectiles",attackSpeed);
                 if(!noReload){
                     shotCounter+=1;
@@ -72,8 +73,9 @@ public class RangedWeaponBase : WeaponBase
             } else{
                 shotCounter = 0;
                 Invoke("StartProjectiles", attackSpeed + reloadSpeed);
-                Invoke("StartAnimation", attackSpeed + reloadSpeed);
-                animator.SetBool("Reloading",true);
+                StartAnimation();
+                //animator.SetBool("Reloading",true);
+                //Debug.Log("Reloading")
             }
         }
     }
@@ -82,7 +84,7 @@ public class RangedWeaponBase : WeaponBase
     }
     void StartAnimation(){
         animator.SetBool("Reloading",true);
-        Invoke("StopAnimation",0.5f);
+        Invoke("StopAnimation",0.6f);
     }
     void SpawnProjectiles(){
         //if(enemyLocation != null){ // if we have a enemy location
@@ -108,7 +110,7 @@ public class RangedWeaponBase : WeaponBase
         }
         if(enemyLocation != null){ //If we have an enemy location
             tempScript.targetLocation = enemyLocation;
-        } else if(enemiesInRange.Count > 0){ //else if the queue isnt empty
+        } else if(enemiesInRange != null && enemiesInRange.Count > 0){ //else if the queue isnt empty
             GameObject tempEnemy = QueueClean(); //try and find a new enemy
             if(tempEnemy != null){ //if an enemy is found
                 enemyLocation = tempEnemy.transform;
