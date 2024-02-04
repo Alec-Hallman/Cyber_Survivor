@@ -6,7 +6,7 @@
             "difficulty": 0,
             "pair": false,
             "value":0.8,
-            "value2":10,
+            "value2":5,
             "radioactive": false,
             "description": "You get a Pistol, thats it."
 
@@ -17,7 +17,7 @@
             "difficulty": 0,
             "pair": false,
             "value":0.5,
-            "value2":10,
+            "value2":5,
             "radioactive": false,
             "description": "Increases Pistol attack speed"
 
@@ -28,7 +28,7 @@
             "difficulty": 0,
             "pair": false,
             "value":0.5,
-            "value2":20,
+            "value2":10,
             "radioactive": false,
             "description": "Increases Pistol magazine size"
 
@@ -38,8 +38,8 @@
             "tier": 4,
             "difficulty": 10,
             "pair": false,
-            "value":0.1,
-            "value2":30,
+            "value":0.3,
+            "value2":20,
             "radioactive": false,
             "description": "Greatly Increase pistol attack speed"
 
