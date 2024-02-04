@@ -10,65 +10,65 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
-  m_Name: Hack
+  m_Name: Puddle
   m_EditorClassIdentifier: 
-  abilityName: Hack
-  type: ability
+  abilityName: Puddle
+  type: Weapon
   description: 
-  icon: {fileID: 21300000, guid: 2e046a82437587a4b984488282dad4eb, type: 3}
+  icon: {fileID: 21300000, guid: f6283f26a9013bc459e27489617918ef, type: 3}
   tier: 5
   difficulty: 5
-  value: 10
-  value2: 1.5
-  radioactive: 0
-  json: {fileID: 4900000, guid: 206a0f53e65709a4695b694eadfe79af, type: 3}
+  value: 4
+  value2: 4
+  radioactive: 1
+  json: {fileID: 4900000, guid: 3f7c01f7fcd09e04b9b10472982efec3, type: 3}
   jsonArray:
-  - name: Hack
+  - name: Puddle
     difficulty: 3
     type: 
     tier: 1
     pair: 0
-    description: periodically hacks enemies in a small radius
-    value: 5
-    value2: 3.5
+    description: Spit out a pool of chemical waste
+    value: 2
+    value2: 1
     radioactive: 0
-  - name: Hack
+  - name: Puddle
     difficulty: 2
     type: 
     tier: 2
     pair: 0
-    description: Slight Increases hack radius
-    value: 6.5
-    value2: 3
+    description: Increases pool size
+    value: 2.5
+    value2: 1
     radioactive: 0
-  - name: Hack
+  - name: Puddle
     difficulty: 1
     type: 
     tier: 3
     pair: 0
-    description: Slight increase in hack frequency
-    value: 6.5
-    value2: 2.5
+    description: Greatly increases damage
+    value: 2.5
+    value2: 3
     radioactive: 0
-  - name: Hack
+  - name: Puddle
     difficulty: 4
     type: 
     tier: 4
     pair: 0
-    description: large increase in hack frequency and radius
-    value: 8.5
-    value2: 2
+    description: Increases pool damage and size
+    value: 4
+    value2: 4
     radioactive: 0
-  - name: Hack
+  - name: Puddle
     difficulty: 5
     type: 
     tier: 5
     pair: 1
-    description: 'Max: HACK THE WORLD'
-    value: 10
-    value2: 1.5
-    radioactive: 0
-  - name: Hack
+    description: 'Max: Puddles now dirastically slow enemies'
+    value: 4
+    value2: 4
+    radioactive: 1
+  - name: Puddle
     difficulty: 5
     type: 
     tier: 6

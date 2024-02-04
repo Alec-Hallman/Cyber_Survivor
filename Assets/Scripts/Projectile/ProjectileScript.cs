@@ -40,7 +40,12 @@ public class ProjectileScript : MonoBehaviour
     {
         explosive = false;
         timer2 = Time.realtimeSinceStartup;
-        currentPosition = targetLocation.position;
+        if(targetLocation != null){
+            currentPosition = targetLocation.position;
+        } 
+        // else{
+        //     currentPosition = this.transform.position + new Vector3(0,0.1f,0);
+        // }
         GetCurrentTime();
         direction = (currentPosition - transform.position).normalized;
     }

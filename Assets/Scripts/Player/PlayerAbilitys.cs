@@ -23,6 +23,7 @@ public class PlayerAbilitys : MonoBehaviour
     private bool poisonActive;
     private AbilityCards poison;
     private AbilityCards lifeSteal;
+    [SerializeField] GameObject puddleManager;
     void Start()
     {
         poisonActive = false;
@@ -67,7 +68,8 @@ public class PlayerAbilitys : MonoBehaviour
             hackCheck = true;
             hack.GetComponent<HackScript>().radius = card.value;
 
-        } else if(card.abilityName == "LifeSteal"){
+        }
+        else if(card.abilityName == "LifeSteal"){
             stealActive = true;
             lifeSteal = card;
             ApplySteal(null);
@@ -118,6 +120,11 @@ public class PlayerAbilitys : MonoBehaviour
                 weapon.transform.localScale = new Vector2(2,2);
                 tempScript.attackSpeed = card.value;
                 tempScript.magazineSize = card.value2;
+            } else if(card.name == "Puddle"){
+                PuddleScript tempScript;
+                tempScript = weapon.GetComponent<PuddleScript>();
+                tempScript.size = card.value;
+                tempScript.damage = card.value2;
             }
             if(poisonActive){
                 ApplyPoison(weapon); //This only happens if poison has been chosen and a new weapon has just been made
@@ -159,6 +166,7 @@ public class PlayerAbilitys : MonoBehaviour
         } else if(card.type == "Weapon"){
             //Debug.Log(weaponScripts[0].name + " Card Name: " + card.name);
             int counter = 0;
+            Debug.Log("Upgradding a weapon");
             WeaponBase tempScript = weaponScripts[0];
             while(!tempScript.name.Contains(card.name)){
                 counter++;
@@ -173,6 +181,10 @@ public class PlayerAbilitys : MonoBehaviour
                 tempScript.attackSpeed = card.value;
                 tempScript.magazineSize = card.value2;
                 tempScript.noReload = card.radioactive;
+            }else if(card.name == "Puddle"){
+                Debug.Log("Upgradding a puddle weapon");
+                tempScript.size = card.value;
+                tempScript.damage = card.value2;
             }
             
         }

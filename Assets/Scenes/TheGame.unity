@@ -3886,10 +3886,12 @@ MonoBehaviour:
   avalibleWeapons:
   - {fileID: 6366370379397883178, guid: a250f50330c30ac40b1bc77933d35e06, type: 3}
   - {fileID: 5191486060888486055, guid: 794e06921bde24944a8063a59462ae37, type: 3}
+  - {fileID: 2002536189987476813, guid: 44e2a85f3f438574286c1b17a79389d7, type: 3}
   hack: {fileID: 6107054452068971814, guid: 6c212ec8aecd8444daa9101a7810f689, type: 3}
   missileFinder: {fileID: 2088838799921547007, guid: 9204f34aae4b42a459e11dbd2b99cac7, type: 3}
   weaponScript: {fileID: 0}
   activeWeapons: []
+  puddleManager: {fileID: 0}
 --- !u!95 &2009177479
 Animator:
   serializedVersion: 5
@@ -4053,6 +4055,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 437805315254057277, guid: bd603ca99be97c444b3099fefcfbf813, type: 3}
+      propertyPath: abilityCards.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 437805315254057277, guid: bd603ca99be97c444b3099fefcfbf813, type: 3}
+      propertyPath: abilityCards.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: e440a2cdd58ece34a8b9b94d60c3c416, type: 2}
     - target: {fileID: 837039845735960215, guid: bd603ca99be97c444b3099fefcfbf813, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1119816

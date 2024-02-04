@@ -5,13 +5,10 @@ using UnityEngine;
 public class Katana : WeaponBase
 {
     // Start is called before the first frame update
-    private bool dealDamage = false;
-
     private HashSet<GameObject> inRange = new HashSet<GameObject>();
     private HashSet<GameObject> toRemove = new HashSet<GameObject>();
     private bool hit1 = true;
     private float speedHolder;
-
     private bool hit2 = false;
     private Collider2D enemyObject;
     private Animator animator;
@@ -42,7 +39,7 @@ public class Katana : WeaponBase
             //RemoveFromList();
             //if damage is to be delt
             if(hit1 && Time.realtimeSinceStartup - time >= attackSpeed){
-                DealDamage(true);
+                DealDamageKatana(true);
                 swinging = true;
                 Invoke("NotSwinging",0.1f);
                 //Debug.Log("Hit1");
@@ -55,7 +52,7 @@ public class Katana : WeaponBase
             else if(hit2 && Time.realtimeSinceStartup - time >= attackInterval){
                 swinging = true;
                 Invoke("NotSwinging",0.2f);
-                DealDamage(true);
+                DealDamageKatana(true);
                 //Debug.Log("Hit2");
                 animator.SetBool("L-R", false);
                 animator.SetBool("R-L", true);
@@ -107,7 +104,7 @@ public class Katana : WeaponBase
     void Timer(){
         time = Time.realtimeSinceStartup;
     }
-    void DealDamage(bool remove){
+    void DealDamageKatana(bool remove){
         damaging = true;
         //Debug.Log("Calling Deal Damage");
 

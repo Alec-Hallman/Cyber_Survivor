@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Poison
   type: ability
-  description: Slightly increases poison damage
+  description: 
   icon: {fileID: 21300000, guid: 15bb575ab29a9284f8bdb8ee73b48a41, type: 3}
-  tier: 1
-  difficulty: 2
-  value: 1
-  value2: 5
-  radioactive: 0
+  tier: 5
+  difficulty: 5
+  value: 2
+  value2: 7
+  radioactive: 1
   json: {fileID: 4900000, guid: e6e78bc6da011a2489c341e99137125f, type: 3}
   jsonArray:
   - name: Poison

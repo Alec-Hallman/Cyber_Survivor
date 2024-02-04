@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Radius
   type: ability
-  description: Increases the pickup radius of all xp and health items Evo's with
-    idk yet
+  description: 
   icon: {fileID: 21300000, guid: 901b9f1ff442f334f8a6e817742835ee, type: 3}
-  tier: 0
+  tier: 5
   difficulty: 1
-  value: 2
+  value: 10
   value2: 0
   radioactive: 0
   json: {fileID: 4900000, guid: 819ca584aca0af842affe9ee5b3963d4, type: 3}

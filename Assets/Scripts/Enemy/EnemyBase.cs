@@ -23,7 +23,7 @@ public class EnemyBase : MonoBehaviour
     public bool tracking;
     protected bool hacked;
     private float distance;
-    private bool poisoned = false;
+    public bool poisoned = false;
     private float pDamage;
     public bool radioactiveBool;
     private float pTimer;
