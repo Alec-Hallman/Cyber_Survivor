@@ -30,7 +30,8 @@ public class HackScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag.Contains("Enemy")){
-            //Debug.Log("hacking enemy");
+            Debug.Log("hacking enemy");
+            col.gameObject.GetComponent<EnemyBase>().Hacked();
         }
 }    
 }

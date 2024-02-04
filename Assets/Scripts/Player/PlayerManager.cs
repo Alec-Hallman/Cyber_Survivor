@@ -43,14 +43,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            IncreaseXp(1);
+            IncreaseXp(5);
             //Debug.Log("Xp Needed to level up: " + neededXp);
         }
         
     }
     void IncreaseXp(int ammount){
         currentXp += ammount;
-        xpBar.transform.localScale += scaleChange;
+        xpBar.transform.localScale += (scaleChange * ammount);
         if(currentXp >= neededXp){
             LevelUp();
         }

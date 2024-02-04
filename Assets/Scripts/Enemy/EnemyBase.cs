@@ -33,6 +33,7 @@ public class EnemyBase : MonoBehaviour
     protected bool playerInRange;
     private bool knockBack;
     public ChunkManager chunkScript;
+    private SpriteRenderer objectRend;
 
     // Start is called before the first frame update
     public void EnemyStart()
@@ -42,7 +43,8 @@ public class EnemyBase : MonoBehaviour
         playerInRange = false;
         knockBack = false;
         dead = false;
-        startColor = this.GetComponent<SpriteRenderer>().color;
+        objectRend = this.GetComponent<SpriteRenderer>();
+        startColor = objectRend.color;
         hacked = false;
         player = GameObject.Find("Player");
         UI = GameObject.Find("Canvas");
@@ -87,7 +89,7 @@ public class EnemyBase : MonoBehaviour
             GetPTime();
             if(pDurration <= 0){
                 poisoned = false;
-                this.GetComponent<SpriteRenderer>().color = startColor;
+                objectRend.color = startColor;
             }
         }
     }
@@ -110,12 +112,24 @@ public class EnemyBase : MonoBehaviour
 
         }
         //Debug.Log("Hit: " + hit.gameObject.name);
-        if(hit.gameObject.name.Contains("Hack")){
-            //Debug.Log("hacked");
-            hacked = true;
-            GetComponent<Rigidbody2D>().velocity = ZERO;
-            Invoke("StopHack", 0.5f);
-        }
+        // if(hit.gameObject.name.Contains("Hack")){
+        //     Debug.Log("hacked");
+        //     hacked = true;
+        //     GetComponent<Rigidbody2D>().velocity = ZERO;
+        //     Invoke("StopHack", 0.5f);
+        // }
+    }
+    public void Hacked(){
+        //Debug.Log("hacked");
+        hacked = true;
+        GetComponent<Rigidbody2D>().velocity = ZERO;
+        objectRend.color = Color.yellow;
+        Invoke("StopHack", 0.5f);
+    }
+    void StopHack(){
+       // Debug.Log("Stopping Hack");
+        hacked = false;
+        objectRend.color = startColor;
     }
     void OnCollisionEnter2D(Collision2D hit){
         if(hit.gameObject.tag == "Player"){
@@ -161,7 +175,7 @@ public class EnemyBase : MonoBehaviour
             
         } else{
             if(!poisoned){
-                gameObject.GetComponent<SpriteRenderer>().color = Color.white; //if not poisoned don't change the enemies colour.
+                objectRend.color = Color.white; //if not poisoned don't change the enemies colour.
             }
             knockBack = true;
             Invoke("StopKnockBack",0.1f); //0.1f controls how long the knockback
@@ -184,10 +198,7 @@ public class EnemyBase : MonoBehaviour
         xp.transform.position = transform.position;
         Destroy(gameObject);
     }
-    void StopHack(){
-       // Debug.Log("Stopping Hack");
-        hacked = false;
-    }
+    
     public void Poisoned(float durration, float damage, bool radioactive){
         if(!poisoned){
             GetPTime();
@@ -195,7 +206,7 @@ public class EnemyBase : MonoBehaviour
             poisoned = true;   
             pDamage = damage;
             radioactiveBool = radioactive;
-            this.GetComponent<SpriteRenderer>().color = Color.green;    
+            objectRend.color = Color.green;    
         }
     }
     void GetPTime(){
@@ -208,7 +219,7 @@ public class EnemyBase : MonoBehaviour
     }
     private void StopKnockBack(){
         if(!poisoned){
-            this.GetComponent<SpriteRenderer>().color = startColor; //if the enemy is poisoned, aka green, then don't make them change colour.
+            objectRend.color = startColor; //if the enemy is poisoned, aka green, then don't make them change colour.
         }
         knockBack = false;
     }
