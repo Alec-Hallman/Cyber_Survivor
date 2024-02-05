@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    public GameObject brainWashed;
+    public bool hittingPuddle;
     public float health;
     public float attackSpeed;
     public float walkSpeed;
@@ -48,6 +50,7 @@ public class EnemyBase : MonoBehaviour
         hacked = false;
         player = GameObject.Find("Player");
         UI = GameObject.Find("Canvas");
+        hittingPuddle = false;
         if(!tracking){
             direction = (player.transform.position - transform.position).normalized;
         }
@@ -197,6 +200,9 @@ public class EnemyBase : MonoBehaviour
         GameObject xp = Instantiate(xpObjects[Random.Range(0,xpObjects.Length)]);
         xp.transform.position = transform.position;
         Destroy(gameObject);
+        if(hittingPuddle){
+            Instantiate(brainWashed); //Create minon that fights for the player
+        }
     }
     
     public void Poisoned(float durration, float damage, bool radioactive){

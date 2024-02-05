@@ -24,11 +24,13 @@ public class WeaponBase : MonoBehaviour
     public float steal = 0;
     public bool noReload;
     public float size;
+    public bool  necromancer;
     //protected HashSet<GameObject>enemiesInRange;
     //protected HashSet<GameObject>enemiesToRemove;
     // Start is called before the first frame update
     public void WeaponStart()
     {
+        necromancer = false;
         player = GameObject.Find("Player");
         GetComponent<CircleCollider2D>().radius = radius;
     }
