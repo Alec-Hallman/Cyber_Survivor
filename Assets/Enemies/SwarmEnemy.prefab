@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f446ea3e6c785864080c59276fe161ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brainWashed: {fileID: 6062897241419218785, guid: 95ceb9c52961bde40910d748585f3309, type: 3}
+  hittingPuddle: 0
   health: 10
   attackSpeed: 0.4
   walkSpeed: 10
@@ -216,9 +218,11 @@ MonoBehaviour:
   spawnScript: {fileID: 0}
   time: 0
   walking: 0
+  tranced: 0
   xpObjects:
   - {fileID: 8662911836301655898, guid: e3acb5f562496784a81f7e5dd7973c3b, type: 3}
   tracking: 0
+  poisoned: 0
   radioactiveBool: 0
   chunkScript: {fileID: 0}
   lifeTime: 7

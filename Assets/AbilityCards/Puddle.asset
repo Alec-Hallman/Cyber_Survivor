@@ -19,7 +19,7 @@ MonoBehaviour:
   tier: 0
   difficulty: 3
   value: 2
-  value2: 1
+  value2: 10
   radioactive: 0
   json: {fileID: 4900000, guid: 3f7c01f7fcd09e04b9b10472982efec3, type: 3}
   jsonArray:
@@ -30,7 +30,7 @@ MonoBehaviour:
     pair: 0
     description: Spit out a pool of chemical waste
     value: 2
-    value2: 1
+    value2: 10
     radioactive: 0
   - name: Puddle
     difficulty: 2
@@ -39,7 +39,7 @@ MonoBehaviour:
     pair: 0
     description: Increases pool size
     value: 2.5
-    value2: 1
+    value2: 10
     radioactive: 0
   - name: Puddle
     difficulty: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     pair: 0
     description: Greatly increases damage
     value: 2.5
-    value2: 3
+    value2: 30
     radioactive: 0
   - name: Puddle
     difficulty: 4
@@ -57,7 +57,7 @@ MonoBehaviour:
     pair: 0
     description: Increases pool damage and size
     value: 4
-    value2: 4
+    value2: 40
     radioactive: 0
   - name: Puddle
     difficulty: 5
@@ -66,7 +66,7 @@ MonoBehaviour:
     pair: 1
     description: 'Max: Puddles now dirastically slow enemies'
     value: 4
-    value2: 4
+    value2: 40
     radioactive: 1
   - name: Puddle
     difficulty: 5
