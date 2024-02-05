@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1e8d58fad6a7949981fd838d33eb60, type: 3}
+  m_Name: WashingMechine
+  m_EditorClassIdentifier: 
+  className: Washing Machine
+  description: Slow moving
+  abilityIcon: {fileID: 21300000, guid: e80b3b16df6f03e4e9b1341e393ffff2, type: 3}
+  weaponIcon: {fileID: 21300000, guid: f6283f26a9013bc459e27489617918ef, type: 3}
+  difficulty: 0
+  ability: Brain-Cycle
+  weapon: Toxic Water
+  json: {fileID: 4900000, guid: ad693df973f04954b94eb5cd32f10a87, type: 3}

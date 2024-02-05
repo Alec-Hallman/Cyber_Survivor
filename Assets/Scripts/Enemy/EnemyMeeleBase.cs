@@ -23,10 +23,20 @@ public class EnemyMeeleBase : EnemyBase
                 //Debug.Log("Player Taking Damage");
             }
             
+        } 
+        if(hittingNPC && npcScript != null){
+            float timer = Time.realtimeSinceStartup - time;
+            if((timer >= attackSpeed) && !hacked){
+                npcScript.TakeDamage(damage);
+                GetCurrentTime();
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D hit){
         if(hit.gameObject.tag == "Player"){
+            GetCurrentTime();
+        }
+        if(hit.gameObject.tag == "NPC"){
             GetCurrentTime();
         }
     }

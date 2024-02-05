@@ -17,11 +17,21 @@ public class NPC : MonoBehaviour
     private UIManager UIScript;
     private Rigidbody2D rigid;
     private EnemyBase enemyScript;
+    private bool damageAnimation;
+    private bool heal;
     public float damage;
     public float attackSpeed;
     private Vector3 ZERO;
+    private Animator animator;
+    private SpriteRenderer rend;
+    private Color startColor;
     void Start()
     {
+        this.transform.position = player.transform.position;
+        damageAnimation = false;
+        rend = gameObject.GetComponent<SpriteRenderer>();
+        startColor = rend.color;
+        animator = gameObject.GetComponent<Animator>();
         ZERO = new Vector3(0,0,0);
         enemyScript = null;
         player = GameObject.Find("Player");
@@ -49,12 +59,31 @@ public class NPC : MonoBehaviour
             //Debug.Log("Getting New Enemy");
        }
     }
+    public void Heal(float ammount){
+        health += ammount;
+        animator.SetBool("Heal",true);
+        Invoke("StopHealAnimation", 0.5f);
+        damageAnimation = false;
+    }
     public void TakeDamage(float damage){
-        UIScript.DisplayHit(damage, this.gameObject, false ,false);
-        health =- damage;
+        //UIScript.DisplayHit(damage, this.gameObject, false ,false);
+        rend.color = Color.red; 
+        if(!damageAnimation){
+            damageAnimation = true;
+            animator.SetBool("Damage", true);
+            Invoke("StopDamageAnimation", 0.1f);
+        }
+        health -= damage;
         if(health <= 0){
             Destroy(this.gameObject);
         }
+    }
+    private void StopDamageAnimation(){
+        animator.SetBool("Damage", false);
+        damageAnimation = false;
+    }
+    private void StopHealAnimation(){
+        animator.SetBool("Heal", false);
     }
     void OnTriggerEnter2D(Collider2D hit){
         if(hit.gameObject.tag.Contains("Enemy") && enemyScript == null){
@@ -62,9 +91,14 @@ public class NPC : MonoBehaviour
             Invoke("DealDamage",attackSpeed);
         }
     }
+    void OnTriggerExit2D(Collider2D hit){
+        if(hit.gameObject.tag.Contains("Enemy") && enemyScript != null){
+            enemyScript = null; //If the enemy leaving the trigger is an enemy and we have an enemy we're dealing damage to, stop dealing damage to it.
+        }
+    }
     void DealDamage(){
         if(enemyScript != null){
-            enemyScript.takeDamage(damage, false);
+            enemyScript.takeDamage(damage, false, false); //deal damage to enemy but dont display it. Too many numbers
             //Debug.Log("Dealing Damage to enemy");
             Invoke("DealDamage", attackSpeed);
         }

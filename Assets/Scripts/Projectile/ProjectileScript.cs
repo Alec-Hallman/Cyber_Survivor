@@ -107,7 +107,7 @@ public class ProjectileScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D hit){
          if(hit.gameObject.tag.Contains("Enemy") && gameObject.tag == "SendBack"){
             EnemyBase tempScript = hit.gameObject.GetComponent<EnemyBase>();
-            tempScript.takeDamage(damage, false);
+            tempScript.takeDamage(damage, false,true);
             if(parentScript != null){
                 parentScript.LifeSteal();
             }

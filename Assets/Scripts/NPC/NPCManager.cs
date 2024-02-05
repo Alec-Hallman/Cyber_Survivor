@@ -7,7 +7,7 @@ public class NPCManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private Queue<Transform> enemies;
-    public float health;
+    //public float health;
     void Start()
     {
         enemies = new Queue<Transform>();

@@ -20,11 +20,11 @@ public class WeaponMeeleBase : WeaponBase
             if(enemy!= null){
                 EnemyBase enemyScript = enemy.GetComponent<EnemyBase>();
                 if(enemyScript.health - damage <= 0){
-                    enemyScript.takeDamage(damage, poison);
+                    enemyScript.takeDamage(damage, false,true);
                     enemiesToRemove.Add(enemy);
                     
                 }else{
-                    enemyScript.takeDamage(damage, false);
+                    enemyScript.takeDamage(damage, false, true);
                 }
                 if(poison){
                     enemyScript.Poisoned(pDurration,pDamage,radioactive);
