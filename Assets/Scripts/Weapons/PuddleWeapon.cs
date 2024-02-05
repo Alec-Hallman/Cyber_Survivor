@@ -30,13 +30,18 @@ public class PuddleWeapon : WeaponMeeleBase
                 Invoke("DealDamage",attackSpeed);
             }
             enemiesInRange.Add(hit.gameObject);
+            if(necromancer){
+                hit.gameObject.GetComponent<EnemyBase>().hittingPuddle = true;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D hit){
         if(hit.gameObject.tag.Contains("Enemy")){
             if(enemiesInRange.Contains(hit.gameObject)){
                 enemiesToRemove.Add(hit.gameObject);
-
+                if(necromancer){
+                    hit.gameObject.GetComponent<EnemyBase>().hittingPuddle = false;
+                }
             }
         }
     }

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5ddd6d2f23e074081c3a91f4d4615a, type: 3}
+  m_Name: Brain-cycle
+  m_EditorClassIdentifier: 
+  abilityName: Brain-Cycle
+  type: Ability
+  description: Small chance for enemies killed
+  icon: {fileID: 21300000, guid: e80b3b16df6f03e4e9b1341e393ffff2, type: 3}
+  tier: 0
+  difficulty: 5
+  value: 10
+  value2: 20
+  radioactive: 0
+  json: {fileID: 4900000, guid: 55c30260b24017b4e993fc6e0f59799f, type: 3}
+  jsonArray:
+  - name: Brain-cycle
+    difficulty: 5
+    type: 
+    tier: 1
+    pair: 0
+    description: Small chance for enemies killed
+    value: 10
+    value2: 20
+    radioactive: 0
+  - name: Brain-cycle
+    difficulty: 2
+    type: 
+    tier: 2
+    pair: 0
+    description: Increased chance to brain wash enemies.
+    value: 10
+    value2: 30
+    radioactive: 0
+  - name: Brain-cycle
+    difficulty: 1
+    type: 
+    tier: 3
+    pair: 0
+    description: New enemies fighting for you have increaased health.
+    value: 10
+    value2: 30
+    radioactive: 0
+  - name: Brain-cycle
+    difficulty: 4
+    type: 
+    tier: 4
+    pair: 0
+    description: Greatly increased chance for enemies to fight for you
+    value: 20
+    value2: 50
+    radioactive: 0
+  - name: Brain-cycle
+    difficulty: 5
+    type: 
+    tier: 5
+    pair: 1
+    description: 'Max: Your army now heals when inside your pools'
+    value: 20
+    value2: 50
+    radioactive: 1
+  - name: Brain-cycle
+    difficulty: 5
+    type: 
+    tier: 6
+    pair: 1
+    description: 
+    value: 10
+    value2: 0.5
+    radioactive: 0
