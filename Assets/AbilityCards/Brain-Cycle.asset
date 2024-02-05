@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Brain-Cycle
   type: Ability
-  description: Small chance for enemies killed
+  description: Increased chance to brain wash enemies.
   icon: {fileID: 21300000, guid: e80b3b16df6f03e4e9b1341e393ffff2, type: 3}
-  tier: 0
+  tier: 1
   difficulty: 5
   value: 10
   value2: 20
@@ -46,7 +46,7 @@ MonoBehaviour:
     type: 
     tier: 3
     pair: 0
-    description: New enemies fighting for you have increaased health.
+    description: New enemies fighting for you have increased health.
     value: 10
     value2: 30
     radioactive: 0

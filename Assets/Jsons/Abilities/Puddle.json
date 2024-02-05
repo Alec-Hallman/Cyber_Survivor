@@ -7,7 +7,7 @@
             "pair": false,
             "radioactive": false,
             "value": 2,
-            "value2": 1,
+            "value2": 10,
             "description": "Spit out a pool of chemical waste"
 
         },
@@ -18,7 +18,7 @@
             "pair": false,
             "radioactive": false,
             "value": 2.5,
-            "value2": 1,
+            "value2": 10,
             "description": "Increases pool size"
 
         },
@@ -29,7 +29,7 @@
             "pair": false,
             "radioactive": false,
             "value": 2.5,
-            "value2": 3,
+            "value2": 30,
             "description": "Greatly increases damage"
 
         },
@@ -40,7 +40,7 @@
             "pair": false,
             "radioactive": false,
             "value": 4,
-            "value2": 4,
+            "value2": 40,
             "description": "Increases pool damage and size"
 
         },
@@ -51,7 +51,7 @@
             "pair": true,
             "radioactive": true,
             "value": 4,
-            "value2": 4,
+            "value2": 40,
             "description": "Max: Puddles now dirastically slow enemies"
         },
         {

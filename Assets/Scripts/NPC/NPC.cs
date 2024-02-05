@@ -19,13 +19,15 @@ public class NPC : MonoBehaviour
     private EnemyBase enemyScript;
     public float damage;
     public float attackSpeed;
+    private Vector3 ZERO;
     void Start()
     {
+        ZERO = new Vector3(0,0,0);
         enemyScript = null;
         player = GameObject.Find("Player");
         UIScript = GameObject.Find("Canvas").GetComponent<UIManager>();
         tracker = new Queue<GameObject>();
-        npcScript = GameObject.Find("NPCManager").GetComponent<NPCManager>();
+        npcScript = GameObject.Find("NPCManager(Clone)").GetComponent<NPCManager>();
         targetTransform = npcScript.GetEnemy();
         rigid = GetComponent<Rigidbody2D>();
 
@@ -42,8 +44,9 @@ public class NPC : MonoBehaviour
             direction = (targetTransform.position - transform.position).normalized;
             rigid.velocity = direction * speed;
        } else{
+            rigid.velocity = ZERO;
             targetTransform = npcScript.GetEnemy();
-            Debug.Log("Getting New Enemy");
+            //Debug.Log("Getting New Enemy");
        }
     }
     public void TakeDamage(float damage){

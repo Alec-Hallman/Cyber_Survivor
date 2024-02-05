@@ -257,86 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65042641}
   m_CullTransparentMesh: 1
---- !u!1 &86450333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 86450334}
-  - component: {fileID: 86450336}
-  - component: {fileID: 86450335}
-  m_Layer: 0
-  m_Name: NPCManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &86450334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86450333}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09843749, y: -0.05904356, z: -0.10262929}
-  m_LocalScale: {x: 1.5625, y: 1.5957719, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2009177467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &86450335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86450333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ec9af24d834945a7842b0e5545a22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!58 &86450336
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86450333}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
 --- !u!1 &155012254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,6 +3894,7 @@ MonoBehaviour:
   hack: {fileID: 6107054452068971814, guid: 6c212ec8aecd8444daa9101a7810f689, type: 3}
   missileFinder: {fileID: 2088838799921547007, guid: 9204f34aae4b42a459e11dbd2b99cac7, type: 3}
   weaponScript: {fileID: 0}
+  npcManager: {fileID: 8561469243763914336, guid: de815af74cdde0044a9c8d03a1ce4c4e, type: 3}
   activeWeapons: []
   puddleManager: {fileID: 0}
 --- !u!95 &2009177479
@@ -4493,9 +4414,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6301139057537741944, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 519420032}
-    - targetCorrespondingSourceObject: {fileID: 6301139057537741944, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 86450334}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6301139057537741946, guid: 0230b79eb18a2b64a92af007e7c4337e, type: 3}
       insertIndex: -1

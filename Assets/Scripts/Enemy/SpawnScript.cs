@@ -13,6 +13,8 @@ public class SpawnScript : MonoBehaviour
     private float time;
      private float time2;
     private float swarmTimer;
+    public float npcChance;
+    public bool tranced;
     [SerializeField] private GameObject weakEnemy;
     public float spawnRate;
     private GameObject player;
@@ -22,6 +24,7 @@ public class SpawnScript : MonoBehaviour
     private int difficulty;
     private bool positionSet;
     private float swarmSpawnTimer;
+    public float NPChealth;
     private float healthMultiplier = 1f;
     private Vector2 randCircularSpawn;
     public float waveDurration;
@@ -40,6 +43,8 @@ public class SpawnScript : MonoBehaviour
     private float maxSwarmTime;
     void Start()
     {
+        npcChance = 0;
+        tranced = false;
         newPosition = true;
         NewWaveTimer();
         waveTime = Time.realtimeSinceStartup;
@@ -99,6 +104,10 @@ public class SpawnScript : MonoBehaviour
                 EnemyBase tempScript = tempEnemy.GetComponent<EnemyBase>();
                 tempScript.Balancing(healthMultiplier);
                 tempScript.spawnScript = this;
+                tempScript.tranced = tranced;
+                tempScript.npcChance = npcChance;
+                tempScript.NPChealth = NPChealth;
+                //Debug.Log("Tranced is: " + tranced);
                 GetCurrentTime();
                 //Debug.Log("Spawned");
             }

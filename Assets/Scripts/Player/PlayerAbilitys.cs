@@ -13,8 +13,10 @@ public class PlayerAbilitys : MonoBehaviour
     public GameObject missileFinder;
     private bool hackCheck;
     public WeaponBase weaponScript;
+    public GameObject npcManager;
     private bool stealActive;
     private float time;
+    private NPCManager npcScript;
     private float frequency;
     private Missle missleFinderScript;
     public List<GameObject>activeWeapons;
@@ -44,6 +46,7 @@ public class PlayerAbilitys : MonoBehaviour
     }
     public void ApplyAbility(AbilityCards card){
         Debug.Log("Card Name: " +card.name);
+        Debug.Log("Card Ability Name: " +card.abilityName);
         if(enemyScript == null){
             enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
         }
@@ -94,7 +97,17 @@ public class PlayerAbilitys : MonoBehaviour
             playerScript.phaseDurration = card.value;
             playerScript.passThrough = card.radioactive;
             playerScript.PhaseCooldown = card.value2;
-        } else if(card.type == "Weapon"){
+        }else if (card.abilityName == "Brain-Cycle"){
+            Debug.Log("Applied npcManager and other things.");
+            GameObject tempNPC = Instantiate(npcManager,gameObject.transform); //Instantiate the npc manager as a child of the player.
+            npcScript = tempNPC.GetComponent<NPCManager>();
+            enemyScript.tranced = true; //Make it so enemies can create a npc when they die by the puddle.
+            enemyScript.npcChance = card.value2; //Set the spawn chance to be the cards second value;
+            enemyScript.NPChealth = card.value;
+
+
+        } 
+        else if(card.type == "Weapon"){
             int counter = 0;
             GameObject tempObj = avalibleWeapons[counter];
             while(tempObj.name != card.abilityName){

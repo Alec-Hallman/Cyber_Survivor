@@ -15,17 +15,20 @@ public class EnemyBase : MonoBehaviour
     public GameObject player = null;
     //private Transform playerPosition;
     private Vector2 direction;
+    public float NPChealth;
     public SpawnScript spawnScript;
     private GameObject UI;
     public float time;
     private float hackTime;
     public bool walking;
+    public bool tranced;
     public GameObject[] xpObjects;
     private Vector2 ZERO = new Vector2(0,0);
     public bool tracking;
     protected bool hacked;
     private float distance;
     public bool poisoned = false;
+    public float npcChance;
     private float pDamage;
     public bool radioactiveBool;
     private float pTimer;
@@ -42,6 +45,7 @@ public class EnemyBase : MonoBehaviour
     {
         //chunkScript = GameObject.Find("MapManager").GetComponent<ChunkManager>();
         //Debug.Log("chunk");
+        //tranced = false;
         playerInRange = false;
         knockBack = false;
         dead = false;
@@ -200,9 +204,19 @@ public class EnemyBase : MonoBehaviour
         GameObject xp = Instantiate(xpObjects[Random.Range(0,xpObjects.Length)]);
         xp.transform.position = transform.position;
         Destroy(gameObject);
-        if(hittingPuddle){
-            Instantiate(brainWashed); //Create minon that fights for the player
+        if(tranced){
+            Debug.Log("Spawnning minion");
+            int randomNum = Random.Range(0,100);
+            if(randomNum <= npcChance){
+                GameObject tempNPC = Instantiate(brainWashed); //Create minon that fights for the player
+                tempNPC.transform.position = transform.position; //Set the spawned enemies position to the currently killed enemies position;
+                tempNPC.GetComponent<NPC>().health = NPChealth;
+            }
+            
         }
+        // } else{
+        //     Debug.Log("Tranced: " + tranced + "Hitting the puddle: " + hittingPuddle);
+        // }
     }
     
     public void Poisoned(float durration, float damage, bool radioactive){
