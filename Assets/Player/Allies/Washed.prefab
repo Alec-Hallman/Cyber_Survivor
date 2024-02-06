@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 999489534303434262}
   - component: {fileID: -3703143858309311961}
   - component: {fileID: -4530852820213457089}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Washed
   m_TagString: NPC
   m_Icon: {fileID: 0}

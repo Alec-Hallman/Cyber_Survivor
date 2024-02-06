@@ -25,6 +25,7 @@ public class WeaponBase : MonoBehaviour
     public bool noReload;
     public float size;
     public bool  necromancer;
+    public bool slow; //This bool controls if an enemy gets slowed on hit or not.
     //protected HashSet<GameObject>enemiesInRange;
     //protected HashSet<GameObject>enemiesToRemove;
     // Start is called before the first frame update

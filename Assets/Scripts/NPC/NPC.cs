@@ -27,7 +27,6 @@ public class NPC : MonoBehaviour
     private Color startColor;
     void Start()
     {
-        this.transform.position = player.transform.position;
         damageAnimation = false;
         rend = gameObject.GetComponent<SpriteRenderer>();
         startColor = rend.color;
@@ -35,10 +34,12 @@ public class NPC : MonoBehaviour
         ZERO = new Vector3(0,0,0);
         enemyScript = null;
         player = GameObject.Find("Player");
+        this.transform.position = player.transform.position;
         UIScript = GameObject.Find("Canvas").GetComponent<UIManager>();
         tracker = new Queue<GameObject>();
         npcScript = GameObject.Find("NPCManager(Clone)").GetComponent<NPCManager>();
         targetTransform = npcScript.GetEnemy();
+        Debug.Log("Target Position: " + targetTransform.position);
         rigid = GetComponent<Rigidbody2D>();
 
     }

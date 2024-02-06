@@ -45,8 +45,8 @@ public class PlayerAbilitys : MonoBehaviour
         }
     }
     public void ApplyAbility(AbilityCards card){
-        Debug.Log("Card Name: " +card.name);
-        Debug.Log("Card Ability Name: " +card.abilityName);
+        //Debug.Log("Card Name: " +card.name);
+        //Debug.Log("Card Ability Name: " +card.abilityName);
         if(enemyScript == null){
             enemyScript = GameObject.Find("EnemyManager").GetComponent<SpawnScript>(); 
         }
@@ -198,6 +198,7 @@ public class PlayerAbilitys : MonoBehaviour
                 Debug.Log("Upgradding a puddle weapon");
                 tempScript.size = card.value;
                 tempScript.damage = card.value2;
+                tempScript.slow = card.radioactive;
             }
             
         }
