@@ -117,7 +117,7 @@ public class Katana : WeaponBase
                     toRemove.Add(listObject);
                     //inRange.Remove(listObject);
                 }
-                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage, false);
+                listObject.gameObject.GetComponent<EnemyBase>().takeDamage(damage, false, true);
                 if(poison){
                     listObject.gameObject.GetComponent<EnemyBase>().Poisoned(pDurration,pDamage,radioactive);
                 }

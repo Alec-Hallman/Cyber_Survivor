@@ -67,7 +67,7 @@ public class MissleObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hit){
         if(hit.gameObject == enemyObject && flying){
-            hit.gameObject.GetComponent<EnemyBase>().takeDamage(damage,false);
+            hit.gameObject.GetComponent<EnemyBase>().takeDamage(damage,false, true);
             SelfDestruct();
             flying = false;
         } else if(expand && hit.gameObject.tag == "Enemy" && hit.gameObject != enemyObject){
@@ -96,7 +96,7 @@ public class MissleObject : MonoBehaviour
             float distance = Vector3.Distance(this.transform.position, enemy.transform.position);
             distance *= 10;
             if(distance < damage){
-                enemy.GetComponent<EnemyBase>().takeDamage(damage - distance,false);
+                enemy.GetComponent<EnemyBase>().takeDamage(damage - distance,false,true);
             }
             }
         }

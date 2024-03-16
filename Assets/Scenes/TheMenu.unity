@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c714772861ed348ac4f166a2606651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 58f1f0c252c7c174c825906742d9b338, type: 2}
+  card: {fileID: 11400000, guid: 697ea7becfe60d0488fdd2ee26bce8e6, type: 2}
   nameText: {fileID: 368736731}
   description: {fileID: 1042708306}
   ability: {fileID: 2101990693}

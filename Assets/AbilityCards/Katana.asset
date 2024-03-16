@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Katana
   type: Weapon
-  description: Increases Katana attack speed
+  description: You get a Katana, thats it.
   icon: {fileID: 21300000, guid: 8c29e380dccca9445a4ca7fb6eab8ff1, type: 3}
-  tier: 1
+  tier: 0
   difficulty: 0
   value: 10
-  value2: 1
+  value2: 1.5
   radioactive: 0
   json: {fileID: 4900000, guid: 178fc7aae72ac3d43b25d9ba9c3a43dd, type: 3}
   jsonArray:

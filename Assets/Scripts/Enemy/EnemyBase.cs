@@ -38,6 +38,8 @@ public class EnemyBase : MonoBehaviour
     protected bool playerInRange;
     private bool knockBack;
     public ChunkManager chunkScript;
+    protected bool hittingNPC;
+    protected NPC npcScript;
     private SpriteRenderer objectRend;
 
     // Start is called before the first frame update
@@ -91,7 +93,7 @@ public class EnemyBase : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = ZERO;
         }
         if(poisoned && (Time.realtimeSinceStartup - pTimer) > 1f && Time.timeScale != 0){
-            takeDamage(pDamage, true);
+            takeDamage(pDamage, true, true);
             pDurration -= 1;
             GetPTime();
             if(pDurration <= 0){
@@ -117,6 +119,9 @@ public class EnemyBase : MonoBehaviour
             playerInRange = true;
             //GetCurrentTime();
 
+        }
+        if(hit.gameObject.tag == "NPC"){
+            hittingNPC = true;
         }
         //Debug.Log("Hit: " + hit.gameObject.name);
         // if(hit.gameObject.name.Contains("Hack")){
@@ -145,6 +150,10 @@ public class EnemyBase : MonoBehaviour
             //GetCurrentTime();
 
         }
+        if(hit.gameObject.tag == "NPC"){
+            hittingNPC = true;
+            npcScript = hit.gameObject.GetComponent<NPC>();
+        }
         if(radioactiveBool){
             if(hit.gameObject.tag == "Enemy"){
                 //Debug.Log("Poison Enemy");
@@ -170,14 +179,18 @@ public class EnemyBase : MonoBehaviour
     public void GetCurrentTime(){
         time = Time.realtimeSinceStartup;
     }
-    public void takeDamage(float damage, bool poison){
+    public void takeDamage(float damage, bool poison, bool displayHit){
         
         if(poison){
             if((health - damage) <= 0){ //If the enemy is going to die from poison, don't, but still display the number.
-                UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+                if(displayHit){
+                    UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+                }
             } else{
                 health -= damage;
-                UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+                if(displayHit){
+                    UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, true);
+                }
             }
             
         } else{
@@ -187,7 +200,9 @@ public class EnemyBase : MonoBehaviour
             knockBack = true;
             Invoke("StopKnockBack",0.1f); //0.1f controls how long the knockback
             health -= damage;
-            UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
+            if(displayHit){
+                UI.GetComponent<UIManager>().DisplayHit(damage,this.gameObject, false, false);
+            }
         }
         if(health <= 0 && !dead){
             dead = true;
@@ -205,11 +220,11 @@ public class EnemyBase : MonoBehaviour
         xp.transform.position = transform.position;
         Destroy(gameObject);
         if(tranced){
-            Debug.Log("Spawnning minion");
             int randomNum = Random.Range(0,100);
             if(randomNum <= npcChance){
+                Debug.Log("Spawnning minion");
                 GameObject tempNPC = Instantiate(brainWashed); //Create minon that fights for the player
-                tempNPC.transform.position = transform.position; //Set the spawned enemies position to the currently killed enemies position;
+                //tempNPC.transform.position = transform.position; //Set the spawned enemies position to the currently killed enemies position; Sike
                 tempNPC.GetComponent<NPC>().health = NPChealth;
             }
             

@@ -196,7 +196,7 @@ public class PlayerBase : MonoBehaviour
 
     void initClassAbility(){
         //managerScript.ApplyClassCard(className);
-        //Debug.Log("Name: " + className)
+        Debug.Log("Name: " + className);
         string fileLocation = "Jsons/Classes/" + className;
         TextAsset jsonFile = Resources.Load<TextAsset>(fileLocation);
         //Debug.Log("FileLocation: " + fileLocation);

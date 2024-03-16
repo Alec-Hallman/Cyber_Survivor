@@ -5,7 +5,7 @@
             "tier": 1,
             "difficulty": 5,
             "pair": false,
-            "value": 10,
+            "value": 20,
             "value2": 20,
             "description": "Small chance for enemies killed"
 
@@ -15,7 +15,7 @@
             "tier": 2,
             "difficulty": 2,
             "pair": false,
-            "value": 10,
+            "value": 20,
             "value2": 30,
             "description": "Increased chance to brain wash enemies."
 
@@ -25,7 +25,7 @@
             "tier": 3,
             "difficulty": 1,
             "pair": false,
-            "value": 10,
+            "value": 20,
             "value2": 30,
             "description": "New enemies fighting for you have increased health."
 
@@ -35,8 +35,8 @@
             "tier": 4,
             "difficulty": 4,
             "pair": false,
-            "value": 20,
-            "value2": 50,
+            "value": 40,
+            "value2": 70,
             "description": "Greatly increased chance for enemies to fight for you"
 
         },
@@ -46,7 +46,7 @@
             "difficulty": 5,
             "radioactive": true,
             "pair": true,
-            "value": 20,
+            "value": 40,
             "value2": 50,
             "description": "Max: Your army now heals when inside your pools"
         },
@@ -55,7 +55,7 @@
             "tier": 6,
             "difficulty": 5,
             "pair": true,
-            "value": 10,
+            "value": 40,
             "value2": 0.5,
             "description": ""
         }

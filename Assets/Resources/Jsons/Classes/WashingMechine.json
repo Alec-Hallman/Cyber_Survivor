@@ -1,0 +1,8 @@
+{
+"name": "Washing Mechine",
+"weapon": "Puddle",
+"ability": "Brain-cycle",
+"description": "Slow tanky necromancer with big AOE",
+"speed": 3,
+"health": 300
+}
