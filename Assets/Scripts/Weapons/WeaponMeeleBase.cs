@@ -20,16 +20,19 @@ public class WeaponMeeleBase : WeaponBase
             if(enemy!= null){
                 EnemyBase enemyScript = enemy.GetComponent<EnemyBase>();
                 if(enemyScript.health - damage <= 0){
-                    enemyScript.takeDamage(damage, poison);
+                    enemyScript.takeDamage(damage, false,true);
                     enemiesToRemove.Add(enemy);
                     
                 }else{
-                    enemyScript.takeDamage(damage, false);
+                    enemyScript.takeDamage(damage, false, true);
                 }
                 if(poison){
                     enemyScript.Poisoned(pDurration,pDamage,radioactive);
                 }
                 LifeSteal();
+                if(slow){
+                    enemyScript.walkSpeed /= 2; //if the enemy is slowed by the attack half it's walk speed.
+                }
             }
         }
         if(dealDamage){
@@ -41,11 +44,14 @@ public class WeaponMeeleBase : WeaponBase
         foreach(GameObject enemy in enemiesToRemove){
             if(enemy!=null){
                 float distance = Vector2.Distance(this.transform.position, enemy.transform.position);
-                Debug.Log(distance);
+                //Debug.Log(distance);
                 if(distance > (maxDistance + radius)){ 
                     //Sometimes an enemy will walk into an object trigger and then walk out, get added to the remove list, but then walks back into the list but they'll still
                     //be removed as the game doesn't know they've walked back in, so I'm checking their distance ensuring they're actually out of range before removing them.
                     enemiesInRange.Remove(enemy);
+                    if(slow){
+                        enemy.gameObject.GetComponent<EnemyBase>().walkSpeed *=2;
+                    }
                 }
             }
         }
